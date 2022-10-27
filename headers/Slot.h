@@ -12,6 +12,10 @@ class Slot{
         std::string room;
         std::string type;
     public:
-    
+        Slot(std::string weekDay,
+             std::string startTime,
+             std::string endTime,
+             std::string room,
+             std::string type);
 }; 
 #endif

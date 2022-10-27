@@ -11,5 +11,18 @@ class ClassSchedule{
         std::string cUCode;
         std::string classCode;
         std::list<Slot> slots;
+    public:
+        //Constructors
+        ClassSchedule(std::string cUCode, std::string classCode,
+                      std::string weekDay,
+                      std::string startTime,
+                      std::string endTime,
+                      std::string room,
+                      std::string type);
+        void addSlot(std::string weekDay,
+                     std::string startTime,
+                     std::string endTime,
+                     std::string room,
+                     std::string type);
 };
 #endif
