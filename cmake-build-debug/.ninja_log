@@ -1,7 +1,7 @@
 # ninja log v5
 4	679	1666809443192610789	CMakeFiles/Project.dir/Student.cpp.o	510ba289d239899b
 1	750	1666792002112819192	CMakeFiles/Project.dir/main.cpp.o	efdb198b73df189f
-0	25	1666866683462475138	build.ninja	da02eee8b1c3cd07
+0	25	1666879471458256012	build.ninja	da02eee8b1c3cd07
 1	22	1666790351275326369	CMakeFiles/Project.dir/Request.cpp.o	9c017b5dd4c69f71
 2	19	1666790351271325953	CMakeFiles/Project.dir/Slot.cpp.o	304386c2366bf184
 1	485	1666790351739374635	CMakeFiles/Project.dir/CUClass.cpp.o	18c1718f566ee6ea
