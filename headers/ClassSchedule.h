@@ -17,5 +17,8 @@ class ClassSchedule{
                       std::string duration, std::string room, std::string type);
         void addSlot(std::string weekDay, std::string startTime, std::string duration, std::string room,
                      std::string type);
+        std::string getCucode() const;
+        std::string getClassCode() const;
+        bool operator < (const ClassSchedule& classSchedule) const;
 };
 #endif

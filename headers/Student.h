@@ -20,6 +20,7 @@ class Student{
         std::string getName();
         int getStudentID();
         bool operator < (const Student& student) const;
+        std::list<CUClass> getClasses() const;
 
 };
 #endif

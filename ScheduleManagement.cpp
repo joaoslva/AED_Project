@@ -88,4 +88,69 @@ void ScheduleManagement::createStudents(std::string csv_file){
         std::cout << "count2: " << count2 << "size: " << students.size() <<'\n';
     }
      */
+
+}
+
+void ScheduleManagement::classOccupation(std::string cUcode, std::string classCode) const{
+    int count = 0;
+    for(Student student: this->students){
+        for(CUClass _class: student.getClasses()){
+            if(_class.getCUCode() == cUcode && _class.getClassCode()== classCode) count++;
+        }
+    }
+    std::cout << "Class Occupation: " <<count<< '\n';
+}
+
+void ScheduleManagement::yearOccupation(char year) const {
+    int count = 0;
+    for(Student student: this->students){
+        for(CUClass _class: student.getClasses()){
+            if(_class.getClassCode()[0] == year){
+                count++;
+                break;
+            }
+        }
+    }
+    std::cout << "Year Occupation: " <<count<< '\n';
+}
+
+void ScheduleManagement::uCOccupation(std::string cUcode) const{
+    int count = 0;
+    for(Student student: this->students){
+        for(CUClass _class: student.getClasses()){
+            if(_class.getCUCode() == cUcode) {
+                count++;
+                break;
+            }
+        }
+    }
+    std::cout << "UC Occupation: " << count<< '\n';
+}
+void ScheduleManagement::studentSchedule(int studentID) const {
+    bool match = false;
+    Student student = Student(0,"","","");
+    for(Student _student: students){
+        if(_student.getStudentID() == studentID){
+            match = true;
+            student = _student;
+            break;
+        }
+    }
+    if(match){
+        std::list<CUClass> list = student.getClasses();
+        std::list<ClassSchedule> list1;
+        for(CUClass cuClass : list){
+            std::string classcode = cuClass.getClassCode();
+            std::string cuCode = cuClass.getCUCode();
+            for(ClassSchedule classSchedule: classSchedules){
+                if(classSchedule.getClassCode() == classcode && classSchedule.getCucode() == cuCode){
+                    list1.push_back(classSchedule);
+                }
+            }
+        }
+      //  std::sort(list1.begin(),list1.end(),);
+    }
+    else{
+        std::cout << "No Student match\n" << "Try again\n" ;
+    }
 }

@@ -12,7 +12,6 @@ class CUClass{
     public:
         //Constructors
         CUClass(std::string cUCode, std::string classCode);
-
         //Methods
         std::string getCUCode();
         std::string getClassCode();

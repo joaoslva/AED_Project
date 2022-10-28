@@ -23,3 +23,7 @@ int Student::getStudentID(){
 bool Student::operator<(const Student &student) const {
     return studentID < student.studentID;
 }
+
+std::list<CUClass> Student::getClasses() const{
+    return classes;
+}

@@ -13,3 +13,10 @@ void ClassSchedule::addSlot(std::string weekDay, std::string startTime, std::str
     this->slots.push_back(Slot(weekDay, startTime, duration, room, type));
 }
 
+std::string ClassSchedule::getCucode() const{
+    return cUCode;
+}
+
+std::string ClassSchedule::getClassCode() const {
+    return classCode;
+}
