@@ -3,6 +3,6 @@
 
 int main() {
     ScheduleManagement scheduleManagement = ScheduleManagement();
-    scheduleManagement.createStudents("/home/juao/Desktop/Project/headers/students_classes.csv");
+    scheduleManagement.createStudents("../../AED_Project/headers/students_classes.csv");
     return 0;
 }
