@@ -30,5 +30,7 @@ class ScheduleManagement{
         void yearOccupation(char year) const;
         void uCOccupation(std::string cUcode) const;
         void studentSchedule(int studentID) const; // É preciso os 2?
+        void createSchedule();
+
 };
 #endif

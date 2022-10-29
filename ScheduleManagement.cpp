@@ -3,8 +3,6 @@
 #include <sstream>
 #include <iostream>
 
-//Constructors
-
 //Methods
 void ScheduleManagement::addStudent(const Student& student){
     this->students.insert(student);
@@ -47,48 +45,36 @@ void ScheduleManagement::createStudents(std::string csv_file){
             student.addClass(cUCode, classCode);
         }
         else{
-            if(student.getStudentID() != 0) this->addStudent(student);
+            if(student.getStudentID() != 0) {
+
+                // Add the schedule to each student
+                for (CUClass cUClass: student.getClasses()) {
+                    for (ClassSchedule schedules: classSchedules) {
+                        if (schedules.getCUCode() == cUClass.getCUCode() && schedules.getClassCode() == cUClass.getClassCode()) {
+                            student.addSchedule(schedules);
+                            break;
+                        }
+                    }
+                }
+
+                this->addStudent(student);
+            }
             student = Student(iD, name, cUCode, classCode);
         }
     }
-    this->addStudent(student);
-    std::cout << "count2: " << count2 << " size: " << students.size() <<'\n';
-     /*
-    int studentID;
-    std::string name;
-    std::string cUCode;
-    std::string classCode;
-    int count;
-    Student student(0, "", "", "");
 
-    std::fstream file(csv_file);
-    if(file.is_open()){
-        std::string line;
-        while(!file.eof()){
-            std::getline(file, line);
-            count2++;
-            if(count == 0){
-                count++;
-                continue;
-            }
-            std::stringstream ss(line);
-            ss >> studentID >> name >> cUCode >> classCode;
-
-            if(studentID == student.getStudentID()){
-                student.addClass(cUCode, classCode);
-            }
-            else{
-                if(student.getStudentID() != 0){
-                    this->addStudent(student);
-                }
-                student = Student(studentID, name, cUCode, classCode);
+    // Add the schedule to the last student
+    for (CUClass cUClass: student.getClasses()) {
+        for (ClassSchedule schedules: classSchedules) {
+            if (schedules.getCUCode() == cUClass.getCUCode() && schedules.getClassCode() == cUClass.getClassCode()) {
+                student.addSchedule(schedules);
+                break;
             }
         }
-        this->addStudent(student);
-        std::cout << "count2: " << count2 << "size: " << students.size() <<'\n';
     }
-     */
+    this->addStudent(student);
 
+    std::cout << "count2: " << count2 << " size: " << students.size() <<'\n';
 }
 
 void ScheduleManagement::classOccupation(std::string cUcode, std::string classCode) const{
@@ -160,7 +146,7 @@ void ScheduleManagement::addSchedule(std::string csv_file) {
             continue;
         }
 
-        for (int index = 0; index < temp.size(); index++) {
+        for (int index = 0; index < temp.size() ; index++) {
 
             if(temp[index].getCUCode() == cUCode && temp[index].getClassCode() == classCode){
                 // Check if there is already a combination of CUClass and ClassCode in the vector
@@ -176,11 +162,14 @@ void ScheduleManagement::addSchedule(std::string csv_file) {
         }
     }
     setClassSchedule(temp);
+
+    // Test the code
     std::cout << check << "\n";
     std::cout << classSchedules.size() << "\n";
 }
 
 void ScheduleManagement::yearOccupation(char year) const {
+
     int count = 0;
     for(Student student: this->students){
         for(CUClass _class: student.getClasses()){
@@ -216,18 +205,24 @@ void ScheduleManagement::studentSchedule(int studentID) const {
         }
     }
     if(match){
-        std::list<CUClass> list = student.getClasses();
-        std::list<ClassSchedule> list1;
-        for(CUClass cuClass : list){
-            std::string classcode = cuClass.getClassCode();
-            std::string cuCode = cuClass.getCUCode();
-            for(ClassSchedule classSchedule: classSchedules){
-                if(classSchedule.getClassCode() == classcode && classSchedule.getCucode() == cuCode){
-                    list1.push_back(classSchedule);
+        std::cout << "Student ID: " << student.getStudentID() << "\n";
+        std::cout << "Student name: " << student.getName() << "\n\n";
+        for (ClassSchedule classSchedule: student.getStudentSched()) {
+            int count = 0;
+            std::cout << "CUCode: " << classSchedule.getCUCode() << "\n";
+            std::cout << "Class Code: " << classSchedule.getClassCode() << "\n";
+            for (Slot slot: classSchedule.getSlots()) {
+                if (count == 0) {
+                    count++;
+                    continue;
                 }
+
+                std::cout << "Week Day: " << slot.getWeekDay() << "\n";
+                std::cout << "Start Time: " << slot.getStartTime() << "\n";
+                std::cout << "Duration: " << slot.getDuration() << "\n";
+                std::cout << "Type: " << slot.getType() << "\n\n";
             }
         }
-      //  std::sort(list1.begin(),list1.end(),);
     }
     else{
         std::cout << "No Student match\n" << "Try again\n" ;

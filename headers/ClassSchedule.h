@@ -18,5 +18,6 @@ class ClassSchedule{
     void addSlot(std::string weekDay, double startTime, double duration,std::string type);
     std::string getCUCode() {return this->cUCode;};
     std::string getClassCode() {return this->classCode;};
+    std::list<Slot> getSlots() {return this->slots;}
 };
 #endif
