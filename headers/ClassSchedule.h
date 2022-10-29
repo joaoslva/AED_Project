@@ -13,12 +13,10 @@ class ClassSchedule{
         std::list<Slot> slots;
     public:
         //Constructors
-        ClassSchedule(std::string cUCode, std::string classCode, std::string weekDay, std::string startTime,
-                      std::string duration, std::string room, std::string type);
-        void addSlot(std::string weekDay, std::string startTime, std::string duration, std::string room,
-                     std::string type);
-        std::string getCucode() const;
-        std::string getClassCode() const;
-        bool operator < (const ClassSchedule& classSchedule) const;
+        ClassSchedule(std::string cUCode, std::string classCode, std::string weekDay, double startTime,
+                      double duration, std::string type);
+    void addSlot(std::string weekDay, double startTime, double duration,std::string type);
+    std::string getCUCode() {return this->cUCode;};
+    std::string getClassCode() {return this->classCode;};
 };
 #endif

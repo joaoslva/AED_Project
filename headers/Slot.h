@@ -7,15 +7,13 @@ class Slot{
     private:
         //Attributes
         std::string weekDay;
-        std::string startTime;
-        std::string duration;
-        std::string room;
+        double startTime;
+        double duration;
         std::string type;
     public:
         Slot(std::string weekDay,
-             std::string startTime,
-             std::string duration,
-             std::string room,
-             std::string type);
+            double startTime,
+            double duration,
+            std::string type);
 };
 #endif

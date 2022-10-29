@@ -20,6 +20,12 @@ class ScheduleManagement{
         //Methods
         void createStudents(std::string file);
         void addStudent(const Student& student);
+        void addSchedule(std::string file);
+        void setClassSchedule(std::vector<ClassSchedule> classSchedules) {
+            for (ClassSchedule & classSchedule : classSchedules) {
+                this->classSchedules.push_back(classSchedule);
+            }
+        };
         void classOccupation(std::string cUcode, std::string classCode) const;
         void yearOccupation(char year) const;
         void uCOccupation(std::string cUcode) const;

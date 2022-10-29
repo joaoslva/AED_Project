@@ -101,6 +101,84 @@ void ScheduleManagement::classOccupation(std::string cUcode, std::string classCo
     std::cout << "Class Occupation: " <<count<< '\n';
 }
 
+void ScheduleManagement::addSchedule(std::string csv_file) {
+    int check = 0;
+
+    // Variables that take in each line in the classes.csv file
+    std::string cUCode;
+    std::string classCode;
+    std::string weekDay;
+    double startTime;
+    double duration;
+    std::string type;
+
+    // Temporary Class Schedule vector
+    std::vector<ClassSchedule> temp;
+
+    // Variable to skip first line
+    int count = 0;
+
+    // Variable that contains the file
+    std::ifstream file;
+    file.open(csv_file);
+
+    // Last object added in the list
+    ClassSchedule classSchedule("", "", "", 0, 0, "");
+
+    // Loop that iterates through every line in the classes.csv and adds the information in the classSchedules vector
+    for(std::string line; std::getline(file, line);){
+
+        check++;
+        // Skip first line
+        if(count == 0){
+            count++;
+            continue;
+        }
+
+        // Getting the information that is in each line and attributing it to the right variables
+        std::stringstream inputString(line);
+        std::string data;
+
+        std::getline(inputString, data, ',');
+        classCode = data;
+        std::getline(inputString, data, ',');
+        cUCode = data;
+        std::getline(inputString, data, ',');
+        weekDay = data;
+        std::getline(inputString, data, ',');
+        startTime = std::stod(data);
+        std::getline(inputString, data, ',');
+        duration = std::stod(data);
+        std::getline(inputString, data, '\r');
+        type = data;
+
+        // Add the first line to the temp vector
+        if (count == 1) {
+            classSchedule = ClassSchedule(cUCode, classCode, weekDay, startTime, duration, type);
+            temp.push_back(classSchedule);
+            continue;
+        }
+
+        for (int index = 0; index < temp.size(); index++) {
+
+            if(temp[index].getCUCode() == cUCode && temp[index].getClassCode() == classCode){
+                // Check if there is already a combination of CUClass and ClassCode in the vector
+                temp[index].addSlot(weekDay, startTime, duration, type);
+                break;
+            }
+            else{
+                if (temp.size() - 1 == index) {
+                    classSchedule = ClassSchedule(cUCode, classCode, weekDay, startTime, duration, type);
+                    temp.push_back(classSchedule);
+                }
+            }
+        }
+    }
+    setClassSchedule(temp);
+    std::cout << check << "\n";
+    std::cout << classSchedules.size() << "\n";
+}
+
 void ScheduleManagement::yearOccupation(char year) const {
     int count = 0;
     for(Student student: this->students){
