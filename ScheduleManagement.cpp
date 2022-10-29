@@ -156,6 +156,7 @@ void ScheduleManagement::addSchedule(std::string csv_file) {
         if (count == 1) {
             classSchedule = ClassSchedule(cUCode, classCode, weekDay, startTime, duration, type);
             temp.push_back(classSchedule);
+            count++;
             continue;
         }
 
