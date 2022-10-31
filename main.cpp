@@ -5,11 +5,10 @@ int main() {
     ScheduleManagement scheduleManagement = ScheduleManagement();
     scheduleManagement.addSchedule("../../AED_Project/headers/classes.csv");
     scheduleManagement.createStudents("../../AED_Project/headers/students_classes.csv");
-    scheduleManagement.classOccupation("L.EIC011","2LEIC02");
-    scheduleManagement.yearOccupation('1');
-    scheduleManagement.uCOccupation("L.EIC001");
-    scheduleManagement.cUOccupationOrdering("L.EIC001", "ascending name");
-    scheduleManagement.studentSchedule(202025487);
+//    scheduleManagement.cUOccupationOrdering("L.EIC001", "ascending name");
+    scheduleManagement.studentSchedule(202025232);
+    scheduleManagement.removeStudent("L.EIC002", "1LEIC05", 202025232);
+    scheduleManagement.studentSchedule(202025232);
 
     return 0;
 }

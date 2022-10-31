@@ -348,5 +348,15 @@ void ScheduleManagement::addRequest(Request request) {
 }
 
 void ScheduleManagement::removeStudent(std::string ucCode, std::string classCode, int ID) {
-
+    for (Student student: this->students) {
+        if (student.getStudentID() == ID) {
+            for (CUClass classes: student.getClasses()) {
+                if (classes.getClassCode() == classCode && classes.getCUCode() == ucCode) {
+                    student.getClasses().erase(std::remove(student.getClasses().begin(), student.getClasses().end(), CUClass(ucCode, classCode)), student.getClasses().end());
+                    student.getStudentSched().erase(std::remove(student.getStudentSched().begin(), student.getStudentSched().end(), ClassSchedule(ucCode, classCode)), student.getStudentSched().end());
+                    this->classSchedules.erase(std::remove(this->classSchedules.begin(), this->classSchedules.end(), ClassSchedule(ucCode, classCode)), this->classSchedules.end());
+                }
+            }
+        }
+    }
 }

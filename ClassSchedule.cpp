@@ -11,3 +11,7 @@ ClassSchedule::ClassSchedule(std::string cUCode, std::string classCode, std::str
 void ClassSchedule::addSlot(std::string weekDay, double startTime, double duration,std::string type) {
     this->slots.push_back(Slot(weekDay, startTime, duration, type));
 }
+
+bool ClassSchedule::operator==(const ClassSchedule &c) const {
+    return this->cUCode == c.cUCode && this->classCode == c.classCode;
+}

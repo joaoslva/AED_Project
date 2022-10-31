@@ -14,3 +14,7 @@ std::string CUClass::getCUCode(){
 std::string CUClass::getClassCode(){
     return this->classCode;
 }
+
+bool CUClass::operator==(const CUClass &c) const {
+    return this->cUCode == c.cUCode && this->classCode == c.classCode;
+}

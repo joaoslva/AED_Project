@@ -3,7 +3,7 @@
 
 #include <string>
 
-class CUClass{
+class CUClass {
     private:
         //Attributes
         std::string cUCode;
@@ -15,5 +15,7 @@ class CUClass{
         //Methods
         std::string getCUCode();
         std::string getClassCode();
+        bool operator== (const CUClass& c) const;
+
 };
 #endif
