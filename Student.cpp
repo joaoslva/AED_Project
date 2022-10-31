@@ -20,9 +20,11 @@ int Student::getStudentID(){
     return this->studentID;
 }
 
+
 bool Student::operator<(const Student &student) const {
     return studentID < student.studentID;
 }
+
 
 std::list<CUClass> Student::getClasses() const{
     return classes;

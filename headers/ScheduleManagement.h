@@ -26,11 +26,12 @@ class ScheduleManagement{
                 this->classSchedules.push_back(classSchedule);
             }
         };
-        void classOccupation(std::string cUcode, std::string classCode) const;
-        void yearOccupation(char year) const;
-        void uCOccupation(std::string cUcode) const;
-        void studentSchedule(int studentID) const; // É preciso os 2?
-        void createSchedule();
-
+        void studentSchedule(int studentID) const;
+        void cUOccupationOrdering(std::string, std::string = "none") const;
+        void classOccupationOrdering(std::string, std::string, std::string = "none") const;
+        void yearOccupationOrdering(char , std::string ) const;
+        void moreThanNUc(int, std::string = "none");
+        void addRequest(Request);
+        void removeStudent(std::string, std::string, int);
 };
 #endif

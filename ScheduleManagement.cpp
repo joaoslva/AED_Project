@@ -77,16 +77,6 @@ void ScheduleManagement::createStudents(std::string csv_file){
     std::cout << "count2: " << count2 << " size: " << students.size() <<'\n';
 }
 
-void ScheduleManagement::classOccupation(std::string cUcode, std::string classCode) const{
-    int count = 0;
-    for(Student student: this->students){
-        for(CUClass _class: student.getClasses()){
-            if(_class.getCUCode() == cUcode && _class.getClassCode()== classCode) count++;
-        }
-    }
-    std::cout << "Class Occupation: " <<count<< '\n';
-}
-
 void ScheduleManagement::addSchedule(std::string csv_file) {
     int check = 0;
 
@@ -168,32 +158,6 @@ void ScheduleManagement::addSchedule(std::string csv_file) {
     std::cout << classSchedules.size() << "\n";
 }
 
-void ScheduleManagement::yearOccupation(char year) const {
-
-    int count = 0;
-    for(Student student: this->students){
-        for(CUClass _class: student.getClasses()){
-            if(_class.getClassCode()[0] == year){
-                count++;
-                break;
-            }
-        }
-    }
-    std::cout << "Year Occupation: " <<count<< '\n';
-}
-
-void ScheduleManagement::uCOccupation(std::string cUcode) const{
-    int count = 0;
-    for(Student student: this->students){
-        for(CUClass _class: student.getClasses()){
-            if(_class.getCUCode() == cUcode) {
-                count++;
-                break;
-            }
-        }
-    }
-    std::cout << "UC Occupation: " << count<< '\n';
-}
 void ScheduleManagement::studentSchedule(int studentID) const {
     bool match = false;
     Student student = Student(0,"","","");
@@ -227,4 +191,162 @@ void ScheduleManagement::studentSchedule(int studentID) const {
     else{
         std::cout << "No Student match\n" << "Try again\n" ;
     }
+}
+
+// Funções auxiliares para o sort
+bool ascendingName(Student s1, Student s2) {return (s1.getName() < s2.getName());}
+bool descendingName(Student s1, Student s2) {return s1.getName() > s2.getName();}
+bool ascendingID(Student s1, Student s2) {return (s1.getStudentID() < s2.getStudentID());}
+bool descendingID(Student s1, Student s2) {return s1.getStudentID() > s2.getStudentID();}
+bool ascendingUC(Student s1, Student s2) {return (s1.getClasses().size() < s2.getClasses().size());}
+bool descendingUC(Student s1, Student s2) {return s1.getClasses().size() > s2.getClasses().size();}
+
+void ScheduleManagement::cUOccupationOrdering(std::string cUcode, std::string how) const {
+    std::list<Student> ascendingStudents;
+
+    for (Student student: this->students) {
+        for (CUClass _class: student.getClasses()) {
+            if (_class.getCUCode() == cUcode) {
+                ascendingStudents.push_back(student);
+                break;
+            }
+        }
+    }
+
+    if (how == "ascending name") {
+        ascendingStudents.sort(ascendingName);
+    } else if (how == "descending name") {
+        ascendingStudents.sort(descendingName);
+    } else if (how == "ascending id") {
+        ascendingStudents.sort(ascendingID);
+    } else if (how == "descending id") {
+        ascendingStudents.sort(descendingID);
+    } else if (how == "ascending UC's") {
+        ascendingStudents.sort(ascendingUC);
+    } else if (how == "descending UC's") {
+        ascendingStudents.sort(descendingUC);
+    }
+
+    std::cout << "Year Occupation: " << ascendingStudents.size() << '\n';
+    if (how != "none") {
+        for (Student student: ascendingStudents) {
+            std::cout << "Student ID: " << student.getStudentID() << " Student name: " << student.getName() << "\n";
+        }
+    }
+}
+
+void ScheduleManagement::classOccupationOrdering(std::string cUcode, std::string classCode, std::string how) const{
+    std::list<Student> ascendingStudents;
+    int count = 0;
+
+    for(Student student: this->students){
+        for(CUClass _class: student.getClasses()){
+            if(_class.getCUCode() == cUcode && _class.getClassCode()== classCode) {
+                ascendingStudents.push_back(student);
+                count++;
+                break;
+            }
+        }
+    }
+
+    if (how == "ascending name") {
+        ascendingStudents.sort(ascendingName);
+    } else if (how == "descending name") {
+        ascendingStudents.sort(descendingName);
+    } else if (how == "ascending id") {
+        ascendingStudents.sort(ascendingID);
+    } else if (how == "descending id") {
+        ascendingStudents.sort(descendingID);
+    } else if (how == "ascending UC's") {
+        ascendingStudents.sort(ascendingUC);
+    } else if (how == "descending UC's") {
+        ascendingStudents.sort(descendingUC);
+    }
+
+    std::cout << "Year Occupation: " <<count<< '\n';
+    if (how != "none") {
+        for (Student student: ascendingStudents) {
+            std::cout << "Student ID: " << student.getStudentID() << " Student name: " << student.getName() << "\n";
+        }
+    }
+}
+
+void ScheduleManagement::yearOccupationOrdering(char year, std::string how) const {
+
+    std::list<Student> ascendingStudents;
+    int count = 0;
+
+    for(Student student: this->students){
+        for(CUClass _class: student.getClasses()){
+            if(_class.getClassCode()[0] == year){
+                ascendingStudents.push_back(student);
+                count++;
+                break;
+            }
+        }
+    }
+
+    if (how == "ascending name") {
+        ascendingStudents.sort(ascendingName);
+    } else if (how == "descending name") {
+        ascendingStudents.sort(descendingName);
+    } else if (how == "ascending id") {
+        ascendingStudents.sort(ascendingID);
+    } else if (how == "descending id") {
+        ascendingStudents.sort(descendingID);
+    } else if (how == "ascending UC's") {
+        ascendingStudents.sort(ascendingUC);
+    } else if (how == "descending UC's") {
+        ascendingStudents.sort(descendingUC);
+    }
+
+    std::cout << "Year Occupation: " <<count<< '\n';
+    if (how != "none") {
+        for (Student student: ascendingStudents) {
+            std::cout << "Student ID: " << student.getStudentID() << " Student name: " << student.getName() << "\n";
+        }
+    }
+}
+
+void ScheduleManagement::moreThanNUc(int n, std::string how) {
+    std::list<Student> students;
+
+    for (Student student: this->students) {
+        int numberOfUC = student.getClasses().size();
+        if (numberOfUC > n) {
+            students.push_back(student);
+        }
+    }
+
+    if (how == "ascending name") {
+        students.sort(ascendingName);
+    } else if (how == "descending name") {
+        students.sort(descendingName);
+    } else if (how == "ascending id") {
+        students.sort(ascendingID);
+    } else if (how == "descending id") {
+        students.sort(descendingID);
+    } else if (how == "ascending UC's") {
+        students.sort(ascendingUC);
+    } else if (how == "descending UC's") {
+        students.sort(descendingUC);
+    }
+
+
+    std::cout << "Number of students: " << students.size() << '\n';
+
+    if (how != "none") {
+        for (Student student: students) {
+            std::cout << "Student ID: " << student.getStudentID() << " Student name: " << student.getName() << "\n";
+        }
+    }
+
+}
+
+void ScheduleManagement::addRequest(Request request) {
+    this->requests.push(request);
+}
+
+void ScheduleManagement::removeStudent(std::string ucCode, std::string classCode, int ID) {
+
 }
