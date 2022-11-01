@@ -8,6 +8,7 @@
 #include <list>
 
 class Student{
+
     private:
 
         // Attributes
@@ -22,10 +23,10 @@ class Student{
         Student(int studentID, std::string name, std::string cUCode, std::string classCode);
 
         // Getters
-        std::string getName() {return this->name;}
-        int getStudentID() {return this->studentID;}
-        std::list<CUClass> getClasses() {return this->classes;}
-        std::list<ClassSchedule> getStudentSched() {return this->studentSchedule;}
+        std::string getName()  {return this->name;}
+        int getStudentID()  {return this->studentID;}
+        std::list<CUClass> & getClasses() {return this->classes;}
+        std::list<ClassSchedule> & getStudentSched() {return this->studentSchedule;}
 
         // Setters
         void setClass(std::string cUCode, std::string classCode);

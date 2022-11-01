@@ -32,14 +32,15 @@ class ScheduleManagement{
 
         // Getters
         void getStudentSchedule(int studentID) const;
-        void getUCOccupation(const std::string&, const std::string& = "none") const;
-        void getClassOccupation(const std::string&, const std::string&, const std::string& = "none") const;
-        void getYearOccupation(char , const std::string& = "none" ) const;
-        void getMoreThanNUc(int, const std::string& = "none");
+        void getUCOccupation(const std::string& ucCode, const std::string& how = "none") const;
+        void getClassOccupation(const std::string& ucCode, const std::string& classCode, const std::string& how = "none") const;
+        void getYearOccupation(char year, const std::string& how = "none" ) const;
+        void getMoreThanNUc(int N, const std::string& how = "none");
 
         // Requests
         void addRequest(const Request&);
-        void removeStudent(std::string, std::string, int);
+        void removeStudent(std::string ucCode, std::string classCode, int ID);
+        void addstudent(std::string ucCode, std::string classCode, int ID);
 
         // Verifying
         void check();

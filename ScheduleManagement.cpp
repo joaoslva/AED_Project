@@ -182,11 +182,11 @@ void ScheduleManagement::getStudentSchedule(int studentID) const {
     if(match){
         std::cout << "Student ID: " << student.getStudentID() << "\n";
         std::cout << "Student name: " << student.getName() << "\n\n";
-        for (ClassSchedule classSchedule: student.getStudentSched()) {
+        for (ClassSchedule & classSchedule: student.getStudentSched()) {
             int count = 0;
             std::cout << "CUCode: " << classSchedule.getCUCode() << "\n";
             std::cout << "Class Code: " << classSchedule.getClassCode() << "\n";
-            for (Slot slot: classSchedule.getSlots()) {
+            for (Slot & slot: classSchedule.getSlots()) {
                 if (count == 0) {
                     count++;
                     continue;
@@ -283,7 +283,7 @@ void ScheduleManagement::getClassOccupation(const std::string& cUcode, const std
         studentsList.sort(descendingUC);
     }
 
-    std::cout << "Year Occupation: " << studentsList.size() << '\n';
+    std::cout << "Class Occupation: " << studentsList.size() << '\n';
     if (how != "none") {
         for (Student student: studentsList) {
             std::cout << "Student ID: " << student.getStudentID() << " Student name: " << student.getName() << "\n";
@@ -374,20 +374,25 @@ void ScheduleManagement::addRequest(const Request& request) {
     this->requests.push(request);
 }
 
-/*
 void ScheduleManagement::removeStudent(std::string ucCode, std::string classCode, int ID) {
     for (Student student: this->students) {
         if (student.getStudentID() == ID) {
-            for (CUClass classes: student.getClassess()) {
-                if (classes.getClassCode() == classCode && classes.getCUCode() == ucCode) {
-                    student.getClasses().erase(std::remove(student.getClasses().begin(), student.getClasses().end(), CUClass(ucCode, classCode)), student.getClasses().end());
-                    student.getStudentSched().erase(std::remove(student.getStudentSched().begin(), student.getStudentSched().end(), ClassSchedule(ucCode, classCode)), student.getStudentSched().end());
-                    this->classSchedules.erase(std::remove(this->classSchedules.begin(), this->classSchedules.end(), ClassSchedule(ucCode, classCode)), this->classSchedules.end());
-                }
-            }
+            ClassSchedule toberemoved = ClassSchedule(ucCode, classCode, "", 0, 0, "");
+            auto itr = std::remove_if(student.getStudentSched().begin(), student.getStudentSched().end(),
+                                      [&](ClassSchedule a) { return a == toberemoved; });
+            student.getStudentSched().erase(itr, student.getStudentSched().end());
+            CUClass toberemoved1 = CUClass(ucCode,classCode);
+            auto itr1 = std::remove_if(student.getClasses().begin(), student.getClasses().end(),
+                                       [&](CUClass a) { return a == toberemoved1; });
+            student.getClasses().erase(itr1, student.getClasses().end());
+            break;
         }
     }
 }
- */
+
+void ScheduleManagement::addstudent(std::string ucCode, std::string classCode, int ID) {
+
+}
+
 
 void ScheduleManagement::check() {std::cout << students.size();}
