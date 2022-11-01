@@ -1,4 +1,3 @@
-#include <iostream>
 #include "headers/ClassSchedule.h"
 
 ClassSchedule::ClassSchedule(std::string cUCode, std::string classCode, std::string weekDay, double startTime,
@@ -8,7 +7,7 @@ ClassSchedule::ClassSchedule(std::string cUCode, std::string classCode, std::str
     this->slots.push_back(Slot(weekDay, startTime, duration, type));
 }
 
-void ClassSchedule::addSlot(std::string weekDay, double startTime, double duration,std::string type) {
+void ClassSchedule::setSlot(std::string weekDay, double startTime, double duration,std::string type) {
     this->slots.push_back(Slot(weekDay, startTime, duration, type));
 }
 

@@ -1,4 +1,3 @@
-#include <iostream>
 #include "headers/Slot.h"
 
 Slot::Slot(std::string weekDay, double startTime, double duration, std::string type) {

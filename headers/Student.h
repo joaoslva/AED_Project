@@ -9,28 +9,30 @@
 
 class Student{
     private:
-        //Attributes
+
+        // Attributes
         int studentID;
         std::string name;
         std::list<ClassSchedule> studentSchedule;
         std::list<CUClass> classes;
 
-        /*
-        std::list<Slot> studentSchedule;
-         */
-
     public:
-        //Constructors
+
+        // Constructors
         Student(int studentID, std::string name, std::string cUCode, std::string classCode);
 
-        //Methods
-        void addClass(std::string cUCode, std::string classCode);
-        std::string getName();
-        int getStudentID();
+        // Getters
+        std::string getName() {return this->name;}
+        int getStudentID() {return this->studentID;}
+        std::list<CUClass> getClasses() {return this->classes;}
+        std::list<ClassSchedule> getStudentSched() {return this->studentSchedule;}
+
+        // Setters
+        void setClass(std::string cUCode, std::string classCode);
+        void setSchedule (const ClassSchedule& classSchedule) {this->studentSchedule.push_back(classSchedule);}
+
+        // Override
         bool operator < (const Student& student) const;
-        std::list<CUClass> getClasses() const;
-        void addSchedule (ClassSchedule classSchedule) {this->studentSchedule.push_back(classSchedule);}
-        std::list<ClassSchedule> getStudentSched() {return studentSchedule;}
 
 };
 #endif

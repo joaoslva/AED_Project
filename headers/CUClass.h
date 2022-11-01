@@ -5,16 +5,20 @@
 
 class CUClass {
     private:
-        //Attributes
+
+        // Attributes
         std::string cUCode;
         std::string classCode;
         
     public:
-        //Constructors
+        // Constructors
         CUClass(std::string cUCode, std::string classCode);
-        //Methods
-        std::string getCUCode();
-        std::string getClassCode();
+
+        // Getters
+        std::string getCUCode() {return this->cUCode;};
+        std::string getClassCode() {return this->classCode;};
+
+        // Override
         bool operator== (const CUClass& c) const;
 
 };

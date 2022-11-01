@@ -11,27 +11,37 @@
 #include <string>
 
 class ScheduleManagement{
+
     private:
-        //Attributes
+
+        // Attributes
         std::set<Student> students;
         std::vector<ClassSchedule> classSchedules;
         std::queue<Request> requests;
+
     public:
-        //Methods
-        void createStudents(std::string file);
-        void addStudent(const Student& student);
-        void addSchedule(std::string file);
-        void setClassSchedule(std::vector<ClassSchedule> classSchedules) {
-            for (ClassSchedule & classSchedule : classSchedules) {
+
+        // Setters
+        void setSchedule(const std::string& file);
+        void setStudents(const std::string& file);
+        void setClassSchedule(const std::vector<ClassSchedule>& classScheduleVector) {
+            for (const ClassSchedule &classSchedule : classScheduleVector) {
                 this->classSchedules.push_back(classSchedule);
             }
         };
-        void studentSchedule(int studentID) const;
-        void cUOccupationOrdering(std::string, std::string = "none") const;
-        void classOccupationOrdering(std::string, std::string, std::string = "none") const;
-        void yearOccupationOrdering(char , std::string ) const;
-        void moreThanNUc(int, std::string = "none");
-        void addRequest(Request);
+
+        // Getters
+        void getStudentSchedule(int studentID) const;
+        void getUCOccupation(const std::string&, const std::string& = "none") const;
+        void getClassOccupation(const std::string&, const std::string&, const std::string& = "none") const;
+        void getYearOccupation(char , const std::string& = "none" ) const;
+        void getMoreThanNUc(int, const std::string& = "none");
+
+        // Requests
+        void addRequest(const Request&);
         void removeStudent(std::string, std::string, int);
+
+        // Verifying
+        void check();
 };
 #endif

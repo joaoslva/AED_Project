@@ -5,16 +5,22 @@
 
 class Slot{
     private:
-        //Attributes
+
+        // Attributes
         std::string weekDay;
         double startTime;
         double duration;
         std::string type;
+
     public:
+
+        // Constructor
         Slot(std::string weekDay,
             double startTime,
             double duration,
             std::string type);
+
+        // Getters
         std::string getWeekDay() {return weekDay;};
         double getStartTime() {return startTime;};
         double getDuration() {return duration;};
