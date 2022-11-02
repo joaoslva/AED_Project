@@ -397,6 +397,60 @@ void ScheduleManagement::removeStudent(std::string ucCode, std::string classCode
 
 void ScheduleManagement::addstudent(std::string ucCode, std::string classCode, int ID) {
 
+    // Check whether the class is available
+    bool checkClassAvailable = false;
+    bool checkStudentAvailable = true;
+
+    // Stores the information about the TP or PL classes (The ones that can't be overlapped)
+    std::string weekDay;
+    double startTime;
+    double duration;
+
+    // Loops through the classSchedules vector
+    for (ClassSchedule classSchedule: classSchedules) {
+        if (classSchedule.getCUCode() == ucCode && classSchedule.getClassCode() == classCode && classSchedule.getClassCap()  > 0) {
+            // Checks whether the class is available and if it exists
+            checkClassAvailable = true;
+            for (Slot slot: classSchedule.getSlots()) {
+                // Gathers the information about the classes that cannot be overlapped
+                if (slot.getType() == "TP" || slot.getType() == "PL") {
+                    weekDay = slot.getWeekDay();
+                    startTime = slot.getStartTime();
+                    duration = slot.getDuration();
+                }
+            }
+        }
+    }
+
+    // If the class can have more students
+    if (checkClassAvailable) {
+        // Check if the student is able to add that class to their schedule
+        for (Student student: this->students) {
+            if (student.getStudentID() == ID) {
+                for (ClassSchedule classSchedule: student.getStudentSched()) {
+                    for (Slot slot: classSchedule.getSlots()) {
+                        if ((slot.getType() == "TP" || slot.getType() == "PL") && weekDay == slot.getWeekDay() && ((startTime < slot.getStartTime() && startTime + duration > slot.getStartTime()) || (startTime < slot.getStartTime() + slot.getDuration() && startTime > slot.getStartTime()))) {
+                            checkStudentAvailable = false;
+                            break;
+                        }
+                    }
+                    if (!checkStudentAvailable) {
+                        break;
+                    }
+                }
+
+                if (checkStudentAvailable) {
+                    for (ClassSchedule classSchedule: classSchedules) {
+                        if (classSchedule.getCUCode() == ucCode && classSchedule.getClassCode() == classCode) {
+                            student.getStudentSched().push_back(classSchedule);
+                            break;
+                        }
+                    }
+                }
+                break;
+            }
+        }
+    }
 }
 
 

@@ -9,9 +9,9 @@ class CUClass {
         // Attributes
         std::string cUCode;
         std::string classCode;
-        int classCap;
-        
+
     public:
+
         // Constructors
         CUClass(std::string cUCode, std::string classCode);
 

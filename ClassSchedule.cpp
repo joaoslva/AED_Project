@@ -1,5 +1,7 @@
 #include "headers/ClassSchedule.h"
 
+int ClassSchedule::classCap = 30;
+
 ClassSchedule::ClassSchedule(std::string cUCode, std::string classCode, std::string weekDay, double startTime,
                              double duration, std::string type) {
     this->cUCode = cUCode;

@@ -12,8 +12,10 @@ class ClassSchedule{
         std::string cUCode;
         std::string classCode;
         std::list<Slot> slots;
+        static int classCap;
 
-    public:
+
+public:
 
         //Constructors
         ClassSchedule(std::string cUCode, std::string classCode, std::string weekDay, double startTime,
@@ -23,7 +25,8 @@ class ClassSchedule{
         // Getters
         std::string getCUCode() {return this->cUCode;};
         std::string getClassCode() {return this->classCode;};
-        std::list<Slot> getSlots() {return this->slots;}
+        std::list<Slot> getSlots() {return this->slots;};
+        static int getClassCap() {return classCap;};
 
         // Setters
         void setSlot(std::string weekDay, double startTime, double duration,std::string type);
