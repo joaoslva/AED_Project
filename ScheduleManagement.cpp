@@ -385,8 +385,13 @@ void ScheduleManagement::removeStudent(std::string ucCode, std::string classCode
             auto itr1 = std::remove_if(student.getClasses().begin(), student.getClasses().end(),
                                        [&](CUClass a) { return a == toberemoved1; });
             student.getClasses().erase(itr1, student.getClasses().end());
+            Student toberemoved2 = Student(ID,"","","");
+            auto itr0 = students.find(toberemoved2);
+            students.erase(itr0);
+            students.insert(student);
             break;
         }
+
     }
 }
 

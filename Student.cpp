@@ -13,3 +13,7 @@ void Student::setClass(std::string cUCode, std::string classCode){
 bool Student::operator<(const Student &student) const {
     return studentID < student.studentID;
 }
+
+bool Student::operator==(const Student &student) const {
+    return this->studentID == student.studentID;
+}

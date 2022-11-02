@@ -34,6 +34,7 @@ class Student{
 
         // Override
         bool operator < (const Student& student) const;
+        bool operator== (const Student &student) const ;
 
 };
 #endif
