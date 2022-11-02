@@ -10,7 +10,9 @@ int main() {
     //scheduleManagement.getClassOccupation("L.EIC012","2LEIC13")
     scheduleManagement.getStudentSchedule(202025232);
     //scheduleManagement.removeStudent("L.EIC004", "1LEIC08", 202025232);
-    scheduleManagement.addstudent("L.EIC023", "3LEIC12", 202025232);
+    scheduleManagement.swapStudent(202025232,"L.EIC023","3LEIC12","L.EIC002","1LEIC05");
+    scheduleManagement.swapStudent(202025232,"L.EIC023","3LEIC12","L.EIC002","1LEIC05");
+    //scheduleManagement.addstudent("L.EIC023", "3LEIC12", 202025232);
     scheduleManagement.getStudentSchedule(202025232);
     //scheduleManagement.check();
 

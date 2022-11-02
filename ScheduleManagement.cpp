@@ -498,9 +498,9 @@ void ScheduleManagement::check() {std::cout << students.size();}
 void ScheduleManagement::swapStudent(int ID, std::string addUCCode, std::string addClassCode ,std::string remUCCode,std::string remClassCode){
     if (this->addstudent(addUCCode, addClassCode, ID)) {
         this->removeStudent(remUCCode, remClassCode, ID);
-        std::cout << "swapStudent status: CONCLUDED";
+        std::cout << "swapStudent status: CONCLUDED" << "\n";
     }
-    else std::cout << "swapStudent status: FAILED";
+    else std::cout << "swapStudent status: FAILED" << "\n";
 }
 
 
