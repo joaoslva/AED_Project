@@ -36,12 +36,12 @@ class ScheduleManagement{
         void getClassOccupation(const std::string& ucCode, const std::string& classCode, const std::string& how = "none") const;
         void getYearOccupation(char year, const std::string& how = "none" ) const;
         void getMoreThanNUc(int N, const std::string& how = "none");
-
+        int  auxGetClassOccupation(const std::string& ucCode, const std::string& classCode) const;
         // Requests
         void addRequest(const Request&);
         void removeStudent(std::string ucCode, std::string classCode, int ID);
         void addstudent(std::string ucCode, std::string classCode, int ID);
-
+        bool CheckClassDifference(std::string UCCode);
         // Verifying
         void check();
 };

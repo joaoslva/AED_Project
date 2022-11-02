@@ -289,8 +289,24 @@ void ScheduleManagement::getClassOccupation(const std::string& cUcode, const std
             std::cout << "Student ID: " << student.getStudentID() << " Student name: " << student.getName() << "\n";
         }
     }
-}
 
+}
+int ScheduleManagement::auxGetClassOccupation(const std::string& cUcode, const std::string& classCode) const{
+
+    // List that contains all the students that belong to the class wanted
+    std::list<Student> studentsList;
+
+    // Checks whether a student belongs to the Class or not
+    for(Student student: this->students){
+        for(CUClass _class: student.getClasses()){
+            if(_class.getCUCode() == cUcode && _class.getClassCode()== classCode) {
+                studentsList.push_back(student);
+                break;
+            }
+        }
+    }
+    return studentsList.size();
+}
 // Prints out the information about a certain Year
 void ScheduleManagement::getYearOccupation(char year, const std::string& how) const {
 
@@ -394,12 +410,27 @@ void ScheduleManagement::removeStudent(std::string ucCode, std::string classCode
 
     }
 }
+bool ScheduleManagement::CheckClassDifference(std::string UCCode) {
+    int min = 30;
+    int max = 0;
+    for(ClassSchedule classSchedule: this->classSchedules){
+        if(classSchedule.getCUCode() == UCCode){
+            if(auxGetClassOccupation(UCCode,classSchedule.getClassCode()) <= min ){
+                min = auxGetClassOccupation(UCCode,classSchedule.getClassCode());
+            }
+            if(auxGetClassOccupation(UCCode,classSchedule.getClassCode()) >= max){
+                max = auxGetClassOccupation(UCCode,classSchedule.getClassCode());
+            }
+        }
+    }
+    return max-min < 4;
+}
 
 void ScheduleManagement::addstudent(std::string ucCode, std::string classCode, int ID) {
 
     // Check whether the class is available
-    bool checkClassAvailable = false;
-    bool checkStudentAvailable = true;
+    bool checkClassAvailable = false; // se a turma existe e não atingiu o limite
+    bool checkStudentAvailable = true; //
 
     // Stores the information about the TP or PL classes (The ones that can't be overlapped)
     std::string weekDay;
@@ -429,7 +460,7 @@ void ScheduleManagement::addstudent(std::string ucCode, std::string classCode, i
             if (student.getStudentID() == ID) {
                 for (ClassSchedule classSchedule: student.getStudentSched()) {
                     for (Slot slot: classSchedule.getSlots()) {
-                        if ((slot.getType() == "TP" || slot.getType() == "PL") && weekDay == slot.getWeekDay() && ((startTime < slot.getStartTime() && startTime + duration > slot.getStartTime()) || (startTime < slot.getStartTime() + slot.getDuration() && startTime > slot.getStartTime()))) {
+                        if ((slot.getType() == "TP" || slot.getType() == "PL") && weekDay == slot.getWeekDay() && ((startTime <= slot.getStartTime() && startTime + duration >= slot.getStartTime()) || (startTime <= slot.getStartTime() + slot.getDuration() && startTime >= slot.getStartTime()))) {
                             checkStudentAvailable = false;
                             break;
                         }
@@ -439,11 +470,17 @@ void ScheduleManagement::addstudent(std::string ucCode, std::string classCode, i
                     }
                 }
 
-                if (checkStudentAvailable) {
+                if (checkStudentAvailable ) {
                     for (ClassSchedule classSchedule: classSchedules) {
                         if (classSchedule.getCUCode() == ucCode && classSchedule.getClassCode() == classCode) {
                             student.getStudentSched().push_back(classSchedule);
+                            if(CheckClassDifference(ucCode)){
+                            Student toberemoved2 = Student(ID,"","","");
+                            auto itr0 = students.find(toberemoved2);
+                            students.erase(itr0);
+                            students.insert(student);
                             break;
+                            }
                         }
                     }
                 }
