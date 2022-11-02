@@ -12,38 +12,43 @@
 
 class ScheduleManagement{
 
-    private:
+private:
 
-        // Attributes
-        std::set<Student> students;
-        std::vector<ClassSchedule> classSchedules;
-        std::queue<Request> requests;
+    // Attributes
+    std::set<Student> students;
+    std::vector<ClassSchedule> classSchedules;
+    std::queue<Request> requests;
+    std::queue<Request> failedRequests;
 
-    public:
+public:
 
-        // Setters
-        void setSchedule(const std::string& file);
-        void setStudents(const std::string& file);
-        void setClassSchedule(const std::vector<ClassSchedule>& classScheduleVector) {
-            for (const ClassSchedule &classSchedule : classScheduleVector) {
-                this->classSchedules.push_back(classSchedule);
-            }
-        };
+    // Setters
+    void setSchedule(const std::string& file);
+    void setStudents(const std::string& file);
+    void setClassSchedule(const std::vector<ClassSchedule>& classScheduleVector) {
+        for (const ClassSchedule &classSchedule : classScheduleVector) {
+            this->classSchedules.push_back(classSchedule);
+        }
+    };
 
-        // Getters
-        void getStudentSchedule(int studentID) const;
-        void getUCOccupation(const std::string& ucCode, const std::string& how = "none") const;
-        void getClassOccupation(const std::string& ucCode, const std::string& classCode, const std::string& how = "none") const;
-        void getYearOccupation(char year, const std::string& how = "none" ) const;
-        void getMoreThanNUc(int N, const std::string& how = "none");
-        int  auxGetClassOccupation(const std::string& ucCode, const std::string& classCode) const;
-        // Requests
-        void addRequest(const Request&);
-        void removeStudent(std::string ucCode, std::string classCode, int ID);
-        bool addstudent(std::string ucCode, std::string classCode, int ID);
-        void swapStudent(int ID, std::string addUCCode, std::string addClassCode,std::string remUCCode,std::string remClassCode1);
-        bool CheckClassDifference(std::string UCCode);
-        // Verifying
-        void check();
+    // Getters
+    void getStudentSchedule(int studentID) const;
+    void getUCOccupation(const std::string& ucCode, const std::string& how = "none") const;
+    void getClassOccupation(const std::string& ucCode, const std::string& classCode, const std::string& how = "none") const;
+    void getYearOccupation(char year, const std::string& how = "none" ) const;
+    void getMoreThanNUc(int N, const std::string& how = "none");
+    int  auxGetClassOccupation(const std::string& ucCode, const std::string& classCode) const;
+    std::queue<Request> getRequests(){ return this->requests;};
+    // Requests
+    void addRequest(std::string request, std::string cUCode, std::string classCode, int iD);
+    void removeRequest();
+    void removeStudent(std::string ucCode, std::string classCode, int ID, bool& success);
+    bool addstudent(std::string ucCode, std::string classCode, int ID, bool& success);
+    void swapStudent(int ID, std::string addUCCode, std::string addClassCode,std::string remUCCode,std::string remClassCode1, bool& success);
+    bool CheckClassDifference(std::string UCCode);
+    void processRequest();
+    // Verifying
+    int check();
+    int check2();
 };
 #endif
