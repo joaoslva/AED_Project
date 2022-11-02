@@ -426,7 +426,7 @@ bool ScheduleManagement::CheckClassDifference(std::string UCCode) {
     return max-min < 4;
 }
 
-void ScheduleManagement::addstudent(std::string ucCode, std::string classCode, int ID) {
+bool ScheduleManagement::addstudent(std::string ucCode, std::string classCode, int ID) {
 
     // Check whether the class is available
     bool checkClassAvailable = false; // se a turma existe e não atingiu o limite
@@ -488,7 +488,21 @@ void ScheduleManagement::addstudent(std::string ucCode, std::string classCode, i
             }
         }
     }
+    if(checkStudentAvailable && checkClassAvailable) return 1;
+    else return 0;
 }
 
 
 void ScheduleManagement::check() {std::cout << students.size();}
+
+void ScheduleManagement::swapStudent(int ID, std::string addUCCode, std::string addClassCode ,std::string remUCCode,std::string remClassCode){
+    if (this->addstudent(addUCCode, addClassCode, ID)) {
+        this->removeStudent(remUCCode, remClassCode, ID);
+        std::cout << "swapStudent status: CONCLUDED";
+    }
+    else std::cout << "swapStudent status: FAILED";
+}
+
+
+
+

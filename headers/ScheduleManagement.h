@@ -40,7 +40,8 @@ class ScheduleManagement{
         // Requests
         void addRequest(const Request&);
         void removeStudent(std::string ucCode, std::string classCode, int ID);
-        void addstudent(std::string ucCode, std::string classCode, int ID);
+        bool addstudent(std::string ucCode, std::string classCode, int ID);
+        void swapStudent(int ID, std::string addUCCode, std::string addClassCode,std::string remUCCode,std::string remClassCode1);
         bool CheckClassDifference(std::string UCCode);
         // Verifying
         void check();
