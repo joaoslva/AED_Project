@@ -28,7 +28,8 @@ int main() {
             while(true){
                 std::string managementChoice;
                 std::cout << "\nWhich function do you want to use, 1-'Student Schedule', 2-'C.U. Occupation', 3-'Class Occupation'"
-                             "4-'Year Occupation', 5-'More than x C.U's, 'help' or 'back'? (Use 'help' to see their description)\n"
+                             "4-'Year Occupation',\n"
+                             " 5-'More than x C.U's, 6-'Check number of', 'help' or 'back'? (Use 'help' to see their description)\n"
                              "Enter index here: ";
                 std::cin >> managementChoice;
                 if(managementChoice == "1"){
@@ -199,6 +200,50 @@ int main() {
                         break;
                     }
                 }
+                else if(managementChoice == "6"){
+                    std::string choice;
+                    while(true){
+                        std::cout << "Do you you want to check how many students or schedules exist?\n"
+                                     "Enter here ('Student'/'Schedule'):";
+                        std::cin >> choice;
+                        if(choice == "Student"){
+                            int num = scheduleManager.studentNumber();
+                            std::cout << "Total number of students in the stored data: " << num << ".\n";
+                            break;
+                        }
+                        else if(choice == "Schedule"){
+                            int num = scheduleManager.scheduleNumber();
+                            std::cout << "Total number of different schedules in the stored data: " << num << ".\n";
+                            break;
+                        }
+                        else if(choice == "back"){
+                            break;
+                        }
+                        else{
+                            std::cout << "Not a valid input, please try again.";
+                        }
+                    }
+                    std::string stay;
+                    bool exit = false;
+                    while(true){
+                        std::cout << "\n Do you wish to use another function or go back ('stay'/'back')?\n Enter here: ";
+                        std::cin >> stay;
+                        if(stay == "stay"){
+                            break;
+                        }
+                        else if(stay == "back"){
+                            exit = true;
+                            break;
+                        }
+                        else{
+                            std::cout << "Not a valid input, please try again.";
+                        }
+                    }
+                    if(exit){
+                        exit = false;
+                        break;
+                    }
+                }
                 else if(managementChoice == "help"){
                     std::cout << "\n|======= Management Help =======|\n"
                                  "How all the functions work: \n"
@@ -209,6 +254,8 @@ int main() {
                                  "  a ordering method, this function prints it occupation and the students in it (if ordered)\n"
                                  "Year Occupation - Given a year and after choosing, if you want, a ordering method,\n"
                                  "  this function prints the year occupation\n"
+                                 "Check number of - shows the total number of students or different schedules in\n"
+                                 "  the stored data\n"
                                  "back - allows you to go back to the previous section\n"
                                  "|======= Management Help =======|\n";
 

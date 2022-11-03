@@ -656,3 +656,19 @@ void ScheduleManagement::clearRequests(){
         }
     }
 }
+
+std::queue<Request> ScheduleManagement::getRequests() {
+    return this->requests;
+}
+
+std::queue<Request> ScheduleManagement::getFailedRequests() {
+    return this->failedRequests;
+}
+
+int ScheduleManagement::studentNumber() {
+    return this->students.size();
+}
+
+int ScheduleManagement::scheduleNumber() {
+    return this->classSchedules.size();
+}

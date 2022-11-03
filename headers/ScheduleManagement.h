@@ -38,8 +38,10 @@ public:
     void getYearOccupation(char year, const std::string& how = "none" ) const;
     void getMoreThanNUc(int N, const std::string& how = "none");
     int  auxGetClassOccupation(const std::string& ucCode, const std::string& classCode) const;
-    std::queue<Request> getRequests(){ return this->requests;};
-    std::queue<Request> getFailedRequests() {return this->failedRequests;};
+    int studentNumber();
+    int scheduleNumber();
+    std::queue<Request> getRequests();
+    std::queue<Request> getFailedRequests();
     // Requests
     void addRequest(std::string request, std::string cUCode, std::string classCode, int iD);
     void removeRequest();
