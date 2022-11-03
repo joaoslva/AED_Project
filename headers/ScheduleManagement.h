@@ -39,6 +39,7 @@ public:
     void getMoreThanNUc(int N, const std::string& how = "none");
     int  auxGetClassOccupation(const std::string& ucCode, const std::string& classCode) const;
     std::queue<Request> getRequests(){ return this->requests;};
+    std::queue<Request> getFailedRequests() {return this->failedRequests;};
     // Requests
     void addRequest(std::string request, std::string cUCode, std::string classCode, int iD);
     void removeRequest();
@@ -47,6 +48,9 @@ public:
     void swapStudent(int ID, std::string addUCCode, std::string addClassCode,std::string remUCCode,std::string remClassCode1, bool& success);
     bool CheckClassDifference(std::string UCCode);
     void processRequest();
+    void seeRequests();
+    void seeFailedRequests();
+    void clearRequests();
     // Verifying
     int check();
     int check2();

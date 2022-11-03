@@ -577,3 +577,82 @@ void ScheduleManagement::addRequest(std::string request, std::string cUCode, std
         std::cout << "Not a valid request type, request not added to the queue.\n";
     }
 }
+
+void ScheduleManagement::seeRequests(){
+    int index = 1;
+    std::cout << '\n';
+    std::queue<Request> temp = this->getRequests();
+    while(!temp.empty()){
+        Request request = temp.front();
+        std::string type = request.getRequest();
+        std::string class_ = request.getClassCode();
+        std::string cu = request.getCUCode();
+        int iD = request.getID();
+        std::cout << "Request number " << index << ":\n";
+        std::cout << "Type: " << type << '\n';
+        std::cout << "Class: " << class_ << '\n';
+        std::cout << "C.U.: " << cu << '\n';
+        std::cout << "Student ID: " << iD << '\n';
+        index++;
+        temp.pop();
+    }
+}
+void ScheduleManagement::seeFailedRequests(){
+    int index = 1;
+    std::cout << '\n';
+    std::queue<Request> temp = this->getFailedRequests();
+    while(!temp.empty()){
+        Request request = temp.front();
+        std::string type = request.getRequest();
+        std::string class_ = request.getClassCode();
+        std::string cu = request.getCUCode();
+        int iD = request.getID();
+        std::cout << "Request number " << index << ":\n";
+        std::cout << "Type: " << type << '\n';
+        std::cout << "Class: " << class_ << '\n';
+        std::cout << "C.U.: " << cu << '\n';
+        std::cout << "Student ID: " << iD << '\n';
+        index++;
+        temp.pop();
+    }
+}
+void ScheduleManagement::clearRequests(){
+    while(true){
+        std::string choice;
+        std::cout << "Do you want to erase 'Requests' or 'FailedRequests'?\n"
+                     "Enter here which one: ";
+        std::cin >> choice;
+        if(choice == "Requests"){
+            if(!this->requests.empty()) {
+                while (!this->requests.empty()) {
+                    this->requests.pop();
+                }
+                std::cout << "Requests erase successfully\n";
+                break;
+            }
+            else{
+                std::cout << "Request queue is empty, can't erase.\n";
+                break;
+            }
+        }
+        else if(choice == "FailedRequests"){
+            if(!this->failedRequests.empty()) {
+                while (!this->failedRequests.empty()) {
+                    this->failedRequests.pop();
+                }
+                std::cout << "Failed Requests erase successfully\n";
+                break;
+            }
+            else{
+                std::cout << "Failed Request queue is empty, can't erase.\n";
+                break;
+            }
+        }
+        else if(choice == "back"){
+            break;
+        }
+        else{
+            std::cout << "Not a valid input, try again\n";
+        }
+    }
+}

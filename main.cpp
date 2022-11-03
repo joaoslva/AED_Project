@@ -226,7 +226,8 @@ int main() {
             while(true){
                 std::string requestChoice;
                 std::cout << "\nWhich function do you want to use, 1-'Add Request', 2-'Process Request', "
-                             "3-'Remove Request', 'help' or 'back'?.\n"
+                             "3-'Remove Request', 4-'See Requests', 5-'See Failed Requests', "
+                             "6-'Erase queue', 'help' or 'back'?.\n"
                              "Enter index here: ";
                 std::cin >> requestChoice;
                 if(requestChoice == "1"){
@@ -315,6 +316,105 @@ int main() {
                     else{
                         std::cout << "Request queue is empty, nothing to remove.\n";
                     }
+                    std::string stay;
+                    bool exit = false;
+                    while(true){
+                        std::cout << "\n Do you wish to use another function or go back ('stay'/'back')?\n Enter here: ";
+                        std::cin >> stay;
+                        if(stay == "stay"){
+                            break;
+                        }
+                        else if(stay == "back"){
+                            exit = true;
+                            break;
+                        }
+                        else{
+                            std::cout << "Not a valid input, please try again.";
+                        }
+                    }
+                    if(exit){
+                        exit = false;
+                        break;
+                    }
+                }
+                else if(requestChoice == "4"){
+                    if(!scheduleManager.getRequests().empty()) {
+                        scheduleManager.seeRequests();
+                    }
+                    else{
+                        std::cout << "Request queue is empty, nothing to see.\n";
+                    }
+                    std::string stay;
+                    bool exit = false;
+                    while(true){
+                        std::cout << "\n Do you wish to use another function or go back ('stay'/'back')?\n Enter here: ";
+                        std::cin >> stay;
+                        if(stay == "stay"){
+                            break;
+                        }
+                        else if(stay == "back"){
+                            exit = true;
+                            break;
+                        }
+                        else{
+                            std::cout << "Not a valid input, please try again.";
+                        }
+                    }
+                    if(exit){
+                        exit = false;
+                        break;
+                    }
+                }
+                else if(requestChoice == "5"){
+                    if(!scheduleManager.getFailedRequests().empty()) {
+                        scheduleManager.seeFailedRequests();
+                    }
+                    else{
+                        std::cout << "Request queue is empty, nothing to see.\n";
+                    }
+                    std::string stay;
+                    bool exit = false;
+                    while(true){
+                        std::cout << "\n Do you wish to use another function or go back ('stay'/'back')?\n Enter here: ";
+                        std::cin >> stay;
+                        if(stay == "stay"){
+                            break;
+                        }
+                        else if(stay == "back"){
+                            exit = true;
+                            break;
+                        }
+                        else{
+                            std::cout << "Not a valid input, please try again.";
+                        }
+                    }
+                    if(exit){
+                        exit = false;
+                        break;
+                    }
+                }
+                else if(requestChoice == "6"){
+                    scheduleManager.clearRequests();
+                    std::string stay;
+                    bool exit = false;
+                    while(true){
+                        std::cout << "\n Do you wish to use another function or go back ('stay'/'back')?\n Enter here: ";
+                        std::cin >> stay;
+                        if(stay == "stay"){
+                            break;
+                        }
+                        else if(stay == "back"){
+                            exit = true;
+                            break;
+                        }
+                        else{
+                            std::cout << "Not a valid input, please try again.";
+                        }
+                    }
+                    if(exit){
+                        exit = false;
+                        break;
+                    }
                 }
                 else if(requestChoice == "help"){
                     std::cout << "\n|======= Request Help =======|\n"
@@ -325,6 +425,9 @@ int main() {
                                  "Process Request - Processes the first request on the queue and removes it, in case \n"
                                  "  of success in completion or not\n"
                                  "Remove Request - Removes the first request in the queue\n"
+                                 "See Requests - Shows all the requests in the queue\n"
+                                 "See Failed Requests - Shows all the failed requests in the queue\n"
+                                 "Erase queue - Erases, if possible, one of the request queues\n"
                                  "back - allows you to go back to the previous section\n"
                                  "|======= Request Help =======|\n";
                 }
