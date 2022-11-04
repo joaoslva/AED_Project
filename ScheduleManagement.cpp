@@ -171,7 +171,6 @@ void ScheduleManagement::getStudentSchedule(int studentID) const {
     if(itr != students.end()){
         match = true;
         student = *itr;
-        break;
     }
 
     // If there is, print out their information
