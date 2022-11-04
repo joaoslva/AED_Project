@@ -426,7 +426,7 @@ bool ScheduleManagement::CheckClassDifference(std::string UCCode) {
 bool ScheduleManagement::addstudent(std::string ucCode, std::string classCode, int ID, bool& success) {
 
     // Check whether the class is available
-    bool checkClassAvailable = false; // se a turma existe e não atingiu o limite
+    bool checkClassAvailable = false; // se a turma existe e nÃ£o atingiu o limite
     bool checkStudentAvailable = true; //
 
     // Stores the information about the TP or PL classes (The ones that can't be overlapped)
@@ -436,7 +436,7 @@ bool ScheduleManagement::addstudent(std::string ucCode, std::string classCode, i
 
     // Loops through the classSchedules vector
     for (ClassSchedule classSchedule: classSchedules) {
-        if (classSchedule.getCUCode() == ucCode && classSchedule.getClassCode() == classCode && classSchedule.getClassCap()  > 0) {
+        if (classSchedule.getCUCode() == ucCode && classSchedule.getClassCode() == classCode && classSchedule.getClassCap() > 0) {
             // Checks whether the class is available and if it exists
             checkClassAvailable = true;
             for (Slot slot: classSchedule.getSlots()) {
@@ -463,7 +463,7 @@ bool ScheduleManagement::addstudent(std::string ucCode, std::string classCode, i
                         }
                     }
                     if (!checkStudentAvailable) {
-                        std::cout << "Error: Student doesn't exist in the data files\n";
+                        std::cout << "Error: The class can not be added to student's schedule\n";
                         break;
                     }
                 }
@@ -479,6 +479,9 @@ bool ScheduleManagement::addstudent(std::string ucCode, std::string classCode, i
                                 students.insert(student);
                                 success = true;
                                 break;
+                            }
+                            else{
+                                std::cout << "Error: This swap will cause unbalance between classes\n";
                             }
                         }
                     }
@@ -496,6 +499,7 @@ bool ScheduleManagement::addstudent(std::string ucCode, std::string classCode, i
     }
     else return 0;
 }
+
 
 void ScheduleManagement::swapStudent(int ID, std::string addUCCode, std::string addClassCode ,std::string remUCCode,std::string remClassCode, bool& success){
     bool stub = false;
