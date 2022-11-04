@@ -164,14 +164,14 @@ void ScheduleManagement::getStudentSchedule(int studentID) const {
 
     // Default student
     Student student = Student(0,"","","");
+    Student tobefind2 = Student(studentID,"","","");
 
     // Check if there is a student with the ID wanted
-    for(Student _student: students){
-        if(_student.getStudentID() == studentID){
-            match = true;
-            student = _student;
-            break;
-        }
+    auto itr = students.find(tobefind2);
+    if(itr != students.end()){
+        match = true;
+        student = *itr;
+        break;
     }
 
     // If there is, print out their information
