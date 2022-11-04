@@ -653,6 +653,8 @@ void ScheduleManagement::clearRequests(){
         }
         else{
             std::cout << "Not a valid input, try again\n";
+            choice = "";
+            std::cin.clear();
         }
     }
 }

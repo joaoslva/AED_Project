@@ -9,12 +9,13 @@ int main() {
                  "Welcome to the Schedule Management app!\n"
                  "To use the app simply choose one of the options presented to you.\n"
                  "In any time you can go back one step by writing 'back', "
-                 "write 'quit' to close the program or 'help for, well, help.\n";
+                 "write 'quit' to close the program \nor type the command "
+                 "'help' to see information about how to use the app functions.\n";
     ScheduleManagement scheduleManager = ScheduleManagement();
     scheduleManager.setSchedule("../../AED_Project/headers/classes.csv");
     scheduleManager.setStudents("../../AED_Project/headers/students_classes.csv");
     if(scheduleManager.check() == 0 || scheduleManager.check2() == 0){
-        std::cout << "Something went wrong while reading the files. Please check their paths\n";
+        std::cout << "Something went wrong while reading the files. Please check their paths in the source code\n";
         running = false;
     }
 
@@ -60,6 +61,9 @@ int main() {
                         }
                         else{
                             std::cout << "Not a valid input, please try again.";
+                            stay = "";
+                            std::cin.clear();
+                            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                         }
                     }
                     if(exit){
@@ -91,6 +95,9 @@ int main() {
                         }
                         else{
                             std::cout << "Not a valid input, please try again.";
+                            stay = "";
+                            std::cin.clear();
+                            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                         }
                     }
                     if(exit){
@@ -125,6 +132,9 @@ int main() {
                         }
                         else{
                             std::cout << "Not a valid input, please try again.";
+                            stay = "";
+                            std::cin.clear();
+                            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                         }
                     }
                     if(exit){
@@ -156,6 +166,9 @@ int main() {
                         }
                         else{
                             std::cout << "Not a valid input, please try again.";
+                            stay = "";
+                            std::cin.clear();
+                            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                         }
                     }
                     if(exit){
@@ -193,6 +206,9 @@ int main() {
                         }
                         else{
                             std::cout << "Not a valid input, please try again.";
+                            stay = "";
+                            std::cin.clear();
+                            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                         }
                     }
                     if(exit){
@@ -237,6 +253,9 @@ int main() {
                         }
                         else{
                             std::cout << "Not a valid input, please try again.";
+                            stay = "";
+                            std::cin.clear();
+                            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                         }
                     }
                     if(exit){
@@ -265,6 +284,9 @@ int main() {
                 }
                 else{
                     std::cout << "Not a valid input, please try again.\n";
+                    managementChoice = "";
+                    std::cin.clear();
+                    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                 }
             }
         }
@@ -312,6 +334,9 @@ int main() {
                         }
                         else{
                             std::cout << "Not a valid input, please try again.";
+                            stay = "";
+                            std::cin.clear();
+                            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                         }
                     }
                     if(exit){
@@ -344,6 +369,9 @@ int main() {
                         }
                         else{
                             std::cout << "Not a valid input, please try again.";
+                            stay = "";
+                            std::cin.clear();
+                            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                         }
                     }
                     if(exit){
@@ -377,6 +405,9 @@ int main() {
                         }
                         else{
                             std::cout << "Not a valid input, please try again.";
+                            stay = "";
+                            std::cin.clear();
+                            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                         }
                     }
                     if(exit){
@@ -405,6 +436,9 @@ int main() {
                         }
                         else{
                             std::cout << "Not a valid input, please try again.";
+                            stay = "";
+                            std::cin.clear();
+                            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                         }
                     }
                     if(exit){
@@ -433,6 +467,9 @@ int main() {
                         }
                         else{
                             std::cout << "Not a valid input, please try again.";
+                            stay = "";
+                            std::cin.clear();
+                            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                         }
                     }
                     if(exit){
@@ -456,6 +493,9 @@ int main() {
                         }
                         else{
                             std::cout << "Not a valid input, please try again.";
+                            stay = "";
+                            std::cin.clear();
+                            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                         }
                     }
                     if(exit){
@@ -483,6 +523,9 @@ int main() {
                 }
                 else{
                     std::cout << "Not a valid input, please try again.\n";
+                    requestChoice = "";
+                    std::cin.clear();
+                    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                 }
             }
         }
@@ -500,6 +543,9 @@ int main() {
         }
         else{
             std::cout << "Not a valid input, please try again.\n";
+            functionalityChoice = "";
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         }
     }
     return 0;
