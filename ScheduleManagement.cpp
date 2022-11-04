@@ -510,7 +510,7 @@ void ScheduleManagement::processRequest() {
     std::string requestType = temp.getRequest();
     if(requestType == "AddStudent"){
         bool success = false;
-        this->addstudent(temp.getCUCode(), temp.getClassCode(), temp.getID(), success);
+        this->addstudent(temp.getaddCUCode(), temp.getaddClassCode(), temp.getID(), success);
         if(success){
             std::cout << "Request completed successfully and removed from the queue\n";
             success = false;
@@ -525,7 +525,7 @@ void ScheduleManagement::processRequest() {
     }
     else if(requestType == "RemoveStudent"){
         bool success = false;
-        this->removeStudent(temp.getCUCode(), temp.getClassCode(), temp.getID(), success);
+        this->removeStudent(temp.getaddCUCode(), temp.getaddClassCode(), temp.getID(), success);
         if(success){
             std::cout << "Request completed successfully and removed from the queue\n";
             success = false;
@@ -540,7 +540,7 @@ void ScheduleManagement::processRequest() {
     }
     else if(requestType == "SwapStudent"){
         bool success = false;
-        this->removeStudent(temp.getCUCode(), temp.getClassCode(), temp.getID(), success);
+        this->swapStudent(temp.getID(), temp.getaddCUCode(), temp.getaddClassCode(), temp.getremCUCode(), temp.getaddClassCode(), success);
         if(success){
             std::cout << "Request completed successfully and removed from the queue\n";
             success = false;
@@ -568,9 +568,9 @@ void ScheduleManagement::removeRequest() {
 }
 
 // Adds a Request to the Requests queue
-void ScheduleManagement::addRequest(std::string request, std::string cUCode, std::string classCode, int iD) {
+void ScheduleManagement::addRequest(std::string request, std::string addcUCode, std::string addclassCode, std::string remcUCode, std::string remclassCode,int iD) {
     if(request == "AddStudent" || request == "RemoveStudent" || request == "SwapStudent") {
-        this->requests.push(Request(request, cUCode, classCode, iD));
+        this->requests.push(Request(request, addcUCode, addclassCode, remcUCode, remclassCode,iD));
         std::cout << "Request successfully added to the queue.\n";
     }
     else{
@@ -585,8 +585,8 @@ void ScheduleManagement::seeRequests(){
     while(!temp.empty()){
         Request request = temp.front();
         std::string type = request.getRequest();
-        std::string class_ = request.getClassCode();
-        std::string cu = request.getCUCode();
+        std::string class_ = request.getaddClassCode();
+        std::string cu = request.getaddCUCode();
         int iD = request.getID();
         std::cout << "Request number " << index << ":\n";
         std::cout << "Type: " << type << '\n';
@@ -604,8 +604,8 @@ void ScheduleManagement::seeFailedRequests(){
     while(!temp.empty()){
         Request request = temp.front();
         std::string type = request.getRequest();
-        std::string class_ = request.getClassCode();
-        std::string cu = request.getCUCode();
+        std::string class_ = request.getaddClassCode();
+        std::string cu = request.getaddCUCode();
         int iD = request.getID();
         std::cout << "Request number " << index << ":\n";
         std::cout << "Type: " << type << '\n';

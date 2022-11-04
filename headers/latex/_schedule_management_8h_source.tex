@@ -1,0 +1,93 @@
+\hypertarget{_schedule_management_8h_source}{}\doxysection{Schedule\+Management.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef SCHEDULE\_MANAGEMENT\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define SCHEDULE\_MANAGEMENT\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}Slot.h"{}}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}Student.h"{}}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}ClassSchedule.h"{}}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}Request.h"{}}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include <set>}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <queue>}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{keyword}{class }\mbox{\hyperlink{class_schedule_management}{ScheduleManagement}}\{}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{keyword}{private}:}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17     \textcolor{comment}{// Attributes}}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{20     std::set<Student> \mbox{\hyperlink{class_schedule_management_ae16e71b559107099f0e01892081065d9}{students}};}
+\DoxyCodeLine{22     std::vector<ClassSchedule> \mbox{\hyperlink{class_schedule_management_a3dbe77767b394d540d257bb48358ded0}{classSchedules}};}
+\DoxyCodeLine{24     std::queue<Request> \mbox{\hyperlink{class_schedule_management_a7ca6b80412890a99bd152ff86ea7dce4}{requests}};}
+\DoxyCodeLine{26     std::queue<Request> \mbox{\hyperlink{class_schedule_management_a777e459726b499973962430817f494d1}{failedRequests}}; }
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 \textcolor{keyword}{public}:}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30     \textcolor{comment}{// Setters}}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{34     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_schedule_management_af0d0daffa87db522382ad0aa79bca73e}{setSchedule}}(\textcolor{keyword}{const} std::string\& file);}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{38     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_schedule_management_ae511e88eb5e13793dad210b39954a954}{setStudents}}(\textcolor{keyword}{const} std::string\& file);}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{42     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_schedule_management_a4ea6f59d507181783e2ec6dafc7dbc1f}{setClassSchedule}}(\textcolor{keyword}{const} std::vector<ClassSchedule>\& classScheduleVector) \{}
+\DoxyCodeLine{43         \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \mbox{\hyperlink{class_class_schedule}{ClassSchedule}} \&classSchedule : classScheduleVector) \{}
+\DoxyCodeLine{44             this-\/>classSchedules.push\_back(classSchedule);}
+\DoxyCodeLine{45         \}}
+\DoxyCodeLine{46     \};}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48     \textcolor{comment}{// Getters}}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{52     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_schedule_management_a15d01b3e92b471e651758409b4007374}{getStudentSchedule}}(\textcolor{keywordtype}{int} studentID) \textcolor{keyword}{const};}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{57     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_schedule_management_a3e6110765a6f126cf1295797e24174e8}{getUCOccupation}}(\textcolor{keyword}{const} std::string\& ucCode, \textcolor{keyword}{const} std::string\& how = \textcolor{stringliteral}{"{}none"{}}) \textcolor{keyword}{const};}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{63     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_schedule_management_a93966739e6cb9e28896e1f0a879ac8fc}{getClassOccupation}}(\textcolor{keyword}{const} std::string\& ucCode, \textcolor{keyword}{const} std::string\& classCode, \textcolor{keyword}{const} std::string\& how = \textcolor{stringliteral}{"{}none"{}}) \textcolor{keyword}{const};}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{68     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_schedule_management_ab2ddcd774a4f7ae8c65d387786c58f67}{getYearOccupation}}(\textcolor{keywordtype}{char} year, \textcolor{keyword}{const} std::string\& how = \textcolor{stringliteral}{"{}none"{}} ) \textcolor{keyword}{const};}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{73     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_schedule_management_ae08b508313ef1c44fb098229527415cf}{getMoreThanNUc}}(\textcolor{keywordtype}{int} N, \textcolor{keyword}{const} std::string\& how = \textcolor{stringliteral}{"{}none"{}});}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{79     \textcolor{keywordtype}{int}  \mbox{\hyperlink{class_schedule_management_a39992c705dd3353c99858092fe973bee}{auxGetClassOccupation}}(\textcolor{keyword}{const} std::string\& ucCode, \textcolor{keyword}{const} std::string\& classCode) \textcolor{keyword}{const};}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{83     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_schedule_management_a7606df772a40e9d01325d35bda3ed141}{studentNumber}}();}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{87     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_schedule_management_a21508b45f542791ea508dd06bd8914ff}{scheduleNumber}}();}
+\DoxyCodeLine{88 }
+\DoxyCodeLine{91     std::queue<Request> \mbox{\hyperlink{class_schedule_management_ab7c1f2868a870aa540c39163accfbde8}{getRequests}}();}
+\DoxyCodeLine{92 }
+\DoxyCodeLine{95     std::queue<Request> \mbox{\hyperlink{class_schedule_management_af83fa28554078c474099e5a0c35e0240}{getFailedRequests}}();}
+\DoxyCodeLine{96 }
+\DoxyCodeLine{97     \textcolor{comment}{// Requests}}
+\DoxyCodeLine{98 }
+\DoxyCodeLine{106     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_schedule_management_adff75a89db6c89f1645cfb211a086da8}{addRequest}}(std::string request, std::string addcUCode, std::string addclassCode, std::string remcUCode, std::string remclassCode,\textcolor{keywordtype}{int} iD);}
+\DoxyCodeLine{107 }
+\DoxyCodeLine{109     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_schedule_management_aa80a1b1a079ce3bcccc17a4e9b487ee6}{removeRequest}}();}
+\DoxyCodeLine{110 }
+\DoxyCodeLine{116     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_schedule_management_a07c0acd428092d3b4e20aaea1bd6a15e}{removeStudent}}(std::string ucCode, std::string classCode, \textcolor{keywordtype}{int} ID, \textcolor{keywordtype}{bool}\& success);}
+\DoxyCodeLine{117 }
+\DoxyCodeLine{124     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_schedule_management_a0dfaa6cfcf8a186316e1634f511533ab}{addstudent}}(std::string ucCode, std::string classCode, \textcolor{keywordtype}{int} ID, \textcolor{keywordtype}{bool}\& success);}
+\DoxyCodeLine{125 }
+\DoxyCodeLine{133     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_schedule_management_af56b9221eed6164f9368b5b33ae549ff}{swapStudent}}(\textcolor{keywordtype}{int} ID, std::string addUCCode, std::string addClassCode,std::string remUCCode,std::string remClassCode1, \textcolor{keywordtype}{bool}\& success);}
+\DoxyCodeLine{134 }
+\DoxyCodeLine{138     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_schedule_management_a4dd03478b2003837269cc214b83d5b65}{CheckClassDifference}}(std::string UCCode);}
+\DoxyCodeLine{139 }
+\DoxyCodeLine{141     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_schedule_management_a2aadbfb89d9116bc8078c52c4ec37642}{processRequest}}();}
+\DoxyCodeLine{142 }
+\DoxyCodeLine{144     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_schedule_management_a64cdad80a0b368dbf21c9935551a563b}{seeRequests}}();}
+\DoxyCodeLine{145 }
+\DoxyCodeLine{147     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_schedule_management_a67a50ccc12d43008be05a61aa987c22d}{seeFailedRequests}}();}
+\DoxyCodeLine{148 }
+\DoxyCodeLine{150     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_schedule_management_aa5240961c03abe65b3ce78ade8ebf53e}{clearRequests}}();}
+\DoxyCodeLine{151 }
+\DoxyCodeLine{152     \textcolor{comment}{// Verifying}}
+\DoxyCodeLine{153 }
+\DoxyCodeLine{156     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_schedule_management_a3b4f593a9f63a2e971c947f0bc5ce428}{check}}();}
+\DoxyCodeLine{157 }
+\DoxyCodeLine{160     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_schedule_management_a36d818057228afe89cf23e5af2dd363c}{check2}}();}
+\DoxyCodeLine{161 \};}
+\DoxyCodeLine{162 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

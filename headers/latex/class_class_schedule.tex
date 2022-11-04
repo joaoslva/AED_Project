@@ -1,0 +1,188 @@
+\hypertarget{class_class_schedule}{}\doxysection{Class\+Schedule Class Reference}
+\label{class_class_schedule}\index{ClassSchedule@{ClassSchedule}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_class_schedule_a9f8beb89e80cfa47d38e05882526595e}{Class\+Schedule}} (std\+::string \mbox{\hyperlink{class_class_schedule_a14e8bf5c9e8e995be947e0f0bb7a5ede}{c\+UCode}}, std\+::string \mbox{\hyperlink{class_class_schedule_a52b5479e913abc6839b41dd5aa064c10}{class\+Code}}, std\+::string week\+Day, double start\+Time, double duration, std\+::string type)
+\begin{DoxyCompactList}\small\item\em Creates a \mbox{\hyperlink{class_class_schedule}{Class\+Schedule}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_class_schedule_a594726e1eb4c78e7284f998b653a43b1}{Class\+Schedule}} (std\+::string \mbox{\hyperlink{class_class_schedule_a14e8bf5c9e8e995be947e0f0bb7a5ede}{c\+UCode}}, std\+::string \mbox{\hyperlink{class_class_schedule_a52b5479e913abc6839b41dd5aa064c10}{class\+Code}})
+\begin{DoxyCompactList}\small\item\em Creates a \mbox{\hyperlink{class_class_schedule}{Class\+Schedule}} object whitout the schedule information. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_class_schedule_afc4a7f786d975e235eb68d1018732815}{get\+CUCode}} ()
+\begin{DoxyCompactList}\small\item\em Gets the Curricular Unit code. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_class_schedule_a16628c7c4ed63845e72bf6d0ff7db1b7}{get\+Class\+Code}} ()
+\begin{DoxyCompactList}\small\item\em Gets the Class code. \end{DoxyCompactList}\item 
+std\+::list$<$ \mbox{\hyperlink{class_slot}{Slot}} $>$ \mbox{\hyperlink{class_class_schedule_a9a13fa100a488d99e3f5e48b6d6ddeb9}{get\+Slots}} ()
+\begin{DoxyCompactList}\small\item\em Gets the Slots list. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_class_schedule_a90dc2cc05724526e80597adc50586c2b}{set\+Slot}} (std\+::string week\+Day, double start\+Time, double duration, std\+::string type)
+\begin{DoxyCompactList}\small\item\em Adds a new slot to the slots list. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_class_schedule_ad5f77c98c149aaaaa3b882086dbd6da1}{operator==}} (const \mbox{\hyperlink{class_class_schedule}{Class\+Schedule}} \&c) const
+\begin{DoxyCompactList}\small\item\em Overrides the operator == so it compares values instead of references. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static int \mbox{\hyperlink{class_class_schedule_a3a1857a5989458d2a9cc479d5b9e9a44}{get\+Class\+Cap}} ()
+\begin{DoxyCompactList}\small\item\em Gets the class cap. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_class_schedule_a14e8bf5c9e8e995be947e0f0bb7a5ede}\label{class_class_schedule_a14e8bf5c9e8e995be947e0f0bb7a5ede}} 
+std\+::string {\bfseries c\+UCode}
+\begin{DoxyCompactList}\small\item\em Curricular Unit Code. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_class_schedule_a52b5479e913abc6839b41dd5aa064c10}\label{class_class_schedule_a52b5479e913abc6839b41dd5aa064c10}} 
+std\+::string {\bfseries class\+Code}
+\begin{DoxyCompactList}\small\item\em Class Code. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_class_schedule_a11bf57241613b386978c8399591778f3}\label{class_class_schedule_a11bf57241613b386978c8399591778f3}} 
+std\+::list$<$ \mbox{\hyperlink{class_slot}{Slot}} $>$ {\bfseries slots}
+\begin{DoxyCompactList}\small\item\em List of slots~\newline
+ Stores all the schedules of a class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_class_schedule_aff73f9b0ad8e30e061d35ee6f73cfef3}\label{class_class_schedule_aff73f9b0ad8e30e061d35ee6f73cfef3}} 
+static int {\bfseries class\+Cap}
+\begin{DoxyCompactList}\small\item\em Maximum number of students a class can have. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_class_schedule_a9f8beb89e80cfa47d38e05882526595e}\label{class_class_schedule_a9f8beb89e80cfa47d38e05882526595e}} 
+\index{ClassSchedule@{ClassSchedule}!ClassSchedule@{ClassSchedule}}
+\index{ClassSchedule@{ClassSchedule}!ClassSchedule@{ClassSchedule}}
+\doxysubsubsection{\texorpdfstring{ClassSchedule()}{ClassSchedule()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Class\+Schedule\+::\+Class\+Schedule (\begin{DoxyParamCaption}\item[{std\+::string}]{c\+UCode,  }\item[{std\+::string}]{class\+Code,  }\item[{std\+::string}]{week\+Day,  }\item[{double}]{start\+Time,  }\item[{double}]{duration,  }\item[{std\+::string}]{type }\end{DoxyParamCaption})}
+
+
+
+Creates a \mbox{\hyperlink{class_class_schedule}{Class\+Schedule}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c\+UCode} & Curricular Unit code \\
+\hline
+{\em class\+Code} & Class code \\
+\hline
+{\em week\+Day} & Week day of the class \\
+\hline
+{\em start\+Time} & Class start time \\
+\hline
+{\em duration} & Duration of the class \\
+\hline
+{\em type} & Type of the class (\char`\"{}\+T\char`\"{}, \char`\"{}\+TP\char`\"{}, \char`\"{}\+PL\char`\"{}) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_class_schedule_a594726e1eb4c78e7284f998b653a43b1}\label{class_class_schedule_a594726e1eb4c78e7284f998b653a43b1}} 
+\index{ClassSchedule@{ClassSchedule}!ClassSchedule@{ClassSchedule}}
+\index{ClassSchedule@{ClassSchedule}!ClassSchedule@{ClassSchedule}}
+\doxysubsubsection{\texorpdfstring{ClassSchedule()}{ClassSchedule()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Class\+Schedule\+::\+Class\+Schedule (\begin{DoxyParamCaption}\item[{std\+::string}]{c\+UCode,  }\item[{std\+::string}]{class\+Code }\end{DoxyParamCaption})}
+
+
+
+Creates a \mbox{\hyperlink{class_class_schedule}{Class\+Schedule}} object whitout the schedule information. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c\+UCode} & Curricular Unit code \\
+\hline
+{\em class\+Code} & Class code \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_class_schedule_a3a1857a5989458d2a9cc479d5b9e9a44}\label{class_class_schedule_a3a1857a5989458d2a9cc479d5b9e9a44}} 
+\index{ClassSchedule@{ClassSchedule}!getClassCap@{getClassCap}}
+\index{getClassCap@{getClassCap}!ClassSchedule@{ClassSchedule}}
+\doxysubsubsection{\texorpdfstring{getClassCap()}{getClassCap()}}
+{\footnotesize\ttfamily static int Class\+Schedule\+::get\+Class\+Cap (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Gets the class cap. 
+
+\begin{DoxyReturn}{Returns}
+Class Cap 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_class_schedule_a16628c7c4ed63845e72bf6d0ff7db1b7}\label{class_class_schedule_a16628c7c4ed63845e72bf6d0ff7db1b7}} 
+\index{ClassSchedule@{ClassSchedule}!getClassCode@{getClassCode}}
+\index{getClassCode@{getClassCode}!ClassSchedule@{ClassSchedule}}
+\doxysubsubsection{\texorpdfstring{getClassCode()}{getClassCode()}}
+{\footnotesize\ttfamily std\+::string Class\+Schedule\+::get\+Class\+Code (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the Class code. 
+
+\begin{DoxyReturn}{Returns}
+Class code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_class_schedule_afc4a7f786d975e235eb68d1018732815}\label{class_class_schedule_afc4a7f786d975e235eb68d1018732815}} 
+\index{ClassSchedule@{ClassSchedule}!getCUCode@{getCUCode}}
+\index{getCUCode@{getCUCode}!ClassSchedule@{ClassSchedule}}
+\doxysubsubsection{\texorpdfstring{getCUCode()}{getCUCode()}}
+{\footnotesize\ttfamily std\+::string Class\+Schedule\+::get\+CUCode (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the Curricular Unit code. 
+
+\begin{DoxyReturn}{Returns}
+Curricular Unit code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_class_schedule_a9a13fa100a488d99e3f5e48b6d6ddeb9}\label{class_class_schedule_a9a13fa100a488d99e3f5e48b6d6ddeb9}} 
+\index{ClassSchedule@{ClassSchedule}!getSlots@{getSlots}}
+\index{getSlots@{getSlots}!ClassSchedule@{ClassSchedule}}
+\doxysubsubsection{\texorpdfstring{getSlots()}{getSlots()}}
+{\footnotesize\ttfamily std\+::list$<$ \mbox{\hyperlink{class_slot}{Slot}} $>$ Class\+Schedule\+::get\+Slots (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the Slots list. 
+
+\begin{DoxyReturn}{Returns}
+Slots list 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_class_schedule_ad5f77c98c149aaaaa3b882086dbd6da1}\label{class_class_schedule_ad5f77c98c149aaaaa3b882086dbd6da1}} 
+\index{ClassSchedule@{ClassSchedule}!operator==@{operator==}}
+\index{operator==@{operator==}!ClassSchedule@{ClassSchedule}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool Class\+Schedule\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_class_schedule}{Class\+Schedule}} \&}]{c }\end{DoxyParamCaption}) const}
+
+
+
+Overrides the operator == so it compares values instead of references. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & A \mbox{\hyperlink{class_class_schedule}{Class\+Schedule}} object \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the values are equal.~\newline
+ False if they are not equal. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_class_schedule_a90dc2cc05724526e80597adc50586c2b}\label{class_class_schedule_a90dc2cc05724526e80597adc50586c2b}} 
+\index{ClassSchedule@{ClassSchedule}!setSlot@{setSlot}}
+\index{setSlot@{setSlot}!ClassSchedule@{ClassSchedule}}
+\doxysubsubsection{\texorpdfstring{setSlot()}{setSlot()}}
+{\footnotesize\ttfamily void Class\+Schedule\+::set\+Slot (\begin{DoxyParamCaption}\item[{std\+::string}]{week\+Day,  }\item[{double}]{start\+Time,  }\item[{double}]{duration,  }\item[{std\+::string}]{type }\end{DoxyParamCaption})}
+
+
+
+Adds a new slot to the slots list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em week\+Day} & Week day of the class \\
+\hline
+{\em start\+Time} & Class start time \\
+\hline
+{\em duration} & Duration of the class \\
+\hline
+{\em type} & Type of the class (\char`\"{}\+T\char`\"{}, \char`\"{}\+TP\char`\"{}, \char`\"{}\+PL\char`\"{}) \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Class\+Schedule.\+h\end{DoxyCompactItemize}

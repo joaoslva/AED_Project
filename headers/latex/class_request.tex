@@ -1,0 +1,146 @@
+\hypertarget{class_request}{}\doxysection{Request Class Reference}
+\label{class_request}\index{Request@{Request}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_request_acc2d12f559bd167c8496dfba868fed9c}{Request}} (std\+::string \mbox{\hyperlink{class_request_a36eac7c366e999a327cb0b5466774513}{request}}, std\+::string \mbox{\hyperlink{class_request_a0e39376df389ff47354cea036dca6647}{addc\+UCode}}, std\+::string \mbox{\hyperlink{class_request_ab7ea766ec3f90421765a916ca927d88c}{addclass\+Code}}, std\+::string \mbox{\hyperlink{class_request_a3442aab2726ab3809182275aff74827e}{remc\+UCode}}, std\+::string \mbox{\hyperlink{class_request_a91cdafac629d281e2a86faa976ef1353}{remclass\+Code}}, int iD)
+\begin{DoxyCompactList}\small\item\em Creates a new \mbox{\hyperlink{class_request}{Request}} object. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_request_a1762255a1135e93a4d996a1ecea667ce}{get\+Request}} ()
+\begin{DoxyCompactList}\small\item\em Gets the \mbox{\hyperlink{class_request}{Request}} name. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_request_af7215de1be1e8edd4990a4480f36227d}{getadd\+CUCode}} ()
+\begin{DoxyCompactList}\small\item\em Gets the Curricular Unit code. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_request_adb4c392c11998781c12cf550994701a5}{getrem\+CUCode}} ()
+\begin{DoxyCompactList}\small\item\em Gets the Class code. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_request_a35cc77b767759f5cc8c60aa169f4d549}{getadd\+Class\+Code}} ()
+\begin{DoxyCompactList}\small\item\em Gets the Curricular Unit code (in case the request is a swap) \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_request_a92c61e7314fa0307d784ffed80e58344}{getrem\+Class\+Code}} ()
+\begin{DoxyCompactList}\small\item\em Gets the Class code (in case the request is a swap) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_request_a26eca9b1ee231857d5ec7d349c917336}\label{class_request_a26eca9b1ee231857d5ec7d349c917336}} 
+int {\bfseries get\+ID} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_request_a36eac7c366e999a327cb0b5466774513}\label{class_request_a36eac7c366e999a327cb0b5466774513}} 
+std\+::string {\bfseries request}
+\begin{DoxyCompactList}\small\item\em Name of the request. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_request_a0e39376df389ff47354cea036dca6647}\label{class_request_a0e39376df389ff47354cea036dca6647}} 
+std\+::string {\bfseries addc\+UCode}
+\begin{DoxyCompactList}\small\item\em Curricular Unit code.~\newline
+ In case a swap is requested, this is the C.\+U. code of the new Curricular Unit. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_request_ab7ea766ec3f90421765a916ca927d88c}\label{class_request_ab7ea766ec3f90421765a916ca927d88c}} 
+std\+::string {\bfseries addclass\+Code}
+\begin{DoxyCompactList}\small\item\em Class code,~\newline
+ In case a swap is requested, this is the class code of the new class. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_request_a3442aab2726ab3809182275aff74827e}\label{class_request_a3442aab2726ab3809182275aff74827e}} 
+std\+::string {\bfseries remc\+UCode}
+\begin{DoxyCompactList}\small\item\em In case a swap is requested, this is the C.\+U. code of the Curricular Unit that will be substituted.~\newline
+ If the request is not a swap, this variable should be empty. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_request_a91cdafac629d281e2a86faa976ef1353}\label{class_request_a91cdafac629d281e2a86faa976ef1353}} 
+std\+::string {\bfseries remclass\+Code}
+\begin{DoxyCompactList}\small\item\em In case a swap is requested, this is the class code of the class that will be substituted.~\newline
+ If the request is not a swap, this variable should be empty. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_request_a9df284162eebd6e56ae32305e536ed4e}\label{class_request_a9df284162eebd6e56ae32305e536ed4e}} 
+int {\bfseries ID}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_student}{Student}} ID. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_request_acc2d12f559bd167c8496dfba868fed9c}\label{class_request_acc2d12f559bd167c8496dfba868fed9c}} 
+\index{Request@{Request}!Request@{Request}}
+\index{Request@{Request}!Request@{Request}}
+\doxysubsubsection{\texorpdfstring{Request()}{Request()}}
+{\footnotesize\ttfamily Request\+::\+Request (\begin{DoxyParamCaption}\item[{std\+::string}]{request,  }\item[{std\+::string}]{addc\+UCode,  }\item[{std\+::string}]{addclass\+Code,  }\item[{std\+::string}]{remc\+UCode,  }\item[{std\+::string}]{remclass\+Code,  }\item[{int}]{iD }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Creates a new \mbox{\hyperlink{class_request}{Request}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em request} & \mbox{\hyperlink{class_request}{Request}} Name \\
+\hline
+{\em addc\+UCode} & Curricular Unit code \\
+\hline
+{\em addclass\+Code} & Class code \\
+\hline
+{\em remc\+UCode} & Curricular Unit code (in case the request is a swap) \\
+\hline
+{\em remclass\+Code} & Class code (in case the request is a swap) \\
+\hline
+{\em iD} & \mbox{\hyperlink{class_student}{Student}} ID \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_request_a35cc77b767759f5cc8c60aa169f4d549}\label{class_request_a35cc77b767759f5cc8c60aa169f4d549}} 
+\index{Request@{Request}!getaddClassCode@{getaddClassCode}}
+\index{getaddClassCode@{getaddClassCode}!Request@{Request}}
+\doxysubsubsection{\texorpdfstring{getaddClassCode()}{getaddClassCode()}}
+{\footnotesize\ttfamily std\+::string Request\+::getadd\+Class\+Code (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the Curricular Unit code (in case the request is a swap) 
+
+\begin{DoxyReturn}{Returns}
+Rem\+Curricular\+Unit\+Code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_request_af7215de1be1e8edd4990a4480f36227d}\label{class_request_af7215de1be1e8edd4990a4480f36227d}} 
+\index{Request@{Request}!getaddCUCode@{getaddCUCode}}
+\index{getaddCUCode@{getaddCUCode}!Request@{Request}}
+\doxysubsubsection{\texorpdfstring{getaddCUCode()}{getaddCUCode()}}
+{\footnotesize\ttfamily std\+::string Request\+::getadd\+CUCode (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the Curricular Unit code. 
+
+\begin{DoxyReturn}{Returns}
+Add\+Curricular\+Unit\+Code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_request_a92c61e7314fa0307d784ffed80e58344}\label{class_request_a92c61e7314fa0307d784ffed80e58344}} 
+\index{Request@{Request}!getremClassCode@{getremClassCode}}
+\index{getremClassCode@{getremClassCode}!Request@{Request}}
+\doxysubsubsection{\texorpdfstring{getremClassCode()}{getremClassCode()}}
+{\footnotesize\ttfamily std\+::string Request\+::getrem\+Class\+Code (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the Class code (in case the request is a swap) 
+
+\begin{DoxyReturn}{Returns}
+Rem\+Class\+Code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_request_adb4c392c11998781c12cf550994701a5}\label{class_request_adb4c392c11998781c12cf550994701a5}} 
+\index{Request@{Request}!getremCUCode@{getremCUCode}}
+\index{getremCUCode@{getremCUCode}!Request@{Request}}
+\doxysubsubsection{\texorpdfstring{getremCUCode()}{getremCUCode()}}
+{\footnotesize\ttfamily std\+::string Request\+::getrem\+CUCode (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the Class code. 
+
+\begin{DoxyReturn}{Returns}
+Add\+Class\+Code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_request_a1762255a1135e93a4d996a1ecea667ce}\label{class_request_a1762255a1135e93a4d996a1ecea667ce}} 
+\index{Request@{Request}!getRequest@{getRequest}}
+\index{getRequest@{getRequest}!Request@{Request}}
+\doxysubsubsection{\texorpdfstring{getRequest()}{getRequest()}}
+{\footnotesize\ttfamily std\+::string Request\+::get\+Request (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the \mbox{\hyperlink{class_request}{Request}} name. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_request}{Request}} name 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Request.\+h\end{DoxyCompactItemize}

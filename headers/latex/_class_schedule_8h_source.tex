@@ -1,0 +1,54 @@
+\hypertarget{_class_schedule_8h_source}{}\doxysection{Class\+Schedule.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef CLASS\_SCHEDDULE\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define CLASS\_SCHEDDULE\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}Slot.h"{}}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <list>}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{keyword}{class }\mbox{\hyperlink{class_class_schedule}{ClassSchedule}}\{}
+\DoxyCodeLine{9     \textcolor{keyword}{private}:}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11         \textcolor{comment}{//Attributes}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{14         std::string \mbox{\hyperlink{class_class_schedule_a14e8bf5c9e8e995be947e0f0bb7a5ede}{cUCode}};}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{17         std::string \mbox{\hyperlink{class_class_schedule_a52b5479e913abc6839b41dd5aa064c10}{classCode}};}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{20         std::list<Slot> \mbox{\hyperlink{class_class_schedule_a11bf57241613b386978c8399591778f3}{slots}};}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{23         \textcolor{keyword}{static} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_class_schedule_aff73f9b0ad8e30e061d35ee6f73cfef3}{classCap}};}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26 \textcolor{keyword}{public}:}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28         \textcolor{comment}{//Constructors}}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{37         \mbox{\hyperlink{class_class_schedule_a9f8beb89e80cfa47d38e05882526595e}{ClassSchedule}}(std::string \mbox{\hyperlink{class_class_schedule_a14e8bf5c9e8e995be947e0f0bb7a5ede}{cUCode}}, std::string \mbox{\hyperlink{class_class_schedule_a52b5479e913abc6839b41dd5aa064c10}{classCode}}, std::string weekDay, \textcolor{keywordtype}{double} startTime,}
+\DoxyCodeLine{38                       \textcolor{keywordtype}{double} duration, std::string type);}
+\DoxyCodeLine{39         }
+\DoxyCodeLine{43         \mbox{\hyperlink{class_class_schedule_a594726e1eb4c78e7284f998b653a43b1}{ClassSchedule}}(std::string \mbox{\hyperlink{class_class_schedule_a14e8bf5c9e8e995be947e0f0bb7a5ede}{cUCode}}, std::string \mbox{\hyperlink{class_class_schedule_a52b5479e913abc6839b41dd5aa064c10}{classCode}});}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45         \textcolor{comment}{// Getters}}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{49         std::string \mbox{\hyperlink{class_class_schedule_afc4a7f786d975e235eb68d1018732815}{getCUCode}}() \{\textcolor{keywordflow}{return} this-\/>\mbox{\hyperlink{class_class_schedule_a14e8bf5c9e8e995be947e0f0bb7a5ede}{cUCode}};\};}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{53         std::string \mbox{\hyperlink{class_class_schedule_a16628c7c4ed63845e72bf6d0ff7db1b7}{getClassCode}}() \{\textcolor{keywordflow}{return} this-\/>\mbox{\hyperlink{class_class_schedule_a52b5479e913abc6839b41dd5aa064c10}{classCode}};\};}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{57         std::list<Slot> \mbox{\hyperlink{class_class_schedule_a9a13fa100a488d99e3f5e48b6d6ddeb9}{getSlots}}() \{\textcolor{keywordflow}{return} this-\/>\mbox{\hyperlink{class_class_schedule_a11bf57241613b386978c8399591778f3}{slots}};\};}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{61         \textcolor{keyword}{static} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_class_schedule_a3a1857a5989458d2a9cc479d5b9e9a44}{getClassCap}}() \{\textcolor{keywordflow}{return} \mbox{\hyperlink{class_class_schedule_aff73f9b0ad8e30e061d35ee6f73cfef3}{classCap}};\};}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{63         \textcolor{comment}{// Setters}}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{70         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_class_schedule_a90dc2cc05724526e80597adc50586c2b}{setSlot}}(std::string weekDay, \textcolor{keywordtype}{double} startTime, \textcolor{keywordtype}{double} duration,std::string type);}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72     \textcolor{comment}{// Override}}
+\DoxyCodeLine{73 }
+\DoxyCodeLine{77         \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_class_schedule_ad5f77c98c149aaaaa3b882086dbd6da1}{operator== }}(\textcolor{keyword}{const} \mbox{\hyperlink{class_class_schedule}{ClassSchedule}}\& c) \textcolor{keyword}{const};}
+\DoxyCodeLine{78 \};}
+\DoxyCodeLine{79 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

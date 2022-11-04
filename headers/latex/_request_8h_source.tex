@@ -1,0 +1,52 @@
+\hypertarget{_request_8h_source}{}\doxysection{Request.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef REQUEST\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define REQUEST\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{keyword}{class }\mbox{\hyperlink{class_request}{Request}}\{}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{keyword}{private}:}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8     \textcolor{comment}{// Attributes}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{11     std::string \mbox{\hyperlink{class_request_a36eac7c366e999a327cb0b5466774513}{request}};}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{14     std::string \mbox{\hyperlink{class_request_a0e39376df389ff47354cea036dca6647}{addcUCode}};}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{17     std::string \mbox{\hyperlink{class_request_ab7ea766ec3f90421765a916ca927d88c}{addclassCode}};}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{20     std::string \mbox{\hyperlink{class_request_a3442aab2726ab3809182275aff74827e}{remcUCode}};}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{23     std::string \mbox{\hyperlink{class_request_a91cdafac629d281e2a86faa976ef1353}{remclassCode}};}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{26     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_request_a9df284162eebd6e56ae32305e536ed4e}{ID}};}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 \textcolor{keyword}{public}:}
+\DoxyCodeLine{29     \textcolor{comment}{//Constructors}}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{38     \mbox{\hyperlink{class_request_acc2d12f559bd167c8496dfba868fed9c}{Request}}(std::string \mbox{\hyperlink{class_request_a36eac7c366e999a327cb0b5466774513}{request}}, std::string \mbox{\hyperlink{class_request_a0e39376df389ff47354cea036dca6647}{addcUCode}}, std::string \mbox{\hyperlink{class_request_ab7ea766ec3f90421765a916ca927d88c}{addclassCode}}, std::string \mbox{\hyperlink{class_request_a3442aab2726ab3809182275aff74827e}{remcUCode}}, std::string \mbox{\hyperlink{class_request_a91cdafac629d281e2a86faa976ef1353}{remclassCode}},\textcolor{keywordtype}{int} iD)\{}
+\DoxyCodeLine{39         this-\/>ID = iD;}
+\DoxyCodeLine{40         this-\/>addcUCode = \mbox{\hyperlink{class_request_a0e39376df389ff47354cea036dca6647}{addcUCode}};}
+\DoxyCodeLine{41         this-\/>addclassCode = \mbox{\hyperlink{class_request_ab7ea766ec3f90421765a916ca927d88c}{addclassCode}};}
+\DoxyCodeLine{42         this-\/>remcUCode = \mbox{\hyperlink{class_request_a3442aab2726ab3809182275aff74827e}{remcUCode}};}
+\DoxyCodeLine{43         this-\/>remclassCode = \mbox{\hyperlink{class_request_a91cdafac629d281e2a86faa976ef1353}{remclassCode}};}
+\DoxyCodeLine{44         this-\/>request = \mbox{\hyperlink{class_request_a36eac7c366e999a327cb0b5466774513}{request}};}
+\DoxyCodeLine{45     \}}
+\DoxyCodeLine{46     \textcolor{comment}{//Getters}}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{50     std::string \mbox{\hyperlink{class_request_a1762255a1135e93a4d996a1ecea667ce}{getRequest}}() \{\textcolor{keywordflow}{return} this-\/>\mbox{\hyperlink{class_request_a36eac7c366e999a327cb0b5466774513}{request}};\};}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{54     std::string \mbox{\hyperlink{class_request_af7215de1be1e8edd4990a4480f36227d}{getaddCUCode}}() \{\textcolor{keywordflow}{return} this-\/>\mbox{\hyperlink{class_request_a0e39376df389ff47354cea036dca6647}{addcUCode}};\};}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{58     std::string \mbox{\hyperlink{class_request_adb4c392c11998781c12cf550994701a5}{getremCUCode}}() \{\textcolor{keywordflow}{return} this-\/>\mbox{\hyperlink{class_request_a3442aab2726ab3809182275aff74827e}{remcUCode}};\};}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{62     std::string \mbox{\hyperlink{class_request_a35cc77b767759f5cc8c60aa169f4d549}{getaddClassCode}}() \{\textcolor{keywordflow}{return} this-\/>\mbox{\hyperlink{class_request_ab7ea766ec3f90421765a916ca927d88c}{addclassCode}};\};}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{66     std::string \mbox{\hyperlink{class_request_a92c61e7314fa0307d784ffed80e58344}{getremClassCode}}() \{\textcolor{keywordflow}{return} this-\/>\mbox{\hyperlink{class_request_a91cdafac629d281e2a86faa976ef1353}{remclassCode}};\};}
+\DoxyCodeLine{67     \textcolor{keywordtype}{int} getID() \{\textcolor{keywordflow}{return} this-\/>\mbox{\hyperlink{class_request_a9df284162eebd6e56ae32305e536ed4e}{ID}};\};}
+\DoxyCodeLine{68 \};}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{70 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

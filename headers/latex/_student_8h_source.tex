@@ -1,0 +1,58 @@
+\hypertarget{_student_8h_source}{}\doxysection{Student.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef STUDENT\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define STUDENT\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}CUClass.h"{}}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}Slot.h"{}}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}ClassSchedule.h"{}}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <list>}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{keyword}{class }\mbox{\hyperlink{class_student}{Student}}\{}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12     \textcolor{keyword}{private}:}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14         \textcolor{comment}{// Attributes}}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{17         \textcolor{keywordtype}{int} \mbox{\hyperlink{class_student_a24bc59d7a1cdc747ee8f40eece408698}{studentID}};}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{20         std::string \mbox{\hyperlink{class_student_a9aeb48a925f370292564def17482f0ec}{name}};}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{23         std::list<ClassSchedule> \mbox{\hyperlink{class_student_a9052dff53adbd87eeadedc332836e830}{studentSchedule}};}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{26         std::list<CUClass> \mbox{\hyperlink{class_student_aa3a18c775607d6510d87369a3d1cc09a}{classes}};}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28     \textcolor{keyword}{public}:}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30         \textcolor{comment}{// Constructors}}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{37         \mbox{\hyperlink{class_student_aa3a7a9ebca89fdb6038eb027311d2ff8}{Student}}(\textcolor{keywordtype}{int} \mbox{\hyperlink{class_student_a24bc59d7a1cdc747ee8f40eece408698}{studentID}}, std::string \mbox{\hyperlink{class_student_a9aeb48a925f370292564def17482f0ec}{name}}, std::string cUCode, std::string classCode);}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39         \textcolor{comment}{// Getters}}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{43         std::string \mbox{\hyperlink{class_student_a729c900a0e95c46f90668f527a72ad34}{getName}}()  \{\textcolor{keywordflow}{return} this-\/>\mbox{\hyperlink{class_student_a9aeb48a925f370292564def17482f0ec}{name}};\}}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{47         \textcolor{keywordtype}{int} \mbox{\hyperlink{class_student_afd3714fac9ba98c68493e86608433e26}{getStudentID}}()  \{\textcolor{keywordflow}{return} this-\/>\mbox{\hyperlink{class_student_a24bc59d7a1cdc747ee8f40eece408698}{studentID}};\}}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{51         std::list<CUClass> \& \mbox{\hyperlink{class_student_a023f7e31b7c7c5caa844aed5d939ebf6}{getClasses}}() \{\textcolor{keywordflow}{return} this-\/>\mbox{\hyperlink{class_student_aa3a18c775607d6510d87369a3d1cc09a}{classes}};\}}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{55         std::list<ClassSchedule> \& \mbox{\hyperlink{class_student_abf6a0e96d5943a51211f6a799a02bb9d}{getStudentSched}}() \{\textcolor{keywordflow}{return} this-\/>\mbox{\hyperlink{class_student_a9052dff53adbd87eeadedc332836e830}{studentSchedule}};\}}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57         \textcolor{comment}{// Setters}}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{62         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_student_a7259c049f7baae38d631129df6614615}{setClass}}(std::string cUCode, std::string classCode);}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{66         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_student_a3b5fda352b593f2f4b0c44c9d164a08f}{setSchedule}} (\textcolor{keyword}{const} \mbox{\hyperlink{class_class_schedule}{ClassSchedule}}\& classSchedule) \{this-\/>studentSchedule.push\_back(classSchedule);\}}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{68         \textcolor{comment}{// Override}}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{73         \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_student_a813c8079bd32dd95c8bab5af53b2f9a0}{operator < }}(\textcolor{keyword}{const} \mbox{\hyperlink{class_student}{Student}}\& student) \textcolor{keyword}{const};}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{78         \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_student_a9fa16bcc2db2fa13a47e729b6dbc7ab3}{operator== }}(\textcolor{keyword}{const} \mbox{\hyperlink{class_student}{Student}} \&student) \textcolor{keyword}{const} ;}
+\DoxyCodeLine{79 }
+\DoxyCodeLine{80 \};}
+\DoxyCodeLine{81 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

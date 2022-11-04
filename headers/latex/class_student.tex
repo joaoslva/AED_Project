@@ -1,0 +1,192 @@
+\hypertarget{class_student}{}\doxysection{Student Class Reference}
+\label{class_student}\index{Student@{Student}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_student_aa3a7a9ebca89fdb6038eb027311d2ff8}{Student}} (int \mbox{\hyperlink{class_student_a24bc59d7a1cdc747ee8f40eece408698}{student\+ID}}, std\+::string \mbox{\hyperlink{class_student_a9aeb48a925f370292564def17482f0ec}{name}}, std\+::string c\+UCode, std\+::string class\+Code)
+\begin{DoxyCompactList}\small\item\em Creates a \mbox{\hyperlink{class_student}{Student}} object. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_student_a729c900a0e95c46f90668f527a72ad34}{get\+Name}} ()
+\begin{DoxyCompactList}\small\item\em Get student name. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_student_afd3714fac9ba98c68493e86608433e26}{get\+Student\+ID}} ()
+\begin{DoxyCompactList}\small\item\em Get student ID. \end{DoxyCompactList}\item 
+std\+::list$<$ \mbox{\hyperlink{class_c_u_class}{CUClass}} $>$ \& \mbox{\hyperlink{class_student_a023f7e31b7c7c5caa844aed5d939ebf6}{get\+Classes}} ()
+\begin{DoxyCompactList}\small\item\em Get \mbox{\hyperlink{class_student}{Student}} Classes list. \end{DoxyCompactList}\item 
+std\+::list$<$ \mbox{\hyperlink{class_class_schedule}{Class\+Schedule}} $>$ \& \mbox{\hyperlink{class_student_abf6a0e96d5943a51211f6a799a02bb9d}{get\+Student\+Sched}} ()
+\begin{DoxyCompactList}\small\item\em Get \mbox{\hyperlink{class_student}{Student}} Schedules list. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_student_a7259c049f7baae38d631129df6614615}{set\+Class}} (std\+::string c\+UCode, std\+::string class\+Code)
+\begin{DoxyCompactList}\small\item\em Adds a new class to the classes list. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_student_a3b5fda352b593f2f4b0c44c9d164a08f}{set\+Schedule}} (const \mbox{\hyperlink{class_class_schedule}{Class\+Schedule}} \&class\+Schedule)
+\begin{DoxyCompactList}\small\item\em Adds a new schedule to the student schedules list. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_student_a813c8079bd32dd95c8bab5af53b2f9a0}{operator$<$}} (const \mbox{\hyperlink{class_student}{Student}} \&student) const
+\begin{DoxyCompactList}\small\item\em Overrides the operator \texorpdfstring{$<$}{<} so it compares values instead of references. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_student_a9fa16bcc2db2fa13a47e729b6dbc7ab3}{operator==}} (const \mbox{\hyperlink{class_student}{Student}} \&student) const
+\begin{DoxyCompactList}\small\item\em Overrides the operator == so it compares values instead of references. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_student_a24bc59d7a1cdc747ee8f40eece408698}\label{class_student_a24bc59d7a1cdc747ee8f40eece408698}} 
+int {\bfseries student\+ID}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_student}{Student}} ID. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_student_a9aeb48a925f370292564def17482f0ec}\label{class_student_a9aeb48a925f370292564def17482f0ec}} 
+std\+::string {\bfseries name}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_student}{Student}} name. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_student_a9052dff53adbd87eeadedc332836e830}\label{class_student_a9052dff53adbd87eeadedc332836e830}} 
+std\+::list$<$ \mbox{\hyperlink{class_class_schedule}{Class\+Schedule}} $>$ {\bfseries student\+Schedule}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_student}{Student}} schedule. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_student_aa3a18c775607d6510d87369a3d1cc09a}\label{class_student_aa3a18c775607d6510d87369a3d1cc09a}} 
+std\+::list$<$ \mbox{\hyperlink{class_c_u_class}{CUClass}} $>$ {\bfseries classes}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_student}{Student}} classes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_student_aa3a7a9ebca89fdb6038eb027311d2ff8}\label{class_student_aa3a7a9ebca89fdb6038eb027311d2ff8}} 
+\index{Student@{Student}!Student@{Student}}
+\index{Student@{Student}!Student@{Student}}
+\doxysubsubsection{\texorpdfstring{Student()}{Student()}}
+{\footnotesize\ttfamily Student\+::\+Student (\begin{DoxyParamCaption}\item[{int}]{student\+ID,  }\item[{std\+::string}]{name,  }\item[{std\+::string}]{c\+UCode,  }\item[{std\+::string}]{class\+Code }\end{DoxyParamCaption})}
+
+
+
+Creates a \mbox{\hyperlink{class_student}{Student}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em student\+ID} & \mbox{\hyperlink{class_student}{Student}} ID \\
+\hline
+{\em name} & \mbox{\hyperlink{class_student}{Student}} name \\
+\hline
+{\em c\+UCode} & Curricular Unit code \\
+\hline
+{\em class\+Code} & Class code \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_student_a023f7e31b7c7c5caa844aed5d939ebf6}\label{class_student_a023f7e31b7c7c5caa844aed5d939ebf6}} 
+\index{Student@{Student}!getClasses@{getClasses}}
+\index{getClasses@{getClasses}!Student@{Student}}
+\doxysubsubsection{\texorpdfstring{getClasses()}{getClasses()}}
+{\footnotesize\ttfamily std\+::list$<$ \mbox{\hyperlink{class_c_u_class}{CUClass}} $>$ \& Student\+::get\+Classes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get \mbox{\hyperlink{class_student}{Student}} Classes list. 
+
+\begin{DoxyReturn}{Returns}
+Classes list 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_student_a729c900a0e95c46f90668f527a72ad34}\label{class_student_a729c900a0e95c46f90668f527a72ad34}} 
+\index{Student@{Student}!getName@{getName}}
+\index{getName@{getName}!Student@{Student}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily std\+::string Student\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get student name. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_student}{Student}} name 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_student_afd3714fac9ba98c68493e86608433e26}\label{class_student_afd3714fac9ba98c68493e86608433e26}} 
+\index{Student@{Student}!getStudentID@{getStudentID}}
+\index{getStudentID@{getStudentID}!Student@{Student}}
+\doxysubsubsection{\texorpdfstring{getStudentID()}{getStudentID()}}
+{\footnotesize\ttfamily int Student\+::get\+Student\+ID (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get student ID. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_student}{Student}} ID 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_student_abf6a0e96d5943a51211f6a799a02bb9d}\label{class_student_abf6a0e96d5943a51211f6a799a02bb9d}} 
+\index{Student@{Student}!getStudentSched@{getStudentSched}}
+\index{getStudentSched@{getStudentSched}!Student@{Student}}
+\doxysubsubsection{\texorpdfstring{getStudentSched()}{getStudentSched()}}
+{\footnotesize\ttfamily std\+::list$<$ \mbox{\hyperlink{class_class_schedule}{Class\+Schedule}} $>$ \& Student\+::get\+Student\+Sched (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get \mbox{\hyperlink{class_student}{Student}} Schedules list. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_student}{Student}} Schedules list 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_student_a813c8079bd32dd95c8bab5af53b2f9a0}\label{class_student_a813c8079bd32dd95c8bab5af53b2f9a0}} 
+\index{Student@{Student}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!Student@{Student}}
+\doxysubsubsection{\texorpdfstring{operator$<$()}{operator<()}}
+{\footnotesize\ttfamily bool Student\+::operator$<$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_student}{Student}} \&}]{student }\end{DoxyParamCaption}) const}
+
+
+
+Overrides the operator \texorpdfstring{$<$}{<} so it compares values instead of references. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em student} & \mbox{\hyperlink{class_student}{Student}} object \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the value on the right is less than the value on the left.~\newline
+ False otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_student_a9fa16bcc2db2fa13a47e729b6dbc7ab3}\label{class_student_a9fa16bcc2db2fa13a47e729b6dbc7ab3}} 
+\index{Student@{Student}!operator==@{operator==}}
+\index{operator==@{operator==}!Student@{Student}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool Student\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_student}{Student}} \&}]{student }\end{DoxyParamCaption}) const}
+
+
+
+Overrides the operator == so it compares values instead of references. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em student} & \mbox{\hyperlink{class_student}{Student}} object \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the values are equal.~\newline
+ False otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_student_a7259c049f7baae38d631129df6614615}\label{class_student_a7259c049f7baae38d631129df6614615}} 
+\index{Student@{Student}!setClass@{setClass}}
+\index{setClass@{setClass}!Student@{Student}}
+\doxysubsubsection{\texorpdfstring{setClass()}{setClass()}}
+{\footnotesize\ttfamily void Student\+::set\+Class (\begin{DoxyParamCaption}\item[{std\+::string}]{c\+UCode,  }\item[{std\+::string}]{class\+Code }\end{DoxyParamCaption})}
+
+
+
+Adds a new class to the classes list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c\+UCode} & Curricular Unit code \\
+\hline
+{\em class\+Code} & Class code \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_student_a3b5fda352b593f2f4b0c44c9d164a08f}\label{class_student_a3b5fda352b593f2f4b0c44c9d164a08f}} 
+\index{Student@{Student}!setSchedule@{setSchedule}}
+\index{setSchedule@{setSchedule}!Student@{Student}}
+\doxysubsubsection{\texorpdfstring{setSchedule()}{setSchedule()}}
+{\footnotesize\ttfamily void Student\+::set\+Schedule (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_class_schedule}{Class\+Schedule}} \&}]{class\+Schedule }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Adds a new schedule to the student schedules list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em class\+Schedule} & Class Schedule \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Student.\+h\end{DoxyCompactItemize}

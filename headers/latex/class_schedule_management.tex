@@ -1,0 +1,461 @@
+\hypertarget{class_schedule_management}{}\doxysection{Schedule\+Management Class Reference}
+\label{class_schedule_management}\index{ScheduleManagement@{ScheduleManagement}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_schedule_management_af0d0daffa87db522382ad0aa79bca73e}{set\+Schedule}} (const std\+::string \&file)
+\begin{DoxyCompactList}\small\item\em Reads a .csv file and extracts the information about the schedules.~\newline
+ Creates a new class/schedule combination in the class\+Schedules vector or adds to an already created class a schedule ~\newline
+ \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_schedule_management_ae511e88eb5e13793dad210b39954a954}{set\+Students}} (const std\+::string \&file)
+\begin{DoxyCompactList}\small\item\em Reads a .csv file and extracts the information about the students.~\newline
+ Creates a new student in the vector students or adds to an already created student a new class and it\textquotesingle{}s corresponding schedule. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_schedule_management_a4ea6f59d507181783e2ec6dafc7dbc1f}{set\+Class\+Schedule}} (const std\+::vector$<$ \mbox{\hyperlink{class_class_schedule}{Class\+Schedule}} $>$ \&class\+Schedule\+Vector)
+\begin{DoxyCompactList}\small\item\em Reads the values of a vector.~\newline
+ Extracts the values read and writes them in the class\+Schedule vector. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_schedule_management_a15d01b3e92b471e651758409b4007374}{get\+Student\+Schedule}} (int student\+ID) const
+\begin{DoxyCompactList}\small\item\em Prints the student information and it\textquotesingle{}s class schedules. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_schedule_management_a3e6110765a6f126cf1295797e24174e8}{get\+UCOccupation}} (const std\+::string \&uc\+Code, const std\+::string \&how=\char`\"{}none\char`\"{}) const
+\begin{DoxyCompactList}\small\item\em Prints the number of students that have a certain Curricular Unit.~\newline
+ If wanted, it prints the students name and ID in a choosen order by the user. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_schedule_management_a93966739e6cb9e28896e1f0a879ac8fc}{get\+Class\+Occupation}} (const std\+::string \&uc\+Code, const std\+::string \&class\+Code, const std\+::string \&how=\char`\"{}none\char`\"{}) const
+\begin{DoxyCompactList}\small\item\em Prints the number of students that are in a certain class.~\newline
+ If wanted, it prints the students name and ID in a choosen order by the user. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_schedule_management_ab2ddcd774a4f7ae8c65d387786c58f67}{get\+Year\+Occupation}} (char year, const std\+::string \&how=\char`\"{}none\char`\"{}) const
+\begin{DoxyCompactList}\small\item\em Prints the number of students that are in a certain year.~\newline
+ If wanted, it prints the students name and ID in a choosen order by the user. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_schedule_management_ae08b508313ef1c44fb098229527415cf}{get\+More\+Than\+NUc}} (int N, const std\+::string \&how=\char`\"{}none\char`\"{})
+\begin{DoxyCompactList}\small\item\em Prints the number of students that have nore than a certain number of Curricular Units.~\newline
+ If wanted, it prints the students name and ID in a choosen order by the user. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_schedule_management_a39992c705dd3353c99858092fe973bee}{aux\+Get\+Class\+Occupation}} (const std\+::string \&uc\+Code, const std\+::string \&class\+Code) const
+\begin{DoxyCompactList}\small\item\em Auxiliar function that calculates the number of students that are in a certain class. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_schedule_management_a7606df772a40e9d01325d35bda3ed141}{student\+Number}} ()
+\begin{DoxyCompactList}\small\item\em Gets the number of students in the students set. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_schedule_management_a21508b45f542791ea508dd06bd8914ff}{schedule\+Number}} ()
+\begin{DoxyCompactList}\small\item\em Gets the number of classes in the class\+Schedules vector ~\newline
+ \end{DoxyCompactList}\item 
+std\+::queue$<$ \mbox{\hyperlink{class_request}{Request}} $>$ \mbox{\hyperlink{class_schedule_management_ab7c1f2868a870aa540c39163accfbde8}{get\+Requests}} ()
+\begin{DoxyCompactList}\small\item\em Gets the queue of requests. \end{DoxyCompactList}\item 
+std\+::queue$<$ \mbox{\hyperlink{class_request}{Request}} $>$ \mbox{\hyperlink{class_schedule_management_af83fa28554078c474099e5a0c35e0240}{get\+Failed\+Requests}} ()
+\begin{DoxyCompactList}\small\item\em Gets the queue of failed requests. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_schedule_management_adff75a89db6c89f1645cfb211a086da8}{add\+Request}} (std\+::string request, std\+::string addc\+UCode, std\+::string addclass\+Code, std\+::string remc\+UCode, std\+::string remclass\+Code, int iD)
+\begin{DoxyCompactList}\small\item\em Adds a new request to the requests queue. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_schedule_management_aa80a1b1a079ce3bcccc17a4e9b487ee6}\label{class_schedule_management_aa80a1b1a079ce3bcccc17a4e9b487ee6}} 
+void {\bfseries remove\+Request} ()
+\begin{DoxyCompactList}\small\item\em Removes a request from the queue requests. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_schedule_management_a07c0acd428092d3b4e20aaea1bd6a15e}{remove\+Student}} (std\+::string uc\+Code, std\+::string class\+Code, int ID, bool \&success)
+\begin{DoxyCompactList}\small\item\em Removes a Curricular Unit/class from a student. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_schedule_management_a0dfaa6cfcf8a186316e1634f511533ab}{addstudent}} (std\+::string uc\+Code, std\+::string class\+Code, int ID, bool \&success)
+\begin{DoxyCompactList}\small\item\em Adds a Curricular Unit/class from a student. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_schedule_management_af56b9221eed6164f9368b5b33ae549ff}{swap\+Student}} (int ID, std\+::string add\+UCCode, std\+::string add\+Class\+Code, std\+::string rem\+UCCode, std\+::string rem\+Class\+Code1, bool \&success)
+\begin{DoxyCompactList}\small\item\em Swaps a Curricular Unit/class from a student to a Curricular Unit/class that the student doesn´t have yet. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_schedule_management_a4dd03478b2003837269cc214b83d5b65}{Check\+Class\+Difference}} (std\+::string UCCode)
+\begin{DoxyCompactList}\small\item\em Checks if the amplitude of the total of students in all classes of a Curricular Unit is less than 4. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_schedule_management_a2aadbfb89d9116bc8078c52c4ec37642}\label{class_schedule_management_a2aadbfb89d9116bc8078c52c4ec37642}} 
+void {\bfseries process\+Request} ()
+\begin{DoxyCompactList}\small\item\em Grabs the next request in the queue requests and checks if it is possible with the methods created inside the code.~\newline
+ If it isn´t possible the method grabs the next request. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_schedule_management_a64cdad80a0b368dbf21c9935551a563b}\label{class_schedule_management_a64cdad80a0b368dbf21c9935551a563b}} 
+void {\bfseries see\+Requests} ()
+\begin{DoxyCompactList}\small\item\em Prints the requests in the requests queue. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_schedule_management_a67a50ccc12d43008be05a61aa987c22d}\label{class_schedule_management_a67a50ccc12d43008be05a61aa987c22d}} 
+void {\bfseries see\+Failed\+Requests} ()
+\begin{DoxyCompactList}\small\item\em Prints the failed requests in the failed\+Requests queue. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_schedule_management_aa5240961c03abe65b3ce78ade8ebf53e}\label{class_schedule_management_aa5240961c03abe65b3ce78ade8ebf53e}} 
+void {\bfseries clear\+Requests} ()
+\begin{DoxyCompactList}\small\item\em Removes all the requests in the requests queue. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_schedule_management_a3b4f593a9f63a2e971c947f0bc5ce428}{check}} ()
+\begin{DoxyCompactList}\small\item\em Checks if the .csv file opens. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_schedule_management_a36d818057228afe89cf23e5af2dd363c}{check2}} ()
+\begin{DoxyCompactList}\small\item\em Checks if the .csv file opens. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_schedule_management_ae16e71b559107099f0e01892081065d9}\label{class_schedule_management_ae16e71b559107099f0e01892081065d9}} 
+std\+::set$<$ \mbox{\hyperlink{class_student}{Student}} $>$ {\bfseries students}
+\begin{DoxyCompactList}\small\item\em Set of students.~\newline
+ Stores every different student. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_schedule_management_a3dbe77767b394d540d257bb48358ded0}\label{class_schedule_management_a3dbe77767b394d540d257bb48358ded0}} 
+std\+::vector$<$ \mbox{\hyperlink{class_class_schedule}{Class\+Schedule}} $>$ {\bfseries class\+Schedules}
+\begin{DoxyCompactList}\small\item\em Vector of class schedules.~\newline
+ Stores every different class schedules. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_schedule_management_a7ca6b80412890a99bd152ff86ea7dce4}\label{class_schedule_management_a7ca6b80412890a99bd152ff86ea7dce4}} 
+std\+::queue$<$ \mbox{\hyperlink{class_request}{Request}} $>$ {\bfseries requests}
+\begin{DoxyCompactList}\small\item\em Queue of requests.~\newline
+ Stores the different user requests. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_schedule_management_a777e459726b499973962430817f494d1}\label{class_schedule_management_a777e459726b499973962430817f494d1}} 
+std\+::queue$<$ \mbox{\hyperlink{class_request}{Request}} $>$ {\bfseries failed\+Requests}
+\begin{DoxyCompactList}\small\item\em Queue of failed requests~\newline
+ Stores the user requests that couldn\textquotesingle{}t be processed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_schedule_management_adff75a89db6c89f1645cfb211a086da8}\label{class_schedule_management_adff75a89db6c89f1645cfb211a086da8}} 
+\index{ScheduleManagement@{ScheduleManagement}!addRequest@{addRequest}}
+\index{addRequest@{addRequest}!ScheduleManagement@{ScheduleManagement}}
+\doxysubsubsection{\texorpdfstring{addRequest()}{addRequest()}}
+{\footnotesize\ttfamily void Schedule\+Management\+::add\+Request (\begin{DoxyParamCaption}\item[{std\+::string}]{request,  }\item[{std\+::string}]{addc\+UCode,  }\item[{std\+::string}]{addclass\+Code,  }\item[{std\+::string}]{remc\+UCode,  }\item[{std\+::string}]{remclass\+Code,  }\item[{int}]{iD }\end{DoxyParamCaption})}
+
+
+
+Adds a new request to the requests queue. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em request} & Corresponds to the name given to the request \\
+\hline
+{\em addc\+UCode} & Corresponds to the Curricular Unit given by the user.~\newline
+ In case of class/\+Curricular Unit swap this will be the new Curricular Unit added to the student \\
+\hline
+{\em addclass\+Code} & Corresponds to the class given by the user.~\newline
+ In case of class/\+Curricular Unit swap this will be the new class added to the student \\
+\hline
+{\em remc\+UCode} & Corresponds to the Curricular Unit the user wants to substitute in case of a swap.~\newline
+ It´s blank when there is no class/\+Curricular Unit swap \\
+\hline
+{\em remclass\+Code} & Corresponds to the class the user wants to substitute in case of a swap.~\newline
+ It´s blank when there is no class/\+Curricular Unit swap \\
+\hline
+{\em iD} & Corresponds to de ID of the student \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_schedule_management_a0dfaa6cfcf8a186316e1634f511533ab}\label{class_schedule_management_a0dfaa6cfcf8a186316e1634f511533ab}} 
+\index{ScheduleManagement@{ScheduleManagement}!addstudent@{addstudent}}
+\index{addstudent@{addstudent}!ScheduleManagement@{ScheduleManagement}}
+\doxysubsubsection{\texorpdfstring{addstudent()}{addstudent()}}
+{\footnotesize\ttfamily bool Schedule\+Management\+::addstudent (\begin{DoxyParamCaption}\item[{std\+::string}]{uc\+Code,  }\item[{std\+::string}]{class\+Code,  }\item[{int}]{ID,  }\item[{bool \&}]{success }\end{DoxyParamCaption})}
+
+
+
+Adds a Curricular Unit/class from a student. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em uc\+Code} & Corresponds to the Curricular Unit that the user wants to add \\
+\hline
+{\em class\+Code} & Corresponds to the class that the user wants to add \\
+\hline
+{\em ID} & Corresponds to the student ID \\
+\hline
+{\em success} & Correspond to the success of the method (if the class/\+Curricular Unit got added) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the class/\+Curricular Unit got added to the student.~\newline
+ False if the class/\+Curricular Unit wasn´t added to the student. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_schedule_management_a39992c705dd3353c99858092fe973bee}\label{class_schedule_management_a39992c705dd3353c99858092fe973bee}} 
+\index{ScheduleManagement@{ScheduleManagement}!auxGetClassOccupation@{auxGetClassOccupation}}
+\index{auxGetClassOccupation@{auxGetClassOccupation}!ScheduleManagement@{ScheduleManagement}}
+\doxysubsubsection{\texorpdfstring{auxGetClassOccupation()}{auxGetClassOccupation()}}
+{\footnotesize\ttfamily int Schedule\+Management\+::aux\+Get\+Class\+Occupation (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{uc\+Code,  }\item[{const std\+::string \&}]{class\+Code }\end{DoxyParamCaption}) const}
+
+
+
+Auxiliar function that calculates the number of students that are in a certain class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em uc\+Code} & Corresponds to the Curricular Unit \\
+\hline
+{\em class\+Code} & Corresponds to the class \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of students that are in the class that was given in the parameters 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_schedule_management_a3b4f593a9f63a2e971c947f0bc5ce428}\label{class_schedule_management_a3b4f593a9f63a2e971c947f0bc5ce428}} 
+\index{ScheduleManagement@{ScheduleManagement}!check@{check}}
+\index{check@{check}!ScheduleManagement@{ScheduleManagement}}
+\doxysubsubsection{\texorpdfstring{check()}{check()}}
+{\footnotesize\ttfamily int Schedule\+Management\+::check (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Checks if the .csv file opens. 
+
+\begin{DoxyReturn}{Returns}
+Number of students.~\newline
+ If it is 0 then it is not working 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_schedule_management_a36d818057228afe89cf23e5af2dd363c}\label{class_schedule_management_a36d818057228afe89cf23e5af2dd363c}} 
+\index{ScheduleManagement@{ScheduleManagement}!check2@{check2}}
+\index{check2@{check2}!ScheduleManagement@{ScheduleManagement}}
+\doxysubsubsection{\texorpdfstring{check2()}{check2()}}
+{\footnotesize\ttfamily int Schedule\+Management\+::check2 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Checks if the .csv file opens. 
+
+\begin{DoxyReturn}{Returns}
+Number of classers.~\newline
+ If it is 0 then it is not working 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_schedule_management_a4dd03478b2003837269cc214b83d5b65}\label{class_schedule_management_a4dd03478b2003837269cc214b83d5b65}} 
+\index{ScheduleManagement@{ScheduleManagement}!CheckClassDifference@{CheckClassDifference}}
+\index{CheckClassDifference@{CheckClassDifference}!ScheduleManagement@{ScheduleManagement}}
+\doxysubsubsection{\texorpdfstring{CheckClassDifference()}{CheckClassDifference()}}
+{\footnotesize\ttfamily bool Schedule\+Management\+::\+Check\+Class\+Difference (\begin{DoxyParamCaption}\item[{std\+::string}]{UCCode }\end{DoxyParamCaption})}
+
+
+
+Checks if the amplitude of the total of students in all classes of a Curricular Unit is less than 4. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em UCCode} & Corresponds to the Curricular Unit we want to use to check its amplitude \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the amplitude of the total of students in all classes of a Curricular Unit is less than 4.~\newline
+ False if the amplitude is higher than or equal to 4 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_schedule_management_a93966739e6cb9e28896e1f0a879ac8fc}\label{class_schedule_management_a93966739e6cb9e28896e1f0a879ac8fc}} 
+\index{ScheduleManagement@{ScheduleManagement}!getClassOccupation@{getClassOccupation}}
+\index{getClassOccupation@{getClassOccupation}!ScheduleManagement@{ScheduleManagement}}
+\doxysubsubsection{\texorpdfstring{getClassOccupation()}{getClassOccupation()}}
+{\footnotesize\ttfamily void Schedule\+Management\+::get\+Class\+Occupation (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{uc\+Code,  }\item[{const std\+::string \&}]{class\+Code,  }\item[{const std\+::string \&}]{how = {\ttfamily \char`\"{}none\char`\"{}} }\end{DoxyParamCaption}) const}
+
+
+
+Prints the number of students that are in a certain class.~\newline
+ If wanted, it prints the students name and ID in a choosen order by the user. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em uc\+Code} & Defines the Curricular Unit that the user is interested in \\
+\hline
+{\em class\+Code} & Defines the Class that the user is interested in \\
+\hline
+{\em how} & Defines how the user wants the students information to be printed.~\newline
+ It\textquotesingle{}s default value is \char`\"{}none\char`\"{} so if left empty the method will only print the number of students in that class \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_schedule_management_af83fa28554078c474099e5a0c35e0240}\label{class_schedule_management_af83fa28554078c474099e5a0c35e0240}} 
+\index{ScheduleManagement@{ScheduleManagement}!getFailedRequests@{getFailedRequests}}
+\index{getFailedRequests@{getFailedRequests}!ScheduleManagement@{ScheduleManagement}}
+\doxysubsubsection{\texorpdfstring{getFailedRequests()}{getFailedRequests()}}
+{\footnotesize\ttfamily std\+::queue$<$ \mbox{\hyperlink{class_request}{Request}} $>$ Schedule\+Management\+::get\+Failed\+Requests (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the queue of failed requests. 
+
+\begin{DoxyReturn}{Returns}
+Queue of failed requests 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_schedule_management_ae08b508313ef1c44fb098229527415cf}\label{class_schedule_management_ae08b508313ef1c44fb098229527415cf}} 
+\index{ScheduleManagement@{ScheduleManagement}!getMoreThanNUc@{getMoreThanNUc}}
+\index{getMoreThanNUc@{getMoreThanNUc}!ScheduleManagement@{ScheduleManagement}}
+\doxysubsubsection{\texorpdfstring{getMoreThanNUc()}{getMoreThanNUc()}}
+{\footnotesize\ttfamily void Schedule\+Management\+::get\+More\+Than\+NUc (\begin{DoxyParamCaption}\item[{int}]{N,  }\item[{const std\+::string \&}]{how = {\ttfamily \char`\"{}none\char`\"{}} }\end{DoxyParamCaption})}
+
+
+
+Prints the number of students that have nore than a certain number of Curricular Units.~\newline
+ If wanted, it prints the students name and ID in a choosen order by the user. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em N} & Corresponds to the number of Curricular Units that the user wants to set as the minimum \\
+\hline
+{\em how} & Defines how the user wants the students information to be printed.~\newline
+ It´s default value is \char`\"{}none\char`\"{} so if left empty the method will only print the number of students that have more than N Curricula Units \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_schedule_management_ab7c1f2868a870aa540c39163accfbde8}\label{class_schedule_management_ab7c1f2868a870aa540c39163accfbde8}} 
+\index{ScheduleManagement@{ScheduleManagement}!getRequests@{getRequests}}
+\index{getRequests@{getRequests}!ScheduleManagement@{ScheduleManagement}}
+\doxysubsubsection{\texorpdfstring{getRequests()}{getRequests()}}
+{\footnotesize\ttfamily std\+::queue$<$ \mbox{\hyperlink{class_request}{Request}} $>$ Schedule\+Management\+::get\+Requests (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the queue of requests. 
+
+\begin{DoxyReturn}{Returns}
+Queue of requests 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_schedule_management_a15d01b3e92b471e651758409b4007374}\label{class_schedule_management_a15d01b3e92b471e651758409b4007374}} 
+\index{ScheduleManagement@{ScheduleManagement}!getStudentSchedule@{getStudentSchedule}}
+\index{getStudentSchedule@{getStudentSchedule}!ScheduleManagement@{ScheduleManagement}}
+\doxysubsubsection{\texorpdfstring{getStudentSchedule()}{getStudentSchedule()}}
+{\footnotesize\ttfamily void Schedule\+Management\+::get\+Student\+Schedule (\begin{DoxyParamCaption}\item[{int}]{student\+ID }\end{DoxyParamCaption}) const}
+
+
+
+Prints the student information and it\textquotesingle{}s class schedules. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em student\+ID} & User wants to see this students\textquotesingle{}s schedule \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_schedule_management_a3e6110765a6f126cf1295797e24174e8}\label{class_schedule_management_a3e6110765a6f126cf1295797e24174e8}} 
+\index{ScheduleManagement@{ScheduleManagement}!getUCOccupation@{getUCOccupation}}
+\index{getUCOccupation@{getUCOccupation}!ScheduleManagement@{ScheduleManagement}}
+\doxysubsubsection{\texorpdfstring{getUCOccupation()}{getUCOccupation()}}
+{\footnotesize\ttfamily void Schedule\+Management\+::get\+UCOccupation (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{uc\+Code,  }\item[{const std\+::string \&}]{how = {\ttfamily \char`\"{}none\char`\"{}} }\end{DoxyParamCaption}) const}
+
+
+
+Prints the number of students that have a certain Curricular Unit.~\newline
+ If wanted, it prints the students name and ID in a choosen order by the user. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em uc\+Code} & Defines the Curricular Unit that the user is interested in \\
+\hline
+{\em how} & Defines how the user wants the students information to be printed.~\newline
+ It\textquotesingle{}s default value is \char`\"{}none\char`\"{} so if left empty the method will only print the number of students in the Curricula Unit \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_schedule_management_ab2ddcd774a4f7ae8c65d387786c58f67}\label{class_schedule_management_ab2ddcd774a4f7ae8c65d387786c58f67}} 
+\index{ScheduleManagement@{ScheduleManagement}!getYearOccupation@{getYearOccupation}}
+\index{getYearOccupation@{getYearOccupation}!ScheduleManagement@{ScheduleManagement}}
+\doxysubsubsection{\texorpdfstring{getYearOccupation()}{getYearOccupation()}}
+{\footnotesize\ttfamily void Schedule\+Management\+::get\+Year\+Occupation (\begin{DoxyParamCaption}\item[{char}]{year,  }\item[{const std\+::string \&}]{how = {\ttfamily \char`\"{}none\char`\"{}} }\end{DoxyParamCaption}) const}
+
+
+
+Prints the number of students that are in a certain year.~\newline
+ If wanted, it prints the students name and ID in a choosen order by the user. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em year} & Defines the year that the user is interested in \\
+\hline
+{\em how} & Defines how the user wants the students information to be printed.~\newline
+ It\textquotesingle{}s default value is \char`\"{}none\char`\"{} so if left empty the method will only print the number of students in that year \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_schedule_management_a07c0acd428092d3b4e20aaea1bd6a15e}\label{class_schedule_management_a07c0acd428092d3b4e20aaea1bd6a15e}} 
+\index{ScheduleManagement@{ScheduleManagement}!removeStudent@{removeStudent}}
+\index{removeStudent@{removeStudent}!ScheduleManagement@{ScheduleManagement}}
+\doxysubsubsection{\texorpdfstring{removeStudent()}{removeStudent()}}
+{\footnotesize\ttfamily void Schedule\+Management\+::remove\+Student (\begin{DoxyParamCaption}\item[{std\+::string}]{uc\+Code,  }\item[{std\+::string}]{class\+Code,  }\item[{int}]{ID,  }\item[{bool \&}]{success }\end{DoxyParamCaption})}
+
+
+
+Removes a Curricular Unit/class from a student. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em uc\+Code} & Corresponds to the Curricular Unit that the user wants to remove \\
+\hline
+{\em class\+Code} & Corresponds to the class that the user wants to remove \\
+\hline
+{\em ID} & Corresponds to the student ID \\
+\hline
+{\em success} & Correspond to the success of the method (if the class/\+Curricular Unit got removed) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_schedule_management_a21508b45f542791ea508dd06bd8914ff}\label{class_schedule_management_a21508b45f542791ea508dd06bd8914ff}} 
+\index{ScheduleManagement@{ScheduleManagement}!scheduleNumber@{scheduleNumber}}
+\index{scheduleNumber@{scheduleNumber}!ScheduleManagement@{ScheduleManagement}}
+\doxysubsubsection{\texorpdfstring{scheduleNumber()}{scheduleNumber()}}
+{\footnotesize\ttfamily int Schedule\+Management\+::schedule\+Number (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the number of classes in the class\+Schedules vector ~\newline
+ 
+
+\begin{DoxyReturn}{Returns}
+Number of classes in the class\+Schedules vector 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_schedule_management_a4ea6f59d507181783e2ec6dafc7dbc1f}\label{class_schedule_management_a4ea6f59d507181783e2ec6dafc7dbc1f}} 
+\index{ScheduleManagement@{ScheduleManagement}!setClassSchedule@{setClassSchedule}}
+\index{setClassSchedule@{setClassSchedule}!ScheduleManagement@{ScheduleManagement}}
+\doxysubsubsection{\texorpdfstring{setClassSchedule()}{setClassSchedule()}}
+{\footnotesize\ttfamily void Schedule\+Management\+::set\+Class\+Schedule (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{class_class_schedule}{Class\+Schedule}} $>$ \&}]{class\+Schedule\+Vector }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Reads the values of a vector.~\newline
+ Extracts the values read and writes them in the class\+Schedule vector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em class\+Schedule\+Vector} & Corresponds to the vector that will provide it´s values to the class\+Schedule vector \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_schedule_management_af0d0daffa87db522382ad0aa79bca73e}\label{class_schedule_management_af0d0daffa87db522382ad0aa79bca73e}} 
+\index{ScheduleManagement@{ScheduleManagement}!setSchedule@{setSchedule}}
+\index{setSchedule@{setSchedule}!ScheduleManagement@{ScheduleManagement}}
+\doxysubsubsection{\texorpdfstring{setSchedule()}{setSchedule()}}
+{\footnotesize\ttfamily void Schedule\+Management\+::set\+Schedule (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file }\end{DoxyParamCaption})}
+
+
+
+Reads a .csv file and extracts the information about the schedules.~\newline
+ Creates a new class/schedule combination in the class\+Schedules vector or adds to an already created class a schedule ~\newline
+ 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & Corresponds to the .csv file the program needs to read to get the class schedules information.~\newline
+ In this project, the .csv file is the classes.\+csv \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_schedule_management_ae511e88eb5e13793dad210b39954a954}\label{class_schedule_management_ae511e88eb5e13793dad210b39954a954}} 
+\index{ScheduleManagement@{ScheduleManagement}!setStudents@{setStudents}}
+\index{setStudents@{setStudents}!ScheduleManagement@{ScheduleManagement}}
+\doxysubsubsection{\texorpdfstring{setStudents()}{setStudents()}}
+{\footnotesize\ttfamily void Schedule\+Management\+::set\+Students (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file }\end{DoxyParamCaption})}
+
+
+
+Reads a .csv file and extracts the information about the students.~\newline
+ Creates a new student in the vector students or adds to an already created student a new class and it\textquotesingle{}s corresponding schedule. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & Corresponds to the .csv file the program needs to read to get the students information.~\newline
+ In this project, the .csv file is the students\+\_\+classes.\+csv \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_schedule_management_a7606df772a40e9d01325d35bda3ed141}\label{class_schedule_management_a7606df772a40e9d01325d35bda3ed141}} 
+\index{ScheduleManagement@{ScheduleManagement}!studentNumber@{studentNumber}}
+\index{studentNumber@{studentNumber}!ScheduleManagement@{ScheduleManagement}}
+\doxysubsubsection{\texorpdfstring{studentNumber()}{studentNumber()}}
+{\footnotesize\ttfamily int Schedule\+Management\+::student\+Number (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the number of students in the students set. 
+
+\begin{DoxyReturn}{Returns}
+Number of students in the students set 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_schedule_management_af56b9221eed6164f9368b5b33ae549ff}\label{class_schedule_management_af56b9221eed6164f9368b5b33ae549ff}} 
+\index{ScheduleManagement@{ScheduleManagement}!swapStudent@{swapStudent}}
+\index{swapStudent@{swapStudent}!ScheduleManagement@{ScheduleManagement}}
+\doxysubsubsection{\texorpdfstring{swapStudent()}{swapStudent()}}
+{\footnotesize\ttfamily void Schedule\+Management\+::swap\+Student (\begin{DoxyParamCaption}\item[{int}]{ID,  }\item[{std\+::string}]{add\+UCCode,  }\item[{std\+::string}]{add\+Class\+Code,  }\item[{std\+::string}]{rem\+UCCode,  }\item[{std\+::string}]{rem\+Class\+Code1,  }\item[{bool \&}]{success }\end{DoxyParamCaption})}
+
+
+
+Swaps a Curricular Unit/class from a student to a Curricular Unit/class that the student doesn´t have yet. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ID} & Corresponds to the student ID \\
+\hline
+{\em add\+UCCode} & Corresponds to the Curricular Unit that the user wants to add \\
+\hline
+{\em add\+Class\+Code} & Corresponds to the class that the user wants to add \\
+\hline
+{\em rem\+UCCode} & Corresponds to the Curricular Unit that the user wants to remove \\
+\hline
+{\em rem\+Class\+Code1} & Corresponds to the class that the user wants to remove \\
+\hline
+{\em success} & Correspond to the success of the method (if the swap was successfull) \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Schedule\+Management.\+h\end{DoxyCompactItemize}

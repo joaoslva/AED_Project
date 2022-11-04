@@ -303,13 +303,20 @@ int main() {
                     std::string request;
                     std::string cUCode;
                     std::string classCode;
+                    std::string remcUCode = "";
+                    std::string remclassCode = "";
                     int iD;
                     std::cout << "Please write the request type ('AddStudent', 'RemoveStudent', 'SwapStudent'): ";
                     std::cin >> request;
-                    std::cout << "Please write a C.U. code: ";
+                    std::cout << "Please write a C.U. code (New C.U in case you want to swap classes): ";
                     std::cin >> cUCode;
-                    std::cout << "Please write a class code: ";
+                    std::cout << "Please write a class code (New class in case you want to swap classes): ";
                     std::cin >> classCode;
+                    std::cout << "If request type is not SwapStudent you can leave the next to inputs blank\n";
+                    std::cout << "Please write a C.U. code (The one to be substituted)";
+                    std::cin >> remcUCode;
+                    std::cout << "Please write a class code (The one to be substituted)";
+                    std::cin >> remclassCode;
                     std::cout << "Please write a student ID: ";
                     std::cin >> iD;
                     while(std::cin.fail()){
@@ -318,8 +325,7 @@ int main() {
                         std::cout << "Not a valid entry. Enter a NUMBER: ";
                         std::cin >> iD;
                     }
-                    scheduleManager.addRequest(request, cUCode, classCode, iD);
-
+                    scheduleManager.addRequest(request, cUCode, classCode, remcUCode, remclassCode, iD);
                     std::string stay;
                     bool exit = false;
                     while(true){
