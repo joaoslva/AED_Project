@@ -3,6 +3,15 @@
 #include "headers/ScheduleManagement.h"
 
 int main() {
+    bool var = false;
+    ScheduleManagement scheduleManager = ScheduleManagement();
+    scheduleManager.setSchedule("../../AED_Project/headers/classes.csv");
+    scheduleManager.setStudents("../../AED_Project/headers/students_classes.csv");
+    scheduleManager.getStudentSchedule(202025232);
+    scheduleManager.removeStudent("L.EIC002","1LEIC05",202025232,var);
+    scheduleManager.getStudentSchedule(202025232);
+    return 0;
+}/*
     bool running = true;
 
     std::cout << "\n|==============================|\n"
@@ -553,6 +562,5 @@ int main() {
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         }
-    }
-    return 0;
-}
+    }*/
+

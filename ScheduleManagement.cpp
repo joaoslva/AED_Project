@@ -499,8 +499,10 @@ bool ScheduleManagement::addstudent(std::string ucCode, std::string classCode, i
 
 void ScheduleManagement::swapStudent(int ID, std::string addUCCode, std::string addClassCode ,std::string remUCCode,std::string remClassCode, bool& success){
     bool stub = false;
-    if (this->addstudent(addUCCode, addClassCode, ID, success)) {
-        this->removeStudent(remUCCode, remClassCode, ID, stub);
+    std::set<Student> students1 = students;
+    this->removeStudent(remUCCode,remClassCode,ID,stub);
+    if (!this->addstudent(addUCCode, addClassCode, ID, success)) {
+        students = students1;
     }
 }
 
