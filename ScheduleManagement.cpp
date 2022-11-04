@@ -381,28 +381,31 @@ void ScheduleManagement::getMoreThanNUc(int n, const std::string& how) {
 }
 
 void ScheduleManagement::removeStudent(std::string ucCode, std::string classCode, int ID, bool& success) {
-    for (Student student: this->students) {
-        if (student.getStudentID() == ID) {
-            ClassSchedule toberemoved = ClassSchedule(ucCode, classCode, "", 0, 0, "");
-            auto itr = std::remove_if(student.getStudentSched().begin(), student.getStudentSched().end(),
-                                      [&](ClassSchedule a) { return a == toberemoved; });
-            student.getStudentSched().erase(itr, student.getStudentSched().end());
-            CUClass toberemoved1 = CUClass(ucCode,classCode);
-            auto itr1 = std::remove_if(student.getClasses().begin(), student.getClasses().end(),
-                                       [&](CUClass a) { return a == toberemoved1; });
-            student.getClasses().erase(itr1, student.getClasses().end());
-            Student toberemoved2 = Student(ID,"","","");
-            auto itr0 = students.find(toberemoved2);
-            students.erase(itr0);
-            students.insert(student);
-            success = true;
-            break;
-        }
-        else{
-            std::cout << "Error: student doesn't exist in the data files\n";
-        }
+    Student toBeFind = Student(ID,"","","");
+    Student student = Student(0,"","","");
+    auto itrstud = students.find(toBeFind);
+    if (itrstud != students.end()) {
+        student = *itrstud;
+        ClassSchedule toberemoved = ClassSchedule(ucCode, classCode, "", 0, 0, "");
+        auto itr = std::remove_if(student.getStudentSched().begin(), student.getStudentSched().end(),
+                                  [&](ClassSchedule a) { return a == toberemoved; });
+        student.getStudentSched().erase(itr, student.getStudentSched().end());
+        CUClass toberemoved1 = CUClass(ucCode,classCode);
+        auto itr1 = std::remove_if(student.getClasses().begin(), student.getClasses().end(),
+                                   [&](CUClass a) { return a == toberemoved1; });
+        student.getClasses().erase(itr1, student.getClasses().end());
+        Student toberemoved2 = Student(ID,"","","");
+        auto itr0 = students.find(toberemoved2);
+        students.erase(itr0);
+        students.insert(student);
+        success = true;
 
     }
+    else{
+        std::cout << "Error: student doesn't exist in the data files\n";
+    }
+
+
 }
 bool ScheduleManagement::CheckClassDifference(std::string UCCode) {
     int min = 30;
