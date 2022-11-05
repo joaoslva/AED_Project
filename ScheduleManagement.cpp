@@ -380,7 +380,7 @@ void ScheduleManagement::getMoreThanNUc(int n, const std::string& how) {
 
 }
 
-void ScheduleManagement::removeStudent(std::string ucCode, std::string classCode, int ID, bool& success) {
+void ScheduleManagement::removeStudentUC(std::string ucCode, std::string classCode, int ID, bool& success) {
     Student toBeFind = Student(ID,"","","");
     Student student = Student(0,"","","");
     auto itrstud = students.find(toBeFind);
@@ -504,7 +504,7 @@ bool ScheduleManagement::addstudent(std::string ucCode, std::string classCode, i
 void ScheduleManagement::swapStudent(int ID, std::string addUCCode, std::string addClassCode ,std::string remUCCode,std::string remClassCode, bool& success){
     bool stub = false;
     std::set<Student> students1 = students;
-    this->removeStudent(remUCCode,remClassCode,ID,stub);
+    this->removeStudentUC(remUCCode, remClassCode, ID, stub);
     if (!this->addstudent(addUCCode, addClassCode, ID, success)) {
         students = students1;
     }
@@ -531,9 +531,9 @@ void ScheduleManagement::processRequest() {
             this->requests.pop();
         }
     }
-    else if(requestType == "RemoveStudent"){
+    else if(requestType == "RemoveStudentUC"){
         bool success = false;
-        this->removeStudent(temp.getaddCUCode(), temp.getaddClassCode(), temp.getID(), success);
+        this->removeStudentUC(temp.getaddCUCode(), temp.getaddClassCode(), temp.getID(), success);
         if(success){
             std::cout << "Request completed successfully and removed from the queue\n";
             success = false;
@@ -577,7 +577,7 @@ void ScheduleManagement::removeRequest() {
 
 // Adds a Request to the Requests queue
 void ScheduleManagement::addRequest(std::string request, std::string addcUCode, std::string addclassCode, std::string remcUCode, std::string remclassCode,int iD) {
-    if(request == "AddStudent" || request == "RemoveStudent" || request == "SwapStudent") {
+    if(request == "AddStudent" || request == "RemoveStudentUC" || request == "SwapStudent") {
         this->requests.push(Request(request, addcUCode, addclassCode, remcUCode, remclassCode,iD));
         std::cout << "Request successfully added to the queue.\n";
     }

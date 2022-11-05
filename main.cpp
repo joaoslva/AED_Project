@@ -512,7 +512,7 @@ int main() {
                 else if(requestChoice == "help"){
                     std::cout << "\n|======= Request Help =======|\n"
                                  "How all the functions work:\n"
-                                 "Add Request - Given a request type ('AddStudent', 'RemoveStudent', 'SwapStudent'),\n"
+                                 "Add Request - Given a request type ('AddStudent', 'RemoveStudentUC', 'SwapStudent'),\n"
                                  "  a C.U. code, a class code and a student ID, this function will add a request \n"
                                  "  with this information to the queue\n"
                                  "Process Request - Processes the first request on the queue and removes it, in case \n"

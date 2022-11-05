@@ -113,7 +113,7 @@ public:
     /// @param classCode Corresponds to the class that the user wants to remove
     /// @param ID Corresponds to the student ID
     /// @param success Correspond to the success of the method (if the class/Curricular Unit got removed)
-    void removeStudent(std::string ucCode, std::string classCode, int ID, bool& success);
+    void removeStudentUC(std::string ucCode, std::string classCode, int ID, bool& success);
 
     /// @brief Adds a Curricular Unit/class from a student
     /// @param ucCode Corresponds to the Curricular Unit that the user wants to add
