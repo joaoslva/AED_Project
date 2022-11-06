@@ -473,40 +473,41 @@ bool ScheduleManagement::addstudentCU(std::string ucCode, std::string classCode,
     // If the class can have more students
     if (checkClassAvailable) {
         // Check if the student is able to add that class to their schedule
-        for (Student student: this->students) {
-            if (student.getStudentID() == ID) {
-                for (ClassSchedule classSchedule: student.getStudentSched()) {
-                    for (Slot slot: classSchedule.getSlots()) {
-                        if ((slot.getType() == "TP" || slot.getType() == "PL") && weekDay == slot.getWeekDay() && ((startTime <= slot.getStartTime() && startTime + duration >= slot.getStartTime()) || (startTime <= slot.getStartTime() + slot.getDuration() && startTime >= slot.getStartTime()))) {
-                            checkStudentAvailable = false;
-                            break;
-                        }
-                    }
-                    if (!checkStudentAvailable) {
-                        std::cout << "Error: The class can not be added to student's schedule\n";
+        Student toBeFind = Student(ID,"","","");
+        Student student = Student(0,"","","");
+        auto itrstud = students.find(toBeFind);
+        if (itrstud != students.end()) {
+            student = *itrstud;
+            for (ClassSchedule classSchedule: student.getStudentSched()) {
+                for (Slot slot: classSchedule.getSlots()) {
+                    if ((slot.getType() == "TP" || slot.getType() == "PL") && weekDay == slot.getWeekDay() && ((startTime <= slot.getStartTime() && startTime + duration >= slot.getStartTime()) || (startTime <= slot.getStartTime() + slot.getDuration() && startTime >= slot.getStartTime()))) {
+                        checkStudentAvailable = false;
                         break;
                     }
                 }
+                if (!checkStudentAvailable) {
+                    std::cout << "Error: The class can not be added to student's schedule\n";
+                    break;
+                }
+            }
 
-                if (checkStudentAvailable) {
-                    for (ClassSchedule classSchedule: classSchedules) {
-                        if (classSchedule.getCUCode() == ucCode && classSchedule.getClassCode() == classCode) {
-                            student.getStudentSched().push_back(classSchedule);
-                            if(CheckClassDifference(ucCode)){
-                                Student toberemoved2 = Student(ID,"","","");
-                                auto itr0 = students.find(toberemoved2);
-                                students.erase(itr0);
-                                students.insert(student);
-                                success = true;
-                                break;
-                            }
-                            else{
-                                std::cout << "Error: This swap will cause unbalance between classes\n";
-                            }
+            if (checkStudentAvailable) {
+                for (ClassSchedule classSchedule: classSchedules) {
+                    if (classSchedule.getCUCode() == ucCode && classSchedule.getClassCode() == classCode) {
+                        student.getStudentSched().push_back(classSchedule);
+                        if(CheckClassDifference(ucCode)){
+                            Student toberemoved2 = Student(ID,"","","");
+                            auto itr0 = students.find(toberemoved2);
+                            students.erase(itr0);
+                            students.insert(student);
+                            success = true;
+                            break;
+                        }
+                        else{
+                            std::cout << "Error: This swap will cause unbalance between classes\n";
                         }
                     }
                 }
-                break;
             }
         }
     }
