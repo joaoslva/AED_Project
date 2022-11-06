@@ -24,7 +24,7 @@ class Slot{
 
         // Constructor
 
-        /// @brief Creates a Slot object
+        /// @brief Creates a Slot object\n Complexity: O(1)
         /// @param weekDay Week day to the class
         /// @param startTime Start Time of the class
         /// @param duration Duration of the class
@@ -33,19 +33,19 @@ class Slot{
 
         // Getters
 
-        /// @brief Get the week day of the class 
+        /// @brief Get the week day of the class \n Complexity: O(1)
         /// @return Week Day
         std::string getWeekDay() {return weekDay;};
 
-        /// @brief Get the start time of the class
+        /// @brief Get the start time of the class\n Complexity: O(1)
         /// @return Start Time
         double getStartTime() {return startTime;};
 
-        /// @brief Get the duration of the class
+        /// @brief Get the duration of the class\n Complexity: O(1)
         /// @return Duration
         double getDuration() {return duration;};
 
-        /// @brief Get the type of the class
+        /// @brief Get the type of the class\n Complexity: O(1)
         /// @return Type
         std::string getType() {return type;};
 };

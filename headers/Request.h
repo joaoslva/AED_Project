@@ -28,7 +28,7 @@ private:
 public:
     //Constructors
 
-    /// @brief Creates a new Request object
+    /// @brief Creates a new Request object\n Complexity: O(1)
     /// @param request Request Name
     /// @param addcUCode Curricular Unit code
     /// @param addclassCode Class code
@@ -45,23 +45,23 @@ public:
     }
     //Getters
 
-    /// @brief Gets the Request name
+    /// @brief Gets the Request name\n Complexity: O(1)
     /// @return Request name
     std::string getRequest() {return this->request;};
 
-    /// @brief Gets the Curricular Unit code
+    /// @brief Gets the Curricular Unit code\n Complexity: O(1)
     /// @return AddCurricularUnitCode
     std::string getaddCUCode() {return this->addcUCode;};
 
-    /// @brief Gets the Class code
+    /// @brief Gets the Class code\n Complexity: O(1)
     /// @return AddClassCode
     std::string getremCUCode() {return this->remcUCode;};
 
-    /// @brief Gets the Curricular Unit code (in case the request is a swap)
+    /// @brief Gets the Curricular Unit code (in case the request is a swap)\n Complexity: O(1)
     /// @return RemCurricularUnitCode
     std::string getaddClassCode() {return this->addclassCode;};
 
-    /// @brief Gets the Class code (in case the request is a swap)
+    /// @brief Gets the Class code (in case the request is a swap)\n Complexity: O(1)
     /// @return RemClassCode
     std::string getremClassCode() {return this->remclassCode;};
     int getID() {return this->ID;};

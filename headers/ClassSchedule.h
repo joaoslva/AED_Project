@@ -27,7 +27,7 @@ public:
 
         //Constructors
 
-        /// @brief Creates a ClassSchedule object
+        /// @brief Creates a ClassSchedule object\n Complexity: O(1)
         /// @param cUCode Curricular Unit code
         /// @param classCode Class code
         /// @param weekDay Week day of the class
@@ -37,32 +37,32 @@ public:
         ClassSchedule(std::string cUCode, std::string classCode, std::string weekDay, double startTime,
                       double duration, std::string type);
         
-        /// @brief Creates a ClassSchedule object whitout the schedule information
+        /// @brief Creates a ClassSchedule object whitout the schedule information\n Complexity: O(1)
         /// @param cUCode Curricular Unit code
         /// @param classCode Class code
         ClassSchedule(std::string cUCode, std::string classCode);
 
         // Getters
 
-        /// @brief Gets the Curricular Unit code
+        /// @brief Gets the Curricular Unit code\n Complexity: O(1)
         /// @return Curricular Unit code
         std::string getCUCode() {return this->cUCode;};
 
-        /// @brief Gets the Class code
+        /// @brief Gets the Class code\n Complexity: O(1)
         /// @return Class code
         std::string getClassCode() {return this->classCode;};
 
-        /// @brief Gets the Slots list
+        /// @brief Gets the Slots list\n Complexity: O(1)
         /// @return Slots list
         std::list<Slot> getSlots() {return this->slots;};
 
-        /// @brief Gets the class cap
+        /// @brief Gets the class cap\n Complexity: O(1)
         /// @return Class Cap
         static int getClassCap() {return classCap;};
 
         // Setters
 
-        /// @brief Adds a new slot to the slots list
+        /// @brief Adds a new slot to the slots list\n Complexity: O(1)
         /// @param weekDay Week day of the class
         /// @param startTime Class start time
         /// @param duration Duration of the class
@@ -71,7 +71,7 @@ public:
 
     // Override
 
-        /// @brief Overrides the operator == so it compares values instead of references
+        /// @brief Overrides the operator == so it compares values instead of references\n Complexity: O(1)
         /// @param c A ClassSchedule object
         /// @return True if the values are equal.\n False if they are not equal.
         bool operator== (const ClassSchedule& c) const;

@@ -3,4 +3,4 @@ project(Project)
 
 set(CMAKE_CXX_STANDARD 23)
 
-add_executable(Project main.cpp ScheduleManagement.cpp CUClass.cpp Request.cpp Slot.cpp Student.cpp ClassSchedule.cpp)
+add_executable(Project main.cpp ScheduleManagement.cpp CUClass.cpp Slot.cpp Student.cpp ClassSchedule.cpp)
