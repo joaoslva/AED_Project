@@ -1,5 +1,8 @@
 #include <iostream>
+#include <ctime>
 #include <limits>
+#include <fstream>
+#include <sstream>
 #include "headers/ScheduleManagement.h"
 
 void check(bool& exit){
@@ -25,16 +28,22 @@ void check(bool& exit){
 
 int main() {
     bool running = true;
-
+    time_t now = time(0);
+    tm* localtm = localtime(&now);
     std::cout << "\n|==============================|\n"
                  "Welcome to the Schedule Management app!\n"
                  "To use the app simply choose one of the options presented to you.\n"
                  "In any time you can go back one step by writing 'back', "
                  "write 'quit' to close the program \nor type the command "
-                 "'help' to see information about how to use the app functions.\n";
+                 "'help' to see information about how to use the app functions.\n"
+                 "Log files are available in 'Log' directory.\n";
     ScheduleManagement scheduleManager = ScheduleManagement();
     scheduleManager.setSchedule("../../AED_Project/headers/classes.csv");
     scheduleManager.setStudents("../../AED_Project/headers/students_classes.csv");
+    std::ofstream management_log;
+    std::ofstream request_log;
+    management_log.open("../../AED_Project/Log/management_log.txt", std::ios::app);
+    request_log.open("../../AED_Project/Log/request_log.txt", std::ios::app);
     if(scheduleManager.check() == 0 || scheduleManager.check2() == 0){
         std::cout << "Something went wrong while reading the files. Please check their paths in the source code\n";
         running = false;
@@ -42,9 +51,10 @@ int main() {
 
     while(running){
         std::string functionalityChoice;
-        std::cout << "\nWhich functionality do you want to use, 'Management', 'Request', 'help' or 'Quit'?\nEnter here: ";
+        std::cout << "\nWhich functionality do you want to use, 'Management', 'Request', 'ClearLog', 'help' or 'Quit'?\nEnter here: ";
         std::cin >> functionalityChoice;
         if (functionalityChoice == "Management" || functionalityChoice == "management") {
+            management_log << asctime(localtm) << '\n';
             std::cout << "\n|====== Management Area ======|";
             while(true){
                 std::string managementChoice;
@@ -64,7 +74,7 @@ int main() {
                         std::cin >> iD;
                     }
 
-                    scheduleManager.getStudentSchedule(iD);
+                    scheduleManager.getStudentSchedule(iD, management_log);
 
                     bool exit = false;
                     check(exit);
@@ -119,7 +129,7 @@ int main() {
                         }
                     }
 
-                    scheduleManager.getUCOccupation(cUCode, how);
+                    scheduleManager.getUCOccupation(cUCode, how, management_log);
 
                     bool exit = false;
                     check(exit);
@@ -177,7 +187,7 @@ int main() {
                         }
                     }
 
-                    scheduleManager.getClassOccupation(cUCode, classCode, how);
+                    scheduleManager.getClassOccupation(cUCode, classCode, how, management_log);
 
                     bool exit = false;
                     check(exit);
@@ -232,7 +242,7 @@ int main() {
                         }
                     }
 
-                    scheduleManager.getYearOccupation(year, how);
+                    scheduleManager.getYearOccupation(year, how, management_log);
 
                     bool exit = false;
                     check(exit);
@@ -293,7 +303,7 @@ int main() {
                         }
                     }
 
-                    scheduleManager.getMoreThanNUc(n, how);
+                    scheduleManager.getMoreThanNUc(n, how, management_log);
 
                     bool exit = false;
                     check(exit);
@@ -310,12 +320,12 @@ int main() {
                                      "Enter here ('Student'/'Schedule'):";
                         std::cin >> choice;
                         if(choice == "Student"){
-                            int num = scheduleManager.studentNumber();
+                            int num = scheduleManager.studentNumber(management_log);
                             std::cout << "Total number of students in the stored data: " << num << ".\n";
                             break;
                         }
                         else if(choice == "Schedule"){
-                            int num = scheduleManager.scheduleNumber();
+                            int num = scheduleManager.scheduleNumber(management_log);
                             std::cout << "Total number of different schedules in the stored data: " << num << ".\n";
                             break;
                         }
@@ -365,6 +375,7 @@ int main() {
             }
         }
         else if (functionalityChoice == "Request" || functionalityChoice == "request") {
+            request_log << asctime(localtm) << '\n';
             std::cout << "\n|======= Request Area =======|";
             while(true){
                 std::string requestChoice;
@@ -402,7 +413,7 @@ int main() {
                             std::cout << "Not a valid entry. Enter a NUMBER: ";
                             std::cin >> iD;
                         }
-                        scheduleManager.addRequest(request, cUCode, classCode, remcUCode, remclassCode, iD);
+                        scheduleManager.addRequest(request, cUCode, classCode, remcUCode, remclassCode, iD, request_log);
                     }
                     else if (option == "no" || option == "No"){
                         std::cout << "Please write the request type ('AddStudentCU', 'RemoveStudentCU'): ";
@@ -419,7 +430,7 @@ int main() {
                             std::cout << "Not a valid entry. Enter a NUMBER: ";
                             std::cin >> iD;
                         }
-                        scheduleManager.addRequest(request, cUCode, classCode, remcUCode, remclassCode, iD);
+                        scheduleManager.addRequest(request, cUCode, classCode, remcUCode, remclassCode, iD, request_log);
                     }
                     else{
                         std::cout << "Not a valid input, please try again.\n\n";
@@ -441,7 +452,7 @@ int main() {
                         std::string requestType = temp.getRequest();
                         int iD = temp.getID();
                         std::cout << "Processing request " << requestType << " for student " << iD << ".\n";
-                        scheduleManager.processRequest();
+                        scheduleManager.processRequest(request_log);
                     }
                     else{
                         std::cout << "Request queue is empty, nothing to process.\n";
@@ -465,7 +476,7 @@ int main() {
                         int iD = temp.getID();
                         std::cout << "Removing request " << requestType << " for student " << iD
                                   << " from the queue.\n";
-                        scheduleManager.removeRequest();
+                        scheduleManager.removeRequest(request_log);
                     }
                     bool exit = false;
                     check(exit);
@@ -477,7 +488,7 @@ int main() {
                 }
                 else if(requestChoice == "4"){
                     if(!scheduleManager.getRequests().empty()) {
-                        scheduleManager.seeRequests();
+                        scheduleManager.seeRequests(request_log);
                     }
                     else{
                         std::cout << "Request queue is empty, nothing to see.\n";
@@ -492,7 +503,7 @@ int main() {
                 }
                 else if(requestChoice == "5"){
                     if(!scheduleManager.getFailedRequests().empty()) {
-                        scheduleManager.seeFailedRequests();
+                        scheduleManager.seeFailedRequests(request_log);
                     }
                     else{
                         std::cout << "Request queue is empty, nothing to see.\n";
@@ -506,7 +517,7 @@ int main() {
                     }
                 }
                 else if(requestChoice == "6"){
-                    scheduleManager.clearRequests();
+                    scheduleManager.clearRequests(request_log);
                     std::string stay;
                     bool exit = false;
                     check(exit);
@@ -543,15 +554,49 @@ int main() {
                 }
             }
         }
+        else if(functionalityChoice == "ClearLog"){
+            std::string choice;
+            while(true){
+                std::cout << "Do you you want to clear the management or the request log?\n"
+                             "Enter here ('Management'/'Request'):";
+                std::cin >> choice;
+                if(choice == "Management"){
+                    std::ofstream file("../../AED_Project/Log/management_log.txt");
+                    file << "";
+                    file.close();
+                    std::cout << "Log cleared\n";
+                    break;
+                }
+                else if(choice == "Request"){
+                    std::ofstream file("../../AED_Project/Log/request_log.txt");
+                    file << "";
+                    file.close();
+                    std::cout << "Log cleared\n";
+                    break;
+                }
+                else if(choice == "back"){
+                    break;
+                }
+                else{
+                    std::cout << "Not a valid input, please try again.\n\n";
+                    functionalityChoice = "";
+                    std::cin.clear();
+                    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                }
+            }
+        }
         else if (functionalityChoice == "quit" || functionalityChoice == "Quit") {
             std::cout << "Thanks for using this app!\n"
                          "|==============================|\n";
+            management_log.close();
+            request_log.close();
             running = false;
         }
         else if(functionalityChoice == "help" || functionalityChoice == "Help"){
             std::cout << "\n|=======Help=======|\n"
                          "Management - functions that allow you to see information about students, classes, C.U. and other stuff;\n"
                          "Request - functions that allows you to queue request, such as adding a student to a new CU;\n"
+                         "ClearLog - clears t one of the log files, of choosing;\n"
                          "Quit - will close the app.\n"
                          "|=======Help=======|\n";
         }

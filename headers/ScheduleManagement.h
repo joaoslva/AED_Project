@@ -9,12 +9,16 @@
 #include <set>
 #include <queue>
 #include <string>
+#include <fstream>
+#include <sstream>
+
 
 class ScheduleManagement{
 
 private:
 
     // Attributes
+    static std::ofstream file;
 
     /// @brief Set of students.\n Stores every different student
     std::set<Student> students;
@@ -49,28 +53,28 @@ public:
 
     /// @brief Prints the student information and it's class schedules\n Complexity: O(log2(n))
     /// @param studentID User wants to see this students's schedule
-    void getStudentSchedule(int studentID) const;
+    void getStudentSchedule(int studentID, std::ofstream & output) const;
 
     /// @brief Prints the number of students that have a certain Curricular Unit.\n If wanted, it prints the students name and ID in a choosen order by the user
     /// @param ucCode Defines the Curricular Unit that the user is interested in
     /// @param how Defines how the user wants the students information to be printed.\n It's default value is "none" so if left empty the method will only print the number of students in the Curricula Unit\n Complexity: O(n²)
-    void getUCOccupation(const std::string& ucCode, const std::string& how = "none") const;
+    void getUCOccupation(const std::string& ucCode, const std::string& how = "none", std::ofstream & output = file) const;
 
     /// @brief Prints the number of students that are in a certain class.\n  If wanted, it prints the students name and ID in a choosen order by the user\n Complexity: O(n²)
     /// @param ucCode Defines the Curricular Unit that the user is interested in
     /// @param classCode Defines the Class that the user is interested in
     /// @param how Defines how the user wants the students information to be printed.\n It's default value is "none" so if left empty the method will only print the number of students in that class
-    void getClassOccupation(const std::string& ucCode, const std::string& classCode, const std::string& how = "none") const;
+    void getClassOccupation(const std::string& ucCode, const std::string& classCode, const std::string& how = "none", std::ofstream& output = file) const;
 
     /// @brief Prints the number of students that are in a certain year.\n If wanted, it prints the students name and ID in a choosen order by the user\n Complexity: O(n²)
     /// @param year Defines the year that the user is interested in
     /// @param how Defines how the user wants the students information to be printed.\n It's default value is "none" so if left empty the method will only print the number of students in that year
-    void getYearOccupation(char year, const std::string& how = "none" ) const;
+    void getYearOccupation(char year, const std::string& how = "none", std::ofstream& output = file) const;
 
     /// @brief Prints the number of students that have nore than a certain number of Curricular Units.\n If wanted, it prints the students name and ID in a choosen order by the user\n Complexity: O(n)
     /// @param N Corresponds to the number of Curricular Units that the user wants to set as the minimum
     /// @param how Defines how the user wants the students information to be printed.\n It´s default value is "none" so if left empty the method will only print the number of students that have more than N Curricula Units
-    void getMoreThanNUc(int N, const std::string& how = "none");
+    void getMoreThanNUc(int N, const std::string& how = "none", std::ofstream & output = file);
 
     /// @brief Auxiliar function that calculates the number of students that are in a certain class\n Complexity: O(n²)
     /// @param ucCode Corresponds to the Curricular Unit 
@@ -80,11 +84,11 @@ public:
 
     /// @brief Gets the number of students in the students set\n Complexity: O(1)
     /// @return Number of students in the students set
-    int studentNumber();
+    int studentNumber(std::ofstream& output = file);
 
     /// @brief Gets the number of classes in the classSchedules vector\n Complexity: O(1)
     /// @return Number of classes in the classSchedules vector
-    int scheduleNumber();
+    int scheduleNumber(std::ofstream& output = file);
 
     /// @brief Gets the queue of requests\n Complexity: O(1)
     /// @return Queue of requests
@@ -103,10 +107,10 @@ public:
     /// @param remcUCode Corresponds to the Curricular Unit the user wants to substitute in case of a swap.\n It´s blank when there is no class/Curricular Unit swap
     /// @param remclassCode Corresponds to the class the user wants to substitute in case of a swap.\n It´s blank when there is no class/Curricular Unit swap
     /// @param iD Corresponds to de ID of the student
-    void addRequest(std::string request, std::string addcUCode, std::string addclassCode, std::string remcUCode, std::string remclassCode,int iD);
+    void addRequest(std::string request, std::string addcUCode, std::string addclassCode, std::string remcUCode, std::string remclassCode,int iD, std::ofstream& output);
 
     /// @brief Removes a request from the queue requests\n Complexity: O(1)
-    void removeRequest();
+    void removeRequest(std::ofstream& output = file);
 
     /// @brief Removes a Curricular Unit/class from a student\n Complexity: O(log2(n))
     /// @param ucCode Corresponds to the Curricular Unit that the user wants to remove
@@ -138,16 +142,16 @@ public:
     bool CheckClassDifference(std::string UCCode);
 
     /// @brief Grabs the next request in the queue requests and checks if it is possible with the methods created inside the code.\n If it isn´t possible the method grabs the next request\n Complexity: O(n²)
-    void processRequest();
+    void processRequest(std::ofstream& output = file);
 
     /// @brief Prints the requests in the requests queue\n Complexity: O(n)
-    void seeRequests();
+    void seeRequests(std::ofstream& output = file);
 
     /// @brief Prints the failed requests in the failedRequests queue\n Complexity: O(n)
-    void seeFailedRequests();
+    void seeFailedRequests(std::ofstream& output);
 
     /// @brief Removes all the requests in the requests queue\n Complexity: O(n)
-    void clearRequests();
+    void clearRequests(std::ofstream& output);
 
     // Verifying
 

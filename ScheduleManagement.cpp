@@ -158,8 +158,8 @@ void ScheduleManagement::setStudents(const std::string& csv_file){
 }
 
 // Prints out the information about a certain student
-void ScheduleManagement::getStudentSchedule(int studentID) const {
-
+void ScheduleManagement::getStudentSchedule(int studentID, std::ofstream & output) const {
+    output << "getStudentSchedule was used\n";
     // Variable to check if there is a student with the ID that's wanted
     bool match = false;
 
@@ -178,25 +178,33 @@ void ScheduleManagement::getStudentSchedule(int studentID) const {
     if(match){
         std::cout << "Student ID: " << student.getStudentID() << "\n";
         std::cout << "Student name: " << student.getName() << "\n\n";
+        output << "Student ID: " << student.getStudentID() << "\n";
+        output << "Student name: " << student.getName() << "\n\n";
         for (ClassSchedule & classSchedule: student.getStudentSched()) {
             int count = 0;
             std::cout << "CUCode: " << classSchedule.getCUCode() << "\n";
             std::cout << "Class Code: " << classSchedule.getClassCode() << "\n";
+            output << "CUCode: " << classSchedule.getCUCode() << "\n";
+            output << "Class Code: " << classSchedule.getClassCode() << "\n";
             for (Slot & slot: classSchedule.getSlots()) {
                 if (count == 0) {
                     count++;
                     continue;
                 }
-
                 std::cout << "Week Day: " << slot.getWeekDay() << "\n";
                 std::cout << "Start Time: " << slot.getStartTime() << "\n";
                 std::cout << "Duration: " << slot.getDuration() << "\n";
                 std::cout << "Type: " << slot.getType() << "\n\n";
+                output << "Week Day: " << slot.getWeekDay() << "\n";
+                output << "Start Time: " << slot.getStartTime() << "\n";
+                output << "Duration: " << slot.getDuration() << "\n";
+                output << "Type: " << slot.getType() << "\n\n";
             }
         }
     }
     else{
         std::cout << "No Student match\n";
+        output << "No Student match\n";
     }
 }
 
@@ -209,8 +217,8 @@ bool ascendingUC(Student s1, Student s2) {return (s1.getClasses().size() < s2.ge
 bool descendingUC(Student s1, Student s2) {return s1.getClasses().size() > s2.getClasses().size();}
 
 // Prints out the information about a certain Curricular Unit
-void ScheduleManagement::getUCOccupation(const std::string& cUcode, const std::string& how) const {
-
+void ScheduleManagement::getUCOccupation(const std::string& cUcode, const std::string& how, std::ofstream& output) const {
+    output << "getUCOccupation was used\n";
     // List that contains all the students that belong to the Curricular Unit wanted
     std::list<Student> studentsList;
 
@@ -240,17 +248,18 @@ void ScheduleManagement::getUCOccupation(const std::string& cUcode, const std::s
     }
 
     std::cout << "C.U. Occupation: " << studentsList.size() << '\n';
-
+    output << "C.U. Occupation: " << studentsList.size() << '\n';
     if (how != "none") {
         for (Student student: studentsList) {
             std::cout << "Student ID: " << student.getStudentID() << " Student name: " << student.getName() << "\n";
+            output << "Student ID: " << student.getStudentID() << " Student name: " << student.getName() << "\n";
         }
     }
 }
 
 // Prints out the information about a certain class
-void ScheduleManagement::getClassOccupation(const std::string& cUcode, const std::string& classCode, const std::string& how) const{
-
+void ScheduleManagement::getClassOccupation(const std::string& cUcode, const std::string& classCode, const std::string& how, std::ofstream& output) const{
+    output << "getClassOccupation was used\n";
     // List that contains all the students that belong to the class wanted
     std::list<Student> studentsList;
 
@@ -280,9 +289,11 @@ void ScheduleManagement::getClassOccupation(const std::string& cUcode, const std
     }
 
     std::cout << "Class Occupation: " << studentsList.size() << '\n';
+    output << "Class Occupation: " << studentsList.size() << '\n';
     if (how != "none") {
         for (Student student: studentsList) {
             std::cout << "Student ID: " << student.getStudentID() << " Student name: " << student.getName() << "\n";
+            output << "Student ID: " << student.getStudentID() << " Student name: " << student.getName() << "\n";
         }
     }
 
@@ -304,8 +315,8 @@ int ScheduleManagement::auxGetClassOccupation(const std::string& cUcode, const s
     return studentsList.size();
 }
 // Prints out the information about a certain Year
-void ScheduleManagement::getYearOccupation(char year, const std::string& how) const {
-
+void ScheduleManagement::getYearOccupation(char year, const std::string& how, std::ofstream & output) const {
+    output << "getYearOccupation was used\n";
     // List that contains all the students that belong to the class wanted
     std::list<Student> studentsList;
 
@@ -335,16 +346,18 @@ void ScheduleManagement::getYearOccupation(char year, const std::string& how) co
     }
 
     std::cout << "Year Occupation: " << studentsList.size() << '\n';
+    output << "Year Occupation: " << studentsList.size() << '\n';
     if (how != "none") {
         for (Student student: studentsList) {
             std::cout << "Student ID: " << student.getStudentID() << " Student name: " << student.getName() << "\n";
+            output << "Student ID: " << student.getStudentID() << " Student name: " << student.getName() << "\n";
         }
     }
 }
 
 // Prints out the information about the students that have more than n Curricular Units
-void ScheduleManagement::getMoreThanNUc(int n, const std::string& how) {
-
+void ScheduleManagement::getMoreThanNUc(int n, const std::string& how, std::ofstream& output) {
+    output << "getMoreThanUc was used\n";
     // List that contains all the students that have more than n Curricular Units
     std::list<Student> studentsList;
 
@@ -372,10 +385,12 @@ void ScheduleManagement::getMoreThanNUc(int n, const std::string& how) {
     }
 
     std::cout << "Number of students: " << studentsList.size() << '\n';
+    output << "Number of students: " << studentsList.size() << '\n';
 
     if (how != "none") {
         for (Student student: studentsList) {
             std::cout << "Student ID: " << student.getStudentID() << " Student name: " << student.getName() << "\n";
+            output << "Student ID: " << student.getStudentID() << " Student name: " << student.getName() << "\n";
         }
     }
 
@@ -520,7 +535,8 @@ int ScheduleManagement::check() {return students.size();}
 int ScheduleManagement::check2() {return classSchedules.size();};
 
 // Processes the first request in the queue
-void ScheduleManagement::processRequest() {
+void ScheduleManagement::processRequest(std::ofstream& output) {
+    output << "processReqeust was used\n";
     Request temp = this->requests.front();
     std::string requestType = temp.getRequest();
     if(requestType == "AddStudentCU"){
@@ -528,11 +544,13 @@ void ScheduleManagement::processRequest() {
         this->addstudentCU(temp.getaddCUCode(), temp.getaddClassCode(), temp.getID(), success);
         if(success){
             std::cout << "Request completed successfully and removed from the queue\n";
+            output << "Request completed successfully and removed from the queue\n";
             success = false;
             this->requests.pop();
         }
         else{
             std::cout << "Request failed, please check given data. Removing request from queue\n";
+            output << "Request failed, please check given data. Removing request from queue\n";
             success = false;
             this->failedRequests.push(temp);
             this->requests.pop();
@@ -577,31 +595,38 @@ void ScheduleManagement::processRequest() {
 }
 
 // Removes the first request in the queue
-void ScheduleManagement::removeRequest() {
+void ScheduleManagement::removeRequest(std::ofstream& output) {
+    output << "removeRequest was used\n";
     if(!requests.empty()){
         int beforeSize = this->requests.size();
         this->requests.pop();
         int afterSize = this->requests.size();
         std::cout << "Before remove, size was " << beforeSize << ". Now, the queue size is " << afterSize << ".\n";
+        output << "Before remove, size was " << beforeSize << ". Now, the queue size is " << afterSize << ".\n";
     }
     else{
         std::cout << "Request queue is empty, nothing to be removed.\n";
+        output << "Request queue is empty, nothing to be removed.\n";
     }
 }
 
 // Adds a Request to the Requests queue
-void ScheduleManagement::addRequest(std::string request, std::string addcUCode, std::string addclassCode, std::string remcUCode, std::string remclassCode,int iD) {
+void ScheduleManagement::addRequest(std::string request, std::string addcUCode, std::string addclassCode, std::string remcUCode, std::string remclassCode,int iD, std::ofstream& output) {
+    output << "addRequest was used\n";
     if(request == "AddStudentCU" || request == "RemoveStudentCU" || request == "SwapStudentCU") {
         this->requests.push(Request(request, addcUCode, addclassCode, remcUCode, remclassCode,iD));
         std::cout << "Request successfully added to the queue.\n";
+        output << "Request "<< request << " for student " << iD << " added to the queue.\n";
     }
     else{
         std::cout << "Not a valid request type, request not added to the queue.\n";
+        output << request <<": Not a valid request type, request not added to the queue.\n";
     }
 }
 
 // Shows all the requests in the queue
-void ScheduleManagement::seeRequests(){
+void ScheduleManagement::seeRequests(std::ofstream& output){
+    output << "seeRequests was used\n";
     int index = 1;
     std::cout << '\n';
     std::queue<Request> temp = this->getRequests();
@@ -616,13 +641,19 @@ void ScheduleManagement::seeRequests(){
         std::cout << "Class: " << class_ << '\n';
         std::cout << "C.U.: " << cu << '\n';
         std::cout << "Student ID: " << iD << '\n';
+        output << "Request number " << index << ":\n";
+        output << "Type: " << type << '\n';
+        output << "Class: " << class_ << '\n';
+        output << "C.U.: " << cu << '\n';
+        output << "Student ID: " << iD << '\n';
         index++;
         temp.pop();
     }
 }
 
 // Shows all the failed request in the queue
-void ScheduleManagement::seeFailedRequests(){
+void ScheduleManagement::seeFailedRequests(std::ofstream& output){
+    output << "See failedRequests was used\n";
     int index = 1;
     std::cout << '\n';
     std::queue<Request> temp = this->getFailedRequests();
@@ -637,13 +668,19 @@ void ScheduleManagement::seeFailedRequests(){
         std::cout << "Class: " << class_ << '\n';
         std::cout << "C.U.: " << cu << '\n';
         std::cout << "Student ID: " << iD << '\n';
+        output << "Request number " << index << ":\n";
+        output << "Type: " << type << '\n';
+        output << "Class: " << class_ << '\n';
+        output << "C.U.: " << cu << '\n';
+        output << "Student ID: " << iD << '\n';
         index++;
         temp.pop();
     }
 }
 
 // Erases requests from one of the queues
-void ScheduleManagement::clearRequests(){
+void ScheduleManagement::clearRequests(std::ofstream& output){
+    output << "clearReqeusts was used\n";
     while(true){
         std::string choice;
         std::cout << "Do you want to erase 'Requests' or 'FailedRequests'?\n"
@@ -655,10 +692,12 @@ void ScheduleManagement::clearRequests(){
                     this->requests.pop();
                 }
                 std::cout << "Requests erase successfully\n";
+                output << "Requests erase successfully\n";
                 break;
             }
             else{
                 std::cout << "Request queue is empty, can't erase.\n";
+                output << "Request queue is empty, can't erase.\n";
                 break;
             }
         }
@@ -668,10 +707,12 @@ void ScheduleManagement::clearRequests(){
                     this->failedRequests.pop();
                 }
                 std::cout << "Failed Requests erase successfully\n";
+                output << "Failed Requests erase successfully\n";
                 break;
             }
             else{
                 std::cout << "Failed Request queue is empty, can't erase.\n";
+                output << "Failed Request queue is empty, can't erase.\n";
                 break;
             }
         }
@@ -697,11 +738,15 @@ std::queue<Request> ScheduleManagement::getFailedRequests() {
 }
 
 // Auxiliary function
-int ScheduleManagement::studentNumber() {
+int ScheduleManagement::studentNumber(std::ofstream& output) {
+    output << "studentNumber was used\n";
+    output << "size: " << this->students.size() << '\n';
     return this->students.size();
 }
 
 // Auxiliary function
-int ScheduleManagement::scheduleNumber() {
+int ScheduleManagement::scheduleNumber(std::ofstream & output) {
+    output << "sheduleNumber was used\n";
+    output << "size: " << this->classSchedules.size() << '\n';
     return this->classSchedules.size();
 }
