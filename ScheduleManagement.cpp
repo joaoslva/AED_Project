@@ -2,6 +2,7 @@
 #include <fstream>
 #include <sstream>
 #include <iostream>
+#include <limits>
 
 // Setters
 // Creates different schedules from the csv_file classes.csv
@@ -380,7 +381,8 @@ void ScheduleManagement::getMoreThanNUc(int n, const std::string& how) {
 
 }
 
-void ScheduleManagement::removeStudentUC(std::string ucCode, std::string classCode, int ID, bool& success) {
+// Removes a certain UC from a student schedule
+void ScheduleManagement::removeStudentCU(std::string ucCode, std::string classCode, int ID, bool& success) {
     Student toBeFind = Student(ID,"","","");
     Student student = Student(0,"","","");
     auto itrstud = students.find(toBeFind);
@@ -407,6 +409,8 @@ void ScheduleManagement::removeStudentUC(std::string ucCode, std::string classCo
 
 
 }
+
+// Auxiliary function to check if there isn't unbalanced classes
 bool ScheduleManagement::CheckClassDifference(std::string UCCode) {
     int min = 30;
     int max = 0;
@@ -423,11 +427,12 @@ bool ScheduleManagement::CheckClassDifference(std::string UCCode) {
     return max-min < 4;
 }
 
-bool ScheduleManagement::addstudent(std::string ucCode, std::string classCode, int ID, bool& success) {
+// Adds a certain UC to a student schedule
+bool ScheduleManagement::addstudentCU(std::string ucCode, std::string classCode, int ID, bool& success) {
 
     // Check whether the class is available
-    bool checkClassAvailable = false; // se a turma existe e nÃ£o atingiu o limite
-    bool checkStudentAvailable = true; //
+    bool checkClassAvailable = false;
+    bool checkStudentAvailable = true;
 
     // Stores the information about the TP or PL classes (The ones that can't be overlapped)
     std::string weekDay;
@@ -468,7 +473,7 @@ bool ScheduleManagement::addstudent(std::string ucCode, std::string classCode, i
                     }
                 }
 
-                if (checkStudentAvailable ) {
+                if (checkStudentAvailable) {
                     for (ClassSchedule classSchedule: classSchedules) {
                         if (classSchedule.getCUCode() == ucCode && classSchedule.getClassCode() == classCode) {
                             student.getStudentSched().push_back(classSchedule);
@@ -500,25 +505,27 @@ bool ScheduleManagement::addstudent(std::string ucCode, std::string classCode, i
     else return 0;
 }
 
-
-void ScheduleManagement::swapStudent(int ID, std::string addUCCode, std::string addClassCode ,std::string remUCCode,std::string remClassCode, bool& success){
+// Swaps a UC in a student schedule
+void ScheduleManagement::swapStudentCU(int ID, std::string addUCCode, std::string addClassCode , std::string remUCCode, std::string remClassCode, bool& success){
     bool stub = false;
     std::set<Student> students1 = students;
-    this->removeStudentUC(remUCCode, remClassCode, ID, stub);
-    if (!this->addstudent(addUCCode, addClassCode, ID, success)) {
+    this->removeStudentCU(remUCCode, remClassCode, ID, stub);
+    if (!this->addstudentCU(addUCCode, addClassCode, ID, success)) {
         students = students1;
     }
 }
 
+// To check if the file where open
 int ScheduleManagement::check() {return students.size();}
 int ScheduleManagement::check2() {return classSchedules.size();};
 
+// Processes the first request in the queue
 void ScheduleManagement::processRequest() {
     Request temp = this->requests.front();
     std::string requestType = temp.getRequest();
-    if(requestType == "AddStudent"){
+    if(requestType == "AddStudentCU"){
         bool success = false;
-        this->addstudent(temp.getaddCUCode(), temp.getaddClassCode(), temp.getID(), success);
+        this->addstudentCU(temp.getaddCUCode(), temp.getaddClassCode(), temp.getID(), success);
         if(success){
             std::cout << "Request completed successfully and removed from the queue\n";
             success = false;
@@ -531,9 +538,9 @@ void ScheduleManagement::processRequest() {
             this->requests.pop();
         }
     }
-    else if(requestType == "RemoveStudentUC"){
+    else if(requestType == "RemoveStudentCU"){
         bool success = false;
-        this->removeStudentUC(temp.getaddCUCode(), temp.getaddClassCode(), temp.getID(), success);
+        this->removeStudentCU(temp.getaddCUCode(), temp.getaddClassCode(), temp.getID(), success);
         if(success){
             std::cout << "Request completed successfully and removed from the queue\n";
             success = false;
@@ -546,9 +553,10 @@ void ScheduleManagement::processRequest() {
             this->requests.pop();
         }
     }
-    else if(requestType == "SwapStudent"){
+    else if(requestType == "SwapStudentCU"){
         bool success = false;
-        this->swapStudent(temp.getID(), temp.getaddCUCode(), temp.getaddClassCode(), temp.getremCUCode(), temp.getaddClassCode(), success);
+        this->swapStudentCU(temp.getID(), temp.getaddCUCode(), temp.getaddClassCode(), temp.getremCUCode(),
+                            temp.getaddClassCode(), success);
         if(success){
             std::cout << "Request completed successfully and removed from the queue\n";
             success = false;
@@ -568,16 +576,22 @@ void ScheduleManagement::processRequest() {
     }
 }
 
+// Removes the first request in the queue
 void ScheduleManagement::removeRequest() {
-    int beforeSize = this->requests.size();
-    this->requests.pop();
-    int afterSize = this->requests.size();
-    std::cout << "Before remove, size was " << beforeSize << ". Now, the queue size is " << afterSize << ".\n";
+    if(!requests.empty()){
+        int beforeSize = this->requests.size();
+        this->requests.pop();
+        int afterSize = this->requests.size();
+        std::cout << "Before remove, size was " << beforeSize << ". Now, the queue size is " << afterSize << ".\n";
+    }
+    else{
+        std::cout << "Request queue is empty, nothing to be removed.\n";
+    }
 }
 
 // Adds a Request to the Requests queue
 void ScheduleManagement::addRequest(std::string request, std::string addcUCode, std::string addclassCode, std::string remcUCode, std::string remclassCode,int iD) {
-    if(request == "AddStudent" || request == "RemoveStudentUC" || request == "SwapStudent") {
+    if(request == "AddStudentCU" || request == "RemoveStudentCU" || request == "SwapStudentCU") {
         this->requests.push(Request(request, addcUCode, addclassCode, remcUCode, remclassCode,iD));
         std::cout << "Request successfully added to the queue.\n";
     }
@@ -586,6 +600,7 @@ void ScheduleManagement::addRequest(std::string request, std::string addcUCode, 
     }
 }
 
+// Shows all the requests in the queue
 void ScheduleManagement::seeRequests(){
     int index = 1;
     std::cout << '\n';
@@ -605,6 +620,8 @@ void ScheduleManagement::seeRequests(){
         temp.pop();
     }
 }
+
+// Shows all the failed request in the queue
 void ScheduleManagement::seeFailedRequests(){
     int index = 1;
     std::cout << '\n';
@@ -624,6 +641,8 @@ void ScheduleManagement::seeFailedRequests(){
         temp.pop();
     }
 }
+
+// Erases requests from one of the queues
 void ScheduleManagement::clearRequests(){
     while(true){
         std::string choice;
@@ -663,22 +682,26 @@ void ScheduleManagement::clearRequests(){
             std::cout << "Not a valid input, try again\n";
             choice = "";
             std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         }
     }
 }
-
+// Auxiliary function
 std::queue<Request> ScheduleManagement::getRequests() {
     return this->requests;
 }
 
+// Auxiliary function
 std::queue<Request> ScheduleManagement::getFailedRequests() {
     return this->failedRequests;
 }
 
+// Auxiliary function
 int ScheduleManagement::studentNumber() {
     return this->students.size();
 }
 
+// Auxiliary function
 int ScheduleManagement::scheduleNumber() {
     return this->classSchedules.size();
 }

@@ -17,5 +17,5 @@ var searchData=
   ['studentnumber_14',['studentNumber',['../class_schedule_management.html#a7606df772a40e9d01325d35bda3ed141',1,'ScheduleManagement']]],
   ['students_15',['students',['../class_schedule_management.html#ae16e71b559107099f0e01892081065d9',1,'ScheduleManagement']]],
   ['studentschedule_16',['studentSchedule',['../class_student.html#a9052dff53adbd87eeadedc332836e830',1,'Student']]],
-  ['swapstudent_17',['swapStudent',['../class_schedule_management.html#af56b9221eed6164f9368b5b33ae549ff',1,'ScheduleManagement']]]
+  ['swapstudent_17',['swapStudentCU',['../class_schedule_management.html#af56b9221eed6164f9368b5b33ae549ff',1,'ScheduleManagement']]]
 ];

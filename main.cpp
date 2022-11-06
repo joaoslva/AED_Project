@@ -2,6 +2,27 @@
 #include <limits>
 #include "headers/ScheduleManagement.h"
 
+void check(bool& exit){
+    std::string stay;
+    while(true){
+        std::cout << "\nDo you wish to use another function or go back ('stay'/'back')?\nEnter here: ";
+        std::cin >> stay;
+        if(stay == "stay"){
+            break;
+        }
+        else if(stay == "back"){
+            exit = true;
+            break;
+        }
+        else{
+            std::cout << "Not a valid input, please try again.\n";
+            stay = "";
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        }
+    }
+}
+
 int main() {
     bool running = true;
 
@@ -21,15 +42,14 @@ int main() {
 
     while(running){
         std::string functionalityChoice;
-
         std::cout << "\nWhich functionality do you want to use, 'Management', 'Request', 'help' or 'Quit'?\nEnter here: ";
         std::cin >> functionalityChoice;
         if (functionalityChoice == "Management" || functionalityChoice == "management") {
-            //Management area
+            std::cout << "\n|====== Management Area ======|";
             while(true){
                 std::string managementChoice;
-                std::cout << "\nWhich function do you want to use, 1-'Student Schedule', 2-'C.U. Occupation', 3-'Class Occupation'"
-                             "4-'Year Occupation',\n"
+                std::cout << "\nWhich functionality do you want to use? 1-'Student Schedule', 2-'C.U. Occupation', "
+                             "3-'Class Occupation', 4-'Year Occupation',\n"
                              " 5-'More than x C.U's, 6-'Check number of', 'help' or 'back'? (Use 'help' to see their description)\n"
                              "Enter index here: ";
                 std::cin >> managementChoice;
@@ -46,139 +66,186 @@ int main() {
 
                     scheduleManager.getStudentSchedule(iD);
 
-                    //Loop to check if user wants to stay or go back
-                    std::string stay;
                     bool exit = false;
-                    while(true){
-                        std::cout << "\n Do you wish to use another function or go back ('stay'/'back')?\n Enter here: ";
-                        std::cin >> stay;
-                        if(stay == "stay"){
-                            break;
-                        }
-                        else if(stay == "back"){
-                            exit = true;
-                            break;
-                        }
-                        else{
-                            std::cout << "Not a valid input, please try again.";
-                            stay = "";
-                            std::cin.clear();
-                            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-                        }
-                    }
+                    check(exit);
                     if(exit){
                         exit = false;
+                        std::cout << "|============================|\n";
                         break;
                     }
                 }
                 else if(managementChoice == "2"){
                     std::string cUCode;
+                    std::string how_temp;
                     std::string how;
                     std::cout << "Please write a C.U. code: ";
                     std::cin >> cUCode;
-                    std::cout << "Choose a ordering method (none, 'ascending name/id/UC's', 'descending name/id/UC's'): ";
-                    std::cin >> how;
-                    scheduleManager.getUCOccupation(cUCode, how);
-
-                    //Loop to check if user wants to stay or go back
-                    std::string stay;
-                    bool exit = false;
                     while(true){
-                        std::cout << "\n Do you wish to use another function or go back ('stay'/'back')?\n Enter here: ";
-                        std::cin >> stay;
-                        if(stay == "stay"){
+                        std::cout << "Choose a ordering method ('none', 'ascending+Name/ID/UCs', 'descending+Name/ID/UCs'): ";
+                        std::cin >> how_temp;
+                        if(how_temp == "none"){
+                            how = "none";
                             break;
                         }
-                        else if(stay == "back"){
-                            exit = true;
+                        else if(how_temp == "ascendingName"){
+                            how = "ascending name";
+                            break;
+                        }
+                        else if(how_temp == "ascendingID"){
+                            how = "ascending id";
+                            break;
+                        }
+                        else if(how_temp == "ascendingUCs"){
+                            how = "ascending UC's";
+                            break;
+                        }
+                        else if(how_temp == "descendingName"){
+                            how = "descending name";
+                            break;
+                        }
+                        else if(how_temp == "descendingID"){
+                            how = "descending id";
+                            break;
+                        }
+                        else if(how_temp == "descendingUCs"){
+                            how = "descending UC's";
                             break;
                         }
                         else{
-                            std::cout << "Not a valid input, please try again.";
-                            stay = "";
+                            std::cout << "Not a valid ordering method, please try again.\n\n";
+                            how_temp = "";
                             std::cin.clear();
                             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                         }
                     }
+
+                    scheduleManager.getUCOccupation(cUCode, how);
+
+                    bool exit = false;
+                    check(exit);
                     if(exit){
                         exit = false;
+                        std::cout << "|============================|\n";
                         break;
                     }
                 }
                 else if(managementChoice == "3"){
                     std::string cUCode;
                     std::string classCode;
+                    std::string how_temp;
                     std::string how;
                     std::cout << "Please write a C.U. code: ";
                     std::cin >> cUCode;
                     std::cout << "Please write a class code: ";
                     std::cin >> classCode;
-                    std::cout << "Choose a ordering method (none, 'ascending name/id/UC's', 'descending name/id/UC's'): ";
-                    std::cin >> how;
-                    scheduleManager.getClassOccupation(cUCode, classCode, how);
-
-                    //Loop to check if user wants to stay or go back
-                    std::string stay;
-                    bool exit = false;
                     while(true){
-                        std::cout << "\n Do you wish to use another function or go back ('stay'/'back')?\n Enter here: ";
-                        std::cin >> stay;
-                        if(stay == "stay"){
+                        std::cout << "Choose a ordering method ('none', 'ascending+Name/ID/UCs', 'descending+Name/ID/UCs'): ";
+                        std::cin >> how_temp;
+                        if(how_temp == "none"){
+                            how = "none";
                             break;
                         }
-                        else if(stay == "back"){
-                            exit = true;
+                        else if(how_temp == "ascendingName"){
+                            how = "ascending name";
+                            break;
+                        }
+                        else if(how_temp == "ascendingID"){
+                            how = "ascending id";
+                            break;
+                        }
+                        else if(how_temp == "ascendingUCs"){
+                            how = "ascending UC's";
+                            break;
+                        }
+                        else if(how_temp == "descendingName"){
+                            how = "descending name";
+                            break;
+                        }
+                        else if(how_temp == "descendingID"){
+                            how = "descending id";
+                            break;
+                        }
+                        else if(how_temp == "descendingUCs"){
+                            how = "descending UC's";
                             break;
                         }
                         else{
-                            std::cout << "Not a valid input, please try again.";
-                            stay = "";
+                            std::cout << "Not a valid ordering method, please try again.\n\n";
+                            how_temp = "";
                             std::cin.clear();
                             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                         }
                     }
+
+                    scheduleManager.getClassOccupation(cUCode, classCode, how);
+
+                    bool exit = false;
+                    check(exit);
                     if(exit){
                         exit = false;
+                        std::cout << "|============================|\n";
                         break;
                     }
                 }
                 else if(managementChoice == "4"){
                     char year;
                     std::string how;
+                    std::string how_temp;
                     std::cout << "Please write a year: ";
                     std::cin >> year;
-                    std::cout << "Choose a ordering method (none, 'ascending name/id/UC's', 'descending name/id/UC's'): ";
-                    std::cin >> how;
-                    scheduleManager.getYearOccupation(year, how);
-
-                    //Loop to check if user wants to stay or go back
-                    std::string stay;
-                    bool exit = false;
                     while(true){
-                        std::cout << "\n Do you wish to use another function or go back ('stay'/'back')?\n Enter here: ";
-                        std::cin >> stay;
-                        if(stay == "stay"){
+                        std::cout << "Choose a ordering method ('none', 'ascending+Name/ID/UCs', 'descending+Name/ID/UCs'): ";
+                        std::cin >> how_temp;
+                        if(how_temp == "none"){
+                            how = "none";
                             break;
                         }
-                        else if(stay == "back"){
-                            exit = true;
+                        else if(how_temp == "ascendingName"){
+                            how = "ascending name";
+                            break;
+                        }
+                        else if(how_temp == "ascendingID"){
+                            how = "ascending id";
+                            break;
+                        }
+                        else if(how_temp == "ascendingUCs"){
+                            how = "ascending UC's";
+                            break;
+                        }
+                        else if(how_temp == "descendingName"){
+                            how = "descending name";
+                            break;
+                        }
+                        else if(how_temp == "descendingID"){
+                            how = "descending id";
+                            break;
+                        }
+                        else if(how_temp == "descendingUCs"){
+                            how = "descending UC's";
                             break;
                         }
                         else{
-                            std::cout << "Not a valid input, please try again.";
-                            stay = "";
+                            std::cout << "Not a valid ordering method, please try again.\n\n";
+                            how_temp = "";
                             std::cin.clear();
                             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                         }
                     }
+
+                    scheduleManager.getYearOccupation(year, how);
+
+                    bool exit = false;
+                    check(exit);
                     if(exit){
                         exit = false;
+                        std::cout << "|============================|\n";
                         break;
                     }
                 }
                 else if(managementChoice == "5"){
                     int n;
                     std::string how;
+                    std::string how_temp;
                     std::cout << "Please write a number: ";
                     std::cin >> n;
                     while(std::cin.fail()){
@@ -187,32 +254,52 @@ int main() {
                         std::cout << "Not a valid entry. Enter a number: ";
                         std::cin >> n;
                     }
-                    std::cout << "Choose a ordering method (none, 'ascending name/id/UC's', 'descending name/id/UC's'): ";
-                    std::cin >> how;
-                    scheduleManager.getMoreThanNUc(n, how);
-
-                    //Loop to check if user wants to stay or go back
-                    std::string stay;
-                    bool exit = false;
                     while(true){
-                        std::cout << "\nDo you wish to use another function or go back ('stay'/'back')?\nEnter here: ";
-                        std::cin >> stay;
-                        if(stay == "stay"){
+                        std::cout << "Choose a ordering method ('none', 'ascending+Name/ID/UCs', 'descending+Name/ID/UCs'): ";
+                        std::cin >> how_temp;
+                        if(how_temp == "none"){
+                            how = "none";
                             break;
                         }
-                        else if(stay == "back"){
-                            exit = true;
+                        else if(how_temp == "ascendingName"){
+                            how = "ascending name";
+                            break;
+                        }
+                        else if(how_temp == "ascendingID"){
+                            how = "ascending id";
+                            break;
+                        }
+                        else if(how_temp == "ascendingUCs"){
+                            how = "ascending UC's";
+                            break;
+                        }
+                        else if(how_temp == "descendingName"){
+                            how = "descending name";
+                            break;
+                        }
+                        else if(how_temp == "descendingID"){
+                            how = "descending id";
+                            break;
+                        }
+                        else if(how_temp == "descendingUCs"){
+                            how = "descending UC's";
                             break;
                         }
                         else{
-                            std::cout << "Not a valid input, please try again.";
-                            stay = "";
+                            std::cout << "Not a valid ordering method, please try again.\n\n";
+                            how_temp = "";
                             std::cin.clear();
                             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                         }
                     }
+
+                    scheduleManager.getMoreThanNUc(n, how);
+
+                    bool exit = false;
+                    check(exit);
                     if(exit){
                         exit = false;
+                        std::cout << "|============================|\n";
                         break;
                     }
                 }
@@ -236,50 +323,37 @@ int main() {
                             break;
                         }
                         else{
-                            std::cout << "Not a valid input, please try again.";
-                        }
-                    }
-                    std::string stay;
-                    bool exit = false;
-                    while(true){
-                        std::cout << "\n Do you wish to use another function or go back ('stay'/'back')?\n Enter here: ";
-                        std::cin >> stay;
-                        if(stay == "stay"){
-                            break;
-                        }
-                        else if(stay == "back"){
-                            exit = true;
-                            break;
-                        }
-                        else{
-                            std::cout << "Not a valid input, please try again.";
-                            stay = "";
+                            std::cout << "Not a valid input, please try again.\n\n";
+                            managementChoice = "";
                             std::cin.clear();
                             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                         }
                     }
+                    bool exit = false;
+                    check(exit);
                     if(exit){
                         exit = false;
+                        std::cout << "|============================|\n";
                         break;
                     }
                 }
                 else if(managementChoice == "help"){
                     std::cout << "\n|======= Management Help =======|\n"
                                  "How all the functions work: \n"
-                                 "Student Schedule - Given a student ID, this function prints his schedule\n"
-                                 "C.U. Occupation - Given a C.U. code and after choosing, if you want, a ordering\n"
-                                 "  method, this functions prints the respective occupation and the students in it (if ordered)\n"
+                                 "Student Schedule - Given a student ID, this function prints his schedule;\n"
+                                 "C.U. Occupation - Given a C.U. code and after choosing, if you want, a ordering;\n"
+                                 "  method, this functions prints the respective occupation and the students in it (if ordered);\n"
                                  "Class Occupation - Given a C.U. code, a class code and after choosing, if you want,\n"
-                                 "  a ordering method, this function prints it occupation and the students in it (if ordered)\n"
+                                 "  a ordering method, this function prints it occupation and the students in it (if ordered);\n"
                                  "Year Occupation - Given a year and after choosing, if you want, a ordering method,\n"
-                                 "  this function prints the year occupation\n"
+                                 "  this function prints the year occupation;\n"
                                  "Check number of - shows the total number of students or different schedules in\n"
-                                 "  the stored data\n"
-                                 "back - allows you to go back to the previous section\n"
+                                 "  the stored data;\n"
+                                 "back - allows you to go back to the previous section.\n"
                                  "|======= Management Help =======|\n";
-
                 }
                 else if(managementChoice == "back"){
+                    std::cout << "|============================|\n";
                     break;
                 }
                 else{
@@ -291,62 +365,73 @@ int main() {
             }
         }
         else if (functionalityChoice == "Request" || functionalityChoice == "request") {
-            //Request area
+            std::cout << "\n|======= Request Area =======|";
             while(true){
                 std::string requestChoice;
                 std::cout << "\nWhich function do you want to use, 1-'Add Request', 2-'Process Request', "
                              "3-'Remove Request', 4-'See Requests', 5-'See Failed Requests', "
-                             "6-'Erase queue', 'help' or 'back'?.\n"
+                             "6-'Erase queue', 'help' or 'back'?\n"
                              "Enter index here: ";
                 std::cin >> requestChoice;
                 if(requestChoice == "1"){
                     std::string request;
                     std::string cUCode;
                     std::string classCode;
-                    std::string remcUCode = "";
-                    std::string remclassCode = "";
+                    std::string remcUCode;
+                    std::string remclassCode;
                     int iD;
-                    std::cout << "Please write the request type ('AddStudent', 'RemoveStudent', 'SwapStudent'): ";
-                    std::cin >> request;
-                    std::cout << "Please write a C.U. code (New C.U in case you want to swap classes): ";
-                    std::cin >> cUCode;
-                    std::cout << "Please write a class code (New class in case you want to swap classes): ";
-                    std::cin >> classCode;
-                    std::cout << "If request type is not SwapStudent you can leave the next to inputs blank\n";
-                    std::cout << "Please write a C.U. code (The one to be substituted)";
-                    std::cin >> remcUCode;
-                    std::cout << "Please write a class code (The one to be substituted)";
-                    std::cin >> remclassCode;
-                    std::cout << "Please write a student ID: ";
-                    std::cin >> iD;
-                    while(std::cin.fail()){
-                        std::cin.clear();
-                        std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
-                        std::cout << "Not a valid entry. Enter a NUMBER: ";
+                    std::string option;
+                    std::cout << "Do you wish to use 'SwapStudentCU'? ('yes'/'no')\n"
+                                 "Enter here: ";
+                    std::cin >> option;
+                    if(option == "yes" || option == "Yes") {
+                        request = "SwapStudentCU";
+                        std::cout << "Please write a C.U. code to be added to schedule: ";
+                        std::cin >> cUCode;
+                        std::cout << "Please write a class code to be added to schedule: ";
+                        std::cin >> classCode;
+                        std::cout << "Please write a C.U. code to be removed from the schedule: ";
+                        std::cin >> remcUCode;
+                        std::cout << "Please write a class code to be removed from the schedule: ";
+                        std::cin >> remclassCode;
+                        std::cout << "Please write a student ID: ";
                         std::cin >> iD;
-                    }
-                    scheduleManager.addRequest(request, cUCode, classCode, remcUCode, remclassCode, iD);
-                    std::string stay;
-                    bool exit = false;
-                    while(true){
-                        std::cout << "\n Do you wish to use another function or go back ('stay'/'back')?\n Enter here: ";
-                        std::cin >> stay;
-                        if(stay == "stay"){
-                            break;
-                        }
-                        else if(stay == "back"){
-                            exit = true;
-                            break;
-                        }
-                        else{
-                            std::cout << "Not a valid input, please try again.";
-                            stay = "";
+                        while (std::cin.fail()) {
                             std::cin.clear();
                             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                            std::cout << "Not a valid entry. Enter a NUMBER: ";
+                            std::cin >> iD;
                         }
+                        scheduleManager.addRequest(request, cUCode, classCode, remcUCode, remclassCode, iD);
                     }
+                    else if (option == "no" || option == "No"){
+                        std::cout << "Please write the request type ('AddStudentCU', 'RemoveStudentCU'): ";
+                        std::cin >> request;
+                        std::cout << "Please write a C.U. code to be added or removed: ";
+                        std::cin >> cUCode;
+                        std::cout << "Please write a class code to be added or removed: ";
+                        std::cin >> classCode;
+                        std::cout << "Please write a student ID: ";
+                        std::cin >> iD;
+                        while(std::cin.fail()){
+                            std::cin.clear();
+                            std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
+                            std::cout << "Not a valid entry. Enter a NUMBER: ";
+                            std::cin >> iD;
+                        }
+                        scheduleManager.addRequest(request, cUCode, classCode, remcUCode, remclassCode, iD);
+                    }
+                    else{
+                        std::cout << "Not a valid input, please try again.\n\n";
+                        requestChoice = "";
+                        std::cin.clear();
+                        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                    }
+                    bool exit = false;
+                    check(exit);
                     if(exit){
                         exit = false;
+                        std::cout << "|============================|\n";
                         break;
                     }
                 }
@@ -361,63 +446,32 @@ int main() {
                     else{
                         std::cout << "Request queue is empty, nothing to process.\n";
                     }
-                    std::string stay;
                     bool exit = false;
-                    while(true){
-                        std::cout << "\n Do you wish to use another function or go back ('stay'/'back')?\n Enter here: ";
-                        std::cin >> stay;
-                        if(stay == "stay"){
-                            break;
-                        }
-                        else if(stay == "back"){
-                            exit = true;
-                            break;
-                        }
-                        else{
-                            std::cout << "Not a valid input, please try again.";
-                            stay = "";
-                            std::cin.clear();
-                            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-                        }
-                    }
+                    check(exit);
                     if(exit){
                         exit = false;
+                        std::cout << "|============================|\n";
                         break;
                     }
                 }
                 else if (requestChoice == "3"){
-                    Request temp = scheduleManager.getRequests().front();
-                    if(!scheduleManager.getRequests().empty()) {
+                    std::queue<Request> temp2 = scheduleManager.getRequests();
+                    if(temp2.empty()) {
+                        std::cout << "Request queue is empty, nothing to remove.\n";
+                    }
+                    else{
+                        Request temp = scheduleManager.getRequests().front();
                         std::string requestType = temp.getRequest();
                         int iD = temp.getID();
                         std::cout << "Removing request " << requestType << " for student " << iD
                                   << " from the queue.\n";
                         scheduleManager.removeRequest();
                     }
-                    else{
-                        std::cout << "Request queue is empty, nothing to remove.\n";
-                    }
-                    std::string stay;
                     bool exit = false;
-                    while(true){
-                        std::cout << "\n Do you wish to use another function or go back ('stay'/'back')?\n Enter here: ";
-                        std::cin >> stay;
-                        if(stay == "stay"){
-                            break;
-                        }
-                        else if(stay == "back"){
-                            exit = true;
-                            break;
-                        }
-                        else{
-                            std::cout << "Not a valid input, please try again.";
-                            stay = "";
-                            std::cin.clear();
-                            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-                        }
-                    }
+                    check(exit);
                     if(exit){
                         exit = false;
+                        std::cout << "|============================|\n";
                         break;
                     }
                 }
@@ -428,27 +482,11 @@ int main() {
                     else{
                         std::cout << "Request queue is empty, nothing to see.\n";
                     }
-                    std::string stay;
                     bool exit = false;
-                    while(true){
-                        std::cout << "\n Do you wish to use another function or go back ('stay'/'back')?\n Enter here: ";
-                        std::cin >> stay;
-                        if(stay == "stay"){
-                            break;
-                        }
-                        else if(stay == "back"){
-                            exit = true;
-                            break;
-                        }
-                        else{
-                            std::cout << "Not a valid input, please try again.";
-                            stay = "";
-                            std::cin.clear();
-                            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-                        }
-                    }
+                    check(exit);
                     if(exit){
                         exit = false;
+                        std::cout << "|============================|\n";
                         break;
                     }
                 }
@@ -459,27 +497,11 @@ int main() {
                     else{
                         std::cout << "Request queue is empty, nothing to see.\n";
                     }
-                    std::string stay;
                     bool exit = false;
-                    while(true){
-                        std::cout << "\n Do you wish to use another function or go back ('stay'/'back')?\n Enter here: ";
-                        std::cin >> stay;
-                        if(stay == "stay"){
-                            break;
-                        }
-                        else if(stay == "back"){
-                            exit = true;
-                            break;
-                        }
-                        else{
-                            std::cout << "Not a valid input, please try again.";
-                            stay = "";
-                            std::cin.clear();
-                            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-                        }
-                    }
+                    check(exit);
                     if(exit){
                         exit = false;
+                        std::cout << "|============================|\n";
                         break;
                     }
                 }
@@ -487,25 +509,10 @@ int main() {
                     scheduleManager.clearRequests();
                     std::string stay;
                     bool exit = false;
-                    while(true){
-                        std::cout << "\n Do you wish to use another function or go back ('stay'/'back')?\n Enter here: ";
-                        std::cin >> stay;
-                        if(stay == "stay"){
-                            break;
-                        }
-                        else if(stay == "back"){
-                            exit = true;
-                            break;
-                        }
-                        else{
-                            std::cout << "Not a valid input, please try again.";
-                            stay = "";
-                            std::cin.clear();
-                            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-                        }
-                    }
+                    check(exit);
                     if(exit){
                         exit = false;
+                        std::cout << "|============================|\n";
                         break;
                     }
                 }
@@ -513,18 +520,19 @@ int main() {
                     std::cout << "\n|======= Request Help =======|\n"
                                  "How all the functions work:\n"
                                  "Add Request - Given a request type ('AddStudent', 'RemoveStudentUC', 'SwapStudent'),\n"
-                                 "  a C.U. code, a class code and a student ID, this function will add a request \n"
-                                 "  with this information to the queue\n"
+                                 "  a C.U. code (or 2 in case of Swap), a class code (or 2 in case of Swap) and a student ID,\n"
+                                 "  this function will add a request with this information to the queue;\n"
                                  "Process Request - Processes the first request on the queue and removes it, in case \n"
-                                 "  of success in completion or not\n"
-                                 "Remove Request - Removes the first request in the queue\n"
-                                 "See Requests - Shows all the requests in the queue\n"
-                                 "See Failed Requests - Shows all the failed requests in the queue\n"
-                                 "Erase queue - Erases, if possible, one of the request queues\n"
-                                 "back - allows you to go back to the previous section\n"
+                                 "  of success in completion or not;\n"
+                                 "Remove Request - Removes the first request in the queue;\n"
+                                 "See Requests - Shows all the requests in the queue;\n"
+                                 "See Failed Requests - Shows all the failed requests in the queue;\n"
+                                 "Erase queue - Erases, if possible, one of the request queues;\n"
+                                 "back - allows you to go back to the previous section.\n"
                                  "|======= Request Help =======|\n";
                 }
                 else if(requestChoice == "back"){
+                    std::cout << "|============================|\n";
                     break;
                 }
                 else{
@@ -542,9 +550,9 @@ int main() {
         }
         else if(functionalityChoice == "help" || functionalityChoice == "Help"){
             std::cout << "\n|=======Help=======|\n"
-                         "Management - functions that allow you to see information about students, classes, C.U. and other stuff\n"
-                         "Request - functions that allows you to queue request, such as adding a student to a class\n"
-                         "Quit - will close the app\n"
+                         "Management - functions that allow you to see information about students, classes, C.U. and other stuff;\n"
+                         "Request - functions that allows you to queue request, such as adding a student to a new CU;\n"
+                         "Quit - will close the app.\n"
                          "|=======Help=======|\n";
         }
         else{

@@ -113,7 +113,7 @@ public:
     /// @param classCode Corresponds to the class that the user wants to remove
     /// @param ID Corresponds to the student ID
     /// @param success Correspond to the success of the method (if the class/Curricular Unit got removed)
-    void removeStudentUC(std::string ucCode, std::string classCode, int ID, bool& success);
+    void removeStudentCU(std::string ucCode, std::string classCode, int ID, bool& success);
 
     /// @brief Adds a Curricular Unit/class from a student
     /// @param ucCode Corresponds to the Curricular Unit that the user wants to add
@@ -121,16 +121,16 @@ public:
     /// @param ID Corresponds to the student ID
     /// @param success Correspond to the success of the method (if the class/Curricular Unit got added)
     /// @return True if the class/Curricular Unit got added to the student.\n False if the class/Curricular Unit wasn´t added to the student.
-    bool addstudent(std::string ucCode, std::string classCode, int ID, bool& success);
+    bool addstudentCU(std::string ucCode, std::string classCode, int ID, bool& success);
 
     /// @brief Swaps a Curricular Unit/class from a student to a Curricular Unit/class that the student doesn´t have yet
     /// @param ID Corresponds to the student ID
     /// @param addUCCode Corresponds to the Curricular Unit that the user wants to add
     /// @param addClassCode Corresponds to the class that the user wants to add
     /// @param remUCCode Corresponds to the Curricular Unit that the user wants to remove
-    /// @param remClassCode1 Corresponds to the class that the user wants to remove
+    /// @param remClassCode Corresponds to the class that the user wants to remove
     /// @param success Correspond to the success of the method (if the swap was successfull)
-    void swapStudent(int ID, std::string addUCCode, std::string addClassCode,std::string remUCCode,std::string remClassCode1, bool& success);
+    void swapStudentCU(int ID, std::string addUCCode, std::string addClassCode, std::string remUCCode, std::string remClassCode, bool& success);
 
     /// @brief Checks if the amplitude of the total of students in all classes of a Curricular Unit is less than 4
     /// @param UCCode Corresponds to the Curricular Unit we want to use to check its amplitude
